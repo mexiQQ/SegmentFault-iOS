@@ -13,10 +13,29 @@
 @end
 
 @implementation AppDelegate
-
+@synthesize window;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    
     // Override point for customization after application launch.
+    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *mainViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"main"];
+    UIViewController *leftDrawer = [mainStoryboard instantiateViewControllerWithIdentifier:@"menu"];
+    UIViewController * rightDrawer = [[UIViewController alloc] init];
+    rightDrawer.view.backgroundColor = [UIColor greenColor];
+    
+    MMDrawerController* drawerController = [[MMDrawerController alloc]
+                                            initWithCenterViewController:mainViewController
+                                            leftDrawerViewController:leftDrawer
+                                            rightDrawerViewController:rightDrawer];
+    
+    [drawerController setMaximumRightDrawerWidth:200.0];
+    [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
+    [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
+    
+    window.rootViewController = drawerController;
+    [window makeKeyAndVisible];
     return YES;
 }
 

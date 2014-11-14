@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AppDelegate.h"
+#import "UIViewController+MMDrawerController.h"
 
 @interface ViewController : UIViewController
 
-
+- (IBAction)tagSliderRight:(id)sender;
+- (IBAction)tapSliderLeft:(id)sender;
 @end
 
