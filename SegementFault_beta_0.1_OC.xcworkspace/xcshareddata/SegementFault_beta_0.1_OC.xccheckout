@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>39A4449B-9F16-4261-91EC-81DDE8BFEEF1</string>
+	<key>IDESourceControlProjectName</key>
+	<string>SegementFault_beta_0.1_OC</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>C01FFA29A3C46CF68F1D9289E1FDD3062AB20A4E</key>
+		<string>https://github.com/mexiQQ/SegmentFault-iOS.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>SegementFault_beta_0.1_OC.xcworkspace</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>C01FFA29A3C46CF68F1D9289E1FDD3062AB20A4E</key>
+		<string>..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/mexiQQ/SegmentFault-iOS.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>C01FFA29A3C46CF68F1D9289E1FDD3062AB20A4E</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>C01FFA29A3C46CF68F1D9289E1FDD3062AB20A4E</string>
+			<key>IDESourceControlWCCName</key>
+			<string>SegementFault_beta_0.1_OC</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -10,4 +10,5 @@
 
 @interface RightViewController : UIViewController
 
+- (IBAction)unwindToList:(UIStoryboardSegue *)segue;
 @end

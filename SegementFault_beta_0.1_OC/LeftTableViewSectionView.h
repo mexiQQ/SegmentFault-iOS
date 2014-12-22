@@ -9,7 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface LeftTableViewSectionView : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *sectionImage;
 @property (weak, nonatomic) IBOutlet UILabel *sectionTitle;
 @property (weak, nonatomic) IBOutlet UIButton *addMenu;
 

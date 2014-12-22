@@ -9,7 +9,8 @@
 #import <UIKit/UIKit.h>
 #import "MeunTableViewCell.h"
 #import "LeftTableViewSectionView.h"
+#import "LeftTableViewUserSectionView.h"
 @interface LeftViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mytableview;
-
+@property (nonatomic,strong) NSMutableArray *cellContent;
 @end

@@ -22,6 +22,8 @@
 		AFD762EE1A14BCF6004826EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFD762ED1A14BCF6004826EC /* Images.xcassets */; };
 		AFD762F11A14BCF6004826EC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFD762EF1A14BCF6004826EC /* LaunchScreen.xib */; };
 		AFD762FD1A14BCF6004826EC /* SegementFault_beta_0_1_OCTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD762FC1A14BCF6004826EC /* SegementFault_beta_0_1_OCTests.m */; };
+		AFDA89901A48101200771476 /* LeftTableViewUserSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFDA898F1A48101200771476 /* LeftTableViewUserSectionView.m */; };
+		AFDA89921A48108E00771476 /* MenuTableViewUserSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFDA89911A48108E00771476 /* MenuTableViewUserSection.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +65,9 @@
 		AFD762F61A14BCF6004826EC /* SegementFault_beta_0.1_OCTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SegementFault_beta_0.1_OCTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFD762FB1A14BCF6004826EC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFD762FC1A14BCF6004826EC /* SegementFault_beta_0_1_OCTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SegementFault_beta_0_1_OCTests.m; sourceTree = "<group>"; };
+		AFDA898E1A48101200771476 /* LeftTableViewUserSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTableViewUserSectionView.h; sourceTree = "<group>"; };
+		AFDA898F1A48101200771476 /* LeftTableViewUserSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTableViewUserSectionView.m; sourceTree = "<group>"; };
+		AFDA89911A48108E00771476 /* MenuTableViewUserSection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewUserSection.xib; sourceTree = "<group>"; };
 		B1E206D5A5C6A819ED1369D6 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -160,8 +165,8 @@
 		AFAEA3F11A15AEB100C31F6A /* general */ = {
 			isa = PBXGroup;
 			children = (
-				AF7FA6451A1609D100EEC0CB /* Center */,
 				AF7FA6411A15FF2400EEC0CB /* Modal */,
+				AF7FA6451A1609D100EEC0CB /* Center */,
 				AFAEA3F21A15AEC000C31F6A /* Left */,
 			);
 			name = general;
@@ -174,6 +179,8 @@
 				AFAEA3F41A15AF2E00C31F6A /* MeunTableViewCell.m */,
 				AF7FA63E1A15D8AE00EEC0CB /* LeftTableViewSectionView.h */,
 				AF7FA63F1A15D8AE00EEC0CB /* LeftTableViewSectionView.m */,
+				AFDA898E1A48101200771476 /* LeftTableViewUserSectionView.h */,
+				AFDA898F1A48101200771476 /* LeftTableViewUserSectionView.m */,
 			);
 			name = Left;
 			sourceTree = "<group>";
@@ -201,14 +208,8 @@
 		AFD762DF1A14BCF6004826EC /* SegementFault_beta_0.1_OC */ = {
 			isa = PBXGroup;
 			children = (
-				AFD762E41A14BCF6004826EC /* AppDelegate.h */,
-				AFD762E51A14BCF6004826EC /* AppDelegate.m */,
-				AFD762EA1A14BCF6004826EC /* Main.storyboard */,
-				AF7FA63C1A15D79500EEC0CB /* MenuTableViewSectionView.xib */,
 				AFAEA3F11A15AEB100C31F6A /* general */,
 				AF59AB9E1A15942B0017DA21 /* Sections */,
-				AFD762ED1A14BCF6004826EC /* Images.xcassets */,
-				AFD762EF1A14BCF6004826EC /* LaunchScreen.xib */,
 				AFD762E01A14BCF6004826EC /* Supporting Files */,
 			);
 			path = SegementFault_beta_0.1_OC;
@@ -217,6 +218,13 @@
 		AFD762E01A14BCF6004826EC /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				AFD762E41A14BCF6004826EC /* AppDelegate.h */,
+				AFD762E51A14BCF6004826EC /* AppDelegate.m */,
+				AFD762EA1A14BCF6004826EC /* Main.storyboard */,
+				AF7FA63C1A15D79500EEC0CB /* MenuTableViewSectionView.xib */,
+				AFDA89911A48108E00771476 /* MenuTableViewUserSection.xib */,
+				AFD762EF1A14BCF6004826EC /* LaunchScreen.xib */,
+				AFD762ED1A14BCF6004826EC /* Images.xcassets */,
 				AFD762E11A14BCF6004826EC /* Info.plist */,
 				AFD762E21A14BCF6004826EC /* main.m */,
 			);
@@ -323,6 +331,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AFD762EC1A14BCF6004826EC /* Main.storyboard in Resources */,
+				AFDA89921A48108E00771476 /* MenuTableViewUserSection.xib in Resources */,
 				AF7FA63D1A15D79500EEC0CB /* MenuTableViewSectionView.xib in Resources */,
 				AFD762F11A14BCF6004826EC /* LaunchScreen.xib in Resources */,
 				AFD762EE1A14BCF6004826EC /* Images.xcassets in Resources */,
@@ -378,6 +387,7 @@
 			files = (
 				AFAEA3F51A15AF2E00C31F6A /* MeunTableViewCell.m in Sources */,
 				AF59ABA71A1594F60017DA21 /* RightViewController.m in Sources */,
+				AFDA89901A48101200771476 /* LeftTableViewUserSectionView.m in Sources */,
 				AFD762E91A14BCF6004826EC /* ViewController.m in Sources */,
 				AF59ABA41A1594DF0017DA21 /* LeftViewController.m in Sources */,
 				AF7FA6481A1609F800EEC0CB /* MoreViewController.m in Sources */,

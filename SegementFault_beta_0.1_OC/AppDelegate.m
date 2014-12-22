@@ -20,6 +20,7 @@
     
     // Override point for customization after application launch.
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    
     UIViewController *mainViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"main"];
     UIViewController *leftDrawer = [mainStoryboard instantiateViewControllerWithIdentifier:@"menu"];
     UIViewController * rightDrawer = [[UIViewController alloc] init];

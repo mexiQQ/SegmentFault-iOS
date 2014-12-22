@@ -9,7 +9,6 @@
 #import "LeftTableViewSectionView.h"
 
 @implementation LeftTableViewSectionView
-@synthesize sectionImage = _sectionImage;
 @synthesize sectionTitle = _sectionTitle;
 
 - (void)awakeFromNib {

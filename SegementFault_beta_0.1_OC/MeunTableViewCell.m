@@ -9,7 +9,6 @@
 #import "MeunTableViewCell.h"
 
 @implementation MeunTableViewCell
-@synthesize menuImage = _menuImage;
 @synthesize menuTitle = _menuTitle;
 
 - (void)awakeFromNib {

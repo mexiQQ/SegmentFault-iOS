@@ -11,11 +11,14 @@ PODS:
     - MMDrawerController/Core
   - MMDrawerController/Subclass (0.5.7):
     - MMDrawerController/Core
+  - MXMarkdownKeyboard (0.0.1)
 
 DEPENDENCIES:
   - MMDrawerController (~> 0.5.7)
+  - MXMarkdownKeyboard (~> 0.0.1)
 
 SPEC CHECKSUMS:
   MMDrawerController: c3ab7a318ddc7e2bcd133139c3161af08c6e1197
+  MXMarkdownKeyboard: be3f8383d01f248a70bfea814254e8c0f8183b50
 
 COCOAPODS: 0.34.2
