@@ -33,16 +33,16 @@
     [_cellContent addObject:others];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
+#pragma mark - UITableViewDelegae and UITableViewDataSource
+
+//返回Section的数目
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
     return 3;
 }
 
+//返回每个Section的cell数目
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
         if (section == 0)
         {
@@ -58,39 +58,30 @@
         }
 }
 
-
+//对每个cell的内容进行定制
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
+    NSString * MenuCellIdentifier = @"Cell";
+    MeunTableViewCell* cell = [_mytableview dequeueReusableCellWithIdentifier:MenuCellIdentifier];
+    
     if(indexPath.section == 0&&indexPath.row==0){
-        static NSString * MenuCellIdentifier = @"Cell";
-        MeunTableViewCell* cell = [_mytableview dequeueReusableCellWithIdentifier:MenuCellIdentifier];
-        cell.menuTitle.text = @"Ask Questions";
-        cell.backgroundColor = [UIColor clearColor];
-        cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-        cell.selectedBackgroundView.backgroundColor = [[UIColor alloc] initWithRed:0/255.0f green:154/255.0f blue:97/255.0f alpha:0.3];
-        return cell;
+        cell.menuTitle.text = [[_cellContent objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     }else{
         static NSString * MenuCellIdentifier = @"Cell";
-        MeunTableViewCell* cell = [_mytableview dequeueReusableCellWithIdentifier:MenuCellIdentifier];
+        cell = [_mytableview dequeueReusableCellWithIdentifier:MenuCellIdentifier];
         if (cell == nil)
         {
             cell = [[MeunTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                            reuseIdentifier:MenuCellIdentifier];
         }
-        
-        NSLog(@"indexPath.section:%d",indexPath.section -1);
-        
-
-        cell.menuTitle.text = [[_cellContent objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-        cell.backgroundColor = [UIColor clearColor];
-        
-        cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
-        cell.selectedBackgroundView.backgroundColor = [[UIColor alloc] initWithRed:0/255.0f green:154/255.0f blue:97/255.0f alpha:0.3];
-
-        return cell;
     }
+    cell.backgroundColor = [UIColor clearColor];
+    cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+    cell.selectedBackgroundView.backgroundColor = [[UIColor alloc] initWithRed:0/255.0f green:154/255.0f blue:97/255.0f alpha:0.3];
+    return cell;
 }
 
+//指定每个Section的header高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
 {
     if (section ==0)
@@ -99,30 +90,7 @@
         return 30.0f;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
-{
-    if (tableView == _mytableview)
-    {
-        if (section == 0)
-        {
-            return nil;
-        }
-        else if (section == 1)
-        {
-            return @"SITES";
-        }
-        else
-        {
-            return @"OTHER";
-        }
-    }
-    else
-    {
-        return nil;
-    }
-}
-
-
+//指定每个Section的header内容
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
 {
     if (section == 0)
@@ -153,21 +121,7 @@
     }
 }
 
--(void)changeMenu{
-    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *addMenuController = [mainStoryboard instantiateViewControllerWithIdentifier:@"addMenu"];
-    
-    addMenuController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentViewController:addMenuController animated:YES completion:^{
-        NSLog(@"hello world");
-    }];
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-
-
-}
-
+//指定点击每个Cell后执行的操作
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0)
@@ -211,6 +165,7 @@
     }
 }
 
+//点击ActionSheet的操作
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex == 0){
         NSLog(@"hello");
@@ -219,15 +174,23 @@
     }
 }
 
+-(void)changeMenu{
+    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *addMenuController = [mainStoryboard instantiateViewControllerWithIdentifier:@"addMenu"];
+    addMenuController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+    [self presentViewController:addMenuController animated:YES completion:^{
+        NSLog(@"hello world");
+    }];
+}
 
-/*
+
+
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
 }
-*/
+
 
 @end

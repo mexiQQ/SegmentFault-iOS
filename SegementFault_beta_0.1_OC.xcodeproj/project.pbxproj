@@ -10,6 +10,7 @@
 		956A094FC4B359F5CB3EBB8E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D57B3DADF21C12EEFD5EE77 /* libPods.a */; };
 		AF59ABA41A1594DF0017DA21 /* LeftViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF59ABA31A1594DF0017DA21 /* LeftViewController.m */; };
 		AF59ABA71A1594F60017DA21 /* RightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF59ABA61A1594F60017DA21 /* RightViewController.m */; };
+		AF7684AB1A491F6D009C188D /* ArrayDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7684AA1A491F6D009C188D /* ArrayDataSource.m */; };
 		AF7FA63D1A15D79500EEC0CB /* MenuTableViewSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF7FA63C1A15D79500EEC0CB /* MenuTableViewSectionView.xib */; };
 		AF7FA6401A15D8AE00EEC0CB /* LeftTableViewSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FA63F1A15D8AE00EEC0CB /* LeftTableViewSectionView.m */; };
 		AF7FA6441A15FF5400EEC0CB /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FA6431A15FF5400EEC0CB /* ModalViewController.m */; };
@@ -43,6 +44,8 @@
 		AF59ABA31A1594DF0017DA21 /* LeftViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftViewController.m; sourceTree = "<group>"; };
 		AF59ABA51A1594F60017DA21 /* RightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightViewController.h; sourceTree = "<group>"; };
 		AF59ABA61A1594F60017DA21 /* RightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightViewController.m; sourceTree = "<group>"; };
+		AF7684A91A491F6D009C188D /* ArrayDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ArrayDataSource.h; sourceTree = "<group>"; };
+		AF7684AA1A491F6D009C188D /* ArrayDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ArrayDataSource.m; sourceTree = "<group>"; };
 		AF7FA63C1A15D79500EEC0CB /* MenuTableViewSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewSectionView.xib; sourceTree = "<group>"; };
 		AF7FA63E1A15D8AE00EEC0CB /* LeftTableViewSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTableViewSectionView.h; sourceTree = "<group>"; };
 		AF7FA63F1A15D8AE00EEC0CB /* LeftTableViewSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTableViewSectionView.m; sourceTree = "<group>"; };
@@ -110,6 +113,7 @@
 		AF59AB9E1A15942B0017DA21 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
+				AF7684A71A491EDC009C188D /* Modal */,
 				AF59ABA11A1594730017DA21 /* Right */,
 				AF59ABA01A1594660017DA21 /* Left */,
 				AF59AB9F1A1594510017DA21 /* Main */,
@@ -122,6 +126,8 @@
 			children = (
 				AFD762E71A14BCF6004826EC /* ViewController.h */,
 				AFD762E81A14BCF6004826EC /* ViewController.m */,
+				AF7FA6461A1609F800EEC0CB /* MoreViewController.h */,
+				AF7FA6471A1609F800EEC0CB /* MoreViewController.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -144,7 +150,7 @@
 			name = Right;
 			sourceTree = "<group>";
 		};
-		AF7FA6411A15FF2400EEC0CB /* Modal */ = {
+		AF7684A71A491EDC009C188D /* Modal */ = {
 			isa = PBXGroup;
 			children = (
 				AF7FA6421A15FF5400EEC0CB /* ModalViewController.h */,
@@ -153,11 +159,18 @@
 			name = Modal;
 			sourceTree = "<group>";
 		};
+		AF7684A81A491F2C009C188D /* Global */ = {
+			isa = PBXGroup;
+			children = (
+				AF7684A91A491F6D009C188D /* ArrayDataSource.h */,
+				AF7684AA1A491F6D009C188D /* ArrayDataSource.m */,
+			);
+			name = Global;
+			sourceTree = "<group>";
+		};
 		AF7FA6451A1609D100EEC0CB /* Center */ = {
 			isa = PBXGroup;
 			children = (
-				AF7FA6461A1609F800EEC0CB /* MoreViewController.h */,
-				AF7FA6471A1609F800EEC0CB /* MoreViewController.m */,
 			);
 			name = Center;
 			sourceTree = "<group>";
@@ -165,7 +178,7 @@
 		AFAEA3F11A15AEB100C31F6A /* general */ = {
 			isa = PBXGroup;
 			children = (
-				AF7FA6411A15FF2400EEC0CB /* Modal */,
+				AF7684A81A491F2C009C188D /* Global */,
 				AF7FA6451A1609D100EEC0CB /* Center */,
 				AFAEA3F21A15AEC000C31F6A /* Left */,
 			);
@@ -392,6 +405,7 @@
 				AF59ABA41A1594DF0017DA21 /* LeftViewController.m in Sources */,
 				AF7FA6481A1609F800EEC0CB /* MoreViewController.m in Sources */,
 				AF7FA6441A15FF5400EEC0CB /* ModalViewController.m in Sources */,
+				AF7684AB1A491F6D009C188D /* ArrayDataSource.m in Sources */,
 				AFD762E61A14BCF6004826EC /* AppDelegate.m in Sources */,
 				AFD762E31A14BCF6004826EC /* main.m in Sources */,
 				AF7FA6401A15D8AE00EEC0CB /* LeftTableViewSectionView.m in Sources */,
