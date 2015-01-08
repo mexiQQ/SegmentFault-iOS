@@ -61,19 +61,14 @@
 //对每个cell的内容进行定制
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     
-    NSString * MenuCellIdentifier = @"Cell";
+    NSString * MenuCellIdentifier = @"MenuCell";
     MeunTableViewCell* cell = [_mytableview dequeueReusableCellWithIdentifier:MenuCellIdentifier];
     
-    if(indexPath.section == 0&&indexPath.row==0){
-        cell.menuTitle.text = [[_cellContent objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    }else{
-        static NSString * MenuCellIdentifier = @"Cell";
-        cell = [_mytableview dequeueReusableCellWithIdentifier:MenuCellIdentifier];
-        if (cell == nil)
-        {
-            cell = [[MeunTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
-                                           reuseIdentifier:MenuCellIdentifier];
-        }
+    cell.menuTitle.text = [[_cellContent objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    if (cell == nil)
+    {
+        cell = [[MeunTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
+                                        reuseIdentifier:MenuCellIdentifier];
     }
     cell.backgroundColor = [UIColor clearColor];
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
@@ -130,16 +125,39 @@
     }
     else if(indexPath.section==1)
     {
+        UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UITabBarController *mainViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"main"];
+        
+        //UINavigationController *nav = mainViewController.childViewControllers[0];
+        //MainTableViewController *center = nav.viewControllers[0];
+        
         switch (indexPath.row)
         {
             case 0:
             {
-
+                //center.tagType =@"home";
+                [self.mm_drawerController
+                setCenterViewController:mainViewController
+                withCloseAnimation:YES
+                completion:nil];
+                break;
             }
+            case 1:{
+                //center.tagType =@"ios";
+                [self.mm_drawerController
+                setCenterViewController:mainViewController
+                withCloseAnimation:YES
+                completion:nil];
                 break;
-                
-            default:
+            }
+            case 2:{
+                //center.tagType =@"android";
+                [self.mm_drawerController
+                setCenterViewController:mainViewController
+                withCloseAnimation:YES
+                completion:nil];
                 break;
+            }
         }
     }
     else
@@ -182,15 +200,5 @@
         NSLog(@"hello world");
     }];
 }
-
-
-
-#pragma mark - Navigation
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-
 
 @end

@@ -14,6 +14,8 @@ typedef void (^TableViewCellConfigureBlock)(id cell, id item);
 
 @interface ArrayDataSource : NSObject <UITableViewDataSource>
 
+@property (nonatomic, strong) NSArray *items;
+
 - (id)initWithItems:(NSArray *)anItems
      cellIdentifier:(NSString *)aCellIdentifier
  configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock;
