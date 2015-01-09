@@ -25,7 +25,21 @@
 		AF7684C41A498456009C188D /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7684C31A498455009C188D /* QuestionTableViewCell.m */; };
 		AF7FA63D1A15D79500EEC0CB /* MenuTableViewSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF7FA63C1A15D79500EEC0CB /* MenuTableViewSectionView.xib */; };
 		AF7FA6401A15D8AE00EEC0CB /* LeftTableViewSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FA63F1A15D8AE00EEC0CB /* LeftTableViewSectionView.m */; };
-		AF7FA6441A15FF5400EEC0CB /* ModalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FA6431A15FF5400EEC0CB /* ModalViewController.m */; };
+		AF9E87981A5F8485006D00AF /* TagModle.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9E87971A5F8485006D00AF /* TagModle.m */; };
+		AF9E879B1A5F84A3006D00AF /* TagStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9E879A1A5F84A3006D00AF /* TagStore.m */; };
+		AF9E879E1A5F84BD006D00AF /* TagDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9E879D1A5F84BD006D00AF /* TagDataSource.m */; };
+		AF9E87A11A5F8833006D00AF /* EditTagsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9E87A01A5F8833006D00AF /* EditTagsTableViewController.m */; };
+		AF9E87A41A5F8B09006D00AF /* EditTagTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9E87A31A5F8B09006D00AF /* EditTagTableViewCell.m */; };
+		AF9E87B11A5F905F006D00AF /* Android.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9E87A71A5F905F006D00AF /* Android.png */; };
+		AF9E87B21A5F905F006D00AF /* CSS3.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9E87A81A5F905F006D00AF /* CSS3.png */; };
+		AF9E87B31A5F905F006D00AF /* go.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9E87A91A5F905F006D00AF /* go.png */; };
+		AF9E87B41A5F905F006D00AF /* html5.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9E87AA1A5F905F006D00AF /* html5.png */; };
+		AF9E87B51A5F905F006D00AF /* iOS.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9E87AB1A5F905F006D00AF /* iOS.png */; };
+		AF9E87B61A5F905F006D00AF /* javascript.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9E87AC1A5F905F006D00AF /* javascript.png */; };
+		AF9E87B71A5F905F006D00AF /* node.js.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9E87AD1A5F905F006D00AF /* node.js.png */; };
+		AF9E87B81A5F905F006D00AF /* php.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9E87AE1A5F905F006D00AF /* php.png */; };
+		AF9E87B91A5F905F006D00AF /* python.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9E87AF1A5F905F006D00AF /* python.png */; };
+		AF9E87BA1A5F905F006D00AF /* ruby.png in Resources */ = {isa = PBXBuildFile; fileRef = AF9E87B01A5F905F006D00AF /* ruby.png */; };
 		AFAEA3F51A15AF2E00C31F6A /* MeunTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAEA3F41A15AF2E00C31F6A /* MeunTableViewCell.m */; };
 		AFD762E31A14BCF6004826EC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD762E21A14BCF6004826EC /* main.m */; };
 		AFD762E61A14BCF6004826EC /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD762E51A14BCF6004826EC /* AppDelegate.m */; };
@@ -83,8 +97,26 @@
 		AF7FA63C1A15D79500EEC0CB /* MenuTableViewSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewSectionView.xib; sourceTree = "<group>"; };
 		AF7FA63E1A15D8AE00EEC0CB /* LeftTableViewSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTableViewSectionView.h; sourceTree = "<group>"; };
 		AF7FA63F1A15D8AE00EEC0CB /* LeftTableViewSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTableViewSectionView.m; sourceTree = "<group>"; };
-		AF7FA6421A15FF5400EEC0CB /* ModalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ModalViewController.h; sourceTree = "<group>"; };
-		AF7FA6431A15FF5400EEC0CB /* ModalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ModalViewController.m; sourceTree = "<group>"; };
+		AF9E87961A5F8485006D00AF /* TagModle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagModle.h; path = General/Model/TagModle.h; sourceTree = "<group>"; };
+		AF9E87971A5F8485006D00AF /* TagModle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TagModle.m; path = General/Model/TagModle.m; sourceTree = "<group>"; };
+		AF9E87991A5F84A3006D00AF /* TagStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagStore.h; path = General/Store/TagStore.h; sourceTree = "<group>"; };
+		AF9E879A1A5F84A3006D00AF /* TagStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TagStore.m; path = General/Store/TagStore.m; sourceTree = "<group>"; };
+		AF9E879C1A5F84BD006D00AF /* TagDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = TagDataSource.h; path = General/Datasource/TagDataSource.h; sourceTree = "<group>"; };
+		AF9E879D1A5F84BD006D00AF /* TagDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = TagDataSource.m; path = General/Datasource/TagDataSource.m; sourceTree = "<group>"; };
+		AF9E879F1A5F8833006D00AF /* EditTagsTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditTagsTableViewController.h; path = Sections/Modal/EditTagsTableViewController.h; sourceTree = "<group>"; };
+		AF9E87A01A5F8833006D00AF /* EditTagsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditTagsTableViewController.m; path = Sections/Modal/EditTagsTableViewController.m; sourceTree = "<group>"; };
+		AF9E87A21A5F8B09006D00AF /* EditTagTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EditTagTableViewCell.h; path = General/View/EditTagTableViewCell.h; sourceTree = "<group>"; };
+		AF9E87A31A5F8B09006D00AF /* EditTagTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditTagTableViewCell.m; path = General/View/EditTagTableViewCell.m; sourceTree = "<group>"; };
+		AF9E87A71A5F905F006D00AF /* Android.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Android.png; sourceTree = "<group>"; };
+		AF9E87A81A5F905F006D00AF /* CSS3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = CSS3.png; sourceTree = "<group>"; };
+		AF9E87A91A5F905F006D00AF /* go.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = go.png; sourceTree = "<group>"; };
+		AF9E87AA1A5F905F006D00AF /* html5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = html5.png; sourceTree = "<group>"; };
+		AF9E87AB1A5F905F006D00AF /* iOS.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = iOS.png; sourceTree = "<group>"; };
+		AF9E87AC1A5F905F006D00AF /* javascript.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = javascript.png; sourceTree = "<group>"; };
+		AF9E87AD1A5F905F006D00AF /* node.js.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = node.js.png; sourceTree = "<group>"; };
+		AF9E87AE1A5F905F006D00AF /* php.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = php.png; sourceTree = "<group>"; };
+		AF9E87AF1A5F905F006D00AF /* python.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = python.png; sourceTree = "<group>"; };
+		AF9E87B01A5F905F006D00AF /* ruby.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ruby.png; sourceTree = "<group>"; };
 		AFAEA3F31A15AF2E00C31F6A /* MeunTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeunTableViewCell.h; sourceTree = "<group>"; };
 		AFAEA3F41A15AF2E00C31F6A /* MeunTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeunTableViewCell.m; sourceTree = "<group>"; };
 		AFD762DD1A14BCF6004826EC /* SegementFault_beta_0.1_OC.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SegementFault_beta_0.1_OC.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -149,6 +181,8 @@
 				AF2CC7DA1A5E8CD3000B1D37 /* ArticleStore.m */,
 				AF2CC7D01A5E2DF4000B1D37 /* QuestionStore.h */,
 				AF2CC7D11A5E2DF4000B1D37 /* QuestionStore.m */,
+				AF9E87991A5F84A3006D00AF /* TagStore.h */,
+				AF9E879A1A5F84A3006D00AF /* TagStore.m */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -160,6 +194,8 @@
 				AF2CC7C51A5E2B19000B1D37 /* QuestionModel.m */,
 				AF2CC7D61A5E8CB1000B1D37 /* ArticleModel.h */,
 				AF2CC7D71A5E8CB1000B1D37 /* ArticleModel.m */,
+				AF9E87961A5F8485006D00AF /* TagModle.h */,
+				AF9E87971A5F8485006D00AF /* TagModle.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -216,8 +252,8 @@
 		AF7684A71A491EDC009C188D /* Modal */ = {
 			isa = PBXGroup;
 			children = (
-				AF7FA6421A15FF5400EEC0CB /* ModalViewController.h */,
-				AF7FA6431A15FF5400EEC0CB /* ModalViewController.m */,
+				AF9E879F1A5F8833006D00AF /* EditTagsTableViewController.h */,
+				AF9E87A01A5F8833006D00AF /* EditTagsTableViewController.m */,
 			);
 			name = Modal;
 			sourceTree = "<group>";
@@ -231,6 +267,8 @@
 				AF2CC7C01A5E29DD000B1D37 /* ArticlesDataSource.m */,
 				AF2CC7BC1A5E29B2000B1D37 /* QuestionsDataSource.h */,
 				AF2CC7BD1A5E29B2000B1D37 /* QuestionsDataSource.m */,
+				AF9E879C1A5F84BD006D00AF /* TagDataSource.h */,
+				AF9E879D1A5F84BD006D00AF /* TagDataSource.m */,
 			);
 			name = Datasource;
 			sourceTree = "<group>";
@@ -248,8 +286,35 @@
 				AF7FA63F1A15D8AE00EEC0CB /* LeftTableViewSectionView.m */,
 				AFDA898E1A48101200771476 /* LeftTableViewUserSectionView.h */,
 				AFDA898F1A48101200771476 /* LeftTableViewUserSectionView.m */,
+				AF9E87A21A5F8B09006D00AF /* EditTagTableViewCell.h */,
+				AF9E87A31A5F8B09006D00AF /* EditTagTableViewCell.m */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		AF9E87A51A5F904F006D00AF /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				AF9E87A61A5F905F006D00AF /* tagImge */,
+			);
+			name = Resource;
+			sourceTree = "<group>";
+		};
+		AF9E87A61A5F905F006D00AF /* tagImge */ = {
+			isa = PBXGroup;
+			children = (
+				AF9E87A71A5F905F006D00AF /* Android.png */,
+				AF9E87A81A5F905F006D00AF /* CSS3.png */,
+				AF9E87A91A5F905F006D00AF /* go.png */,
+				AF9E87AA1A5F905F006D00AF /* html5.png */,
+				AF9E87AB1A5F905F006D00AF /* iOS.png */,
+				AF9E87AC1A5F905F006D00AF /* javascript.png */,
+				AF9E87AD1A5F905F006D00AF /* node.js.png */,
+				AF9E87AE1A5F905F006D00AF /* php.png */,
+				AF9E87AF1A5F905F006D00AF /* python.png */,
+				AF9E87B01A5F905F006D00AF /* ruby.png */,
+			);
+			path = tagImge;
 			sourceTree = "<group>";
 		};
 		AFAEA3F11A15AEB100C31F6A /* General */ = {
@@ -286,6 +351,7 @@
 		AFD762DF1A14BCF6004826EC /* SegementFault_beta_0.1_OC */ = {
 			isa = PBXGroup;
 			children = (
+				AF9E87A51A5F904F006D00AF /* Resource */,
 				AF45DBF31A4A989F0063E97C /* Utils */,
 				AFAEA3F11A15AEB100C31F6A /* General */,
 				AF59AB9E1A15942B0017DA21 /* Sections */,
@@ -409,11 +475,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9E87B61A5F905F006D00AF /* javascript.png in Resources */,
+				AF9E87B31A5F905F006D00AF /* go.png in Resources */,
+				AF9E87B41A5F905F006D00AF /* html5.png in Resources */,
+				AF9E87B71A5F905F006D00AF /* node.js.png in Resources */,
 				AFD762EC1A14BCF6004826EC /* Main.storyboard in Resources */,
 				AFDA89921A48108E00771476 /* MenuTableViewUserSection.xib in Resources */,
 				AF7FA63D1A15D79500EEC0CB /* MenuTableViewSectionView.xib in Resources */,
+				AF9E87B11A5F905F006D00AF /* Android.png in Resources */,
 				AFD762F11A14BCF6004826EC /* LaunchScreen.xib in Resources */,
 				AFD762EE1A14BCF6004826EC /* Images.xcassets in Resources */,
+				AF9E87B81A5F905F006D00AF /* php.png in Resources */,
+				AF9E87BA1A5F905F006D00AF /* ruby.png in Resources */,
+				AF9E87B91A5F905F006D00AF /* python.png in Resources */,
+				AF9E87B21A5F905F006D00AF /* CSS3.png in Resources */,
+				AF9E87B51A5F905F006D00AF /* iOS.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +540,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF9E879B1A5F84A3006D00AF /* TagStore.m in Sources */,
 				AFAEA3F51A15AF2E00C31F6A /* MeunTableViewCell.m in Sources */,
 				AF7684C41A498456009C188D /* QuestionTableViewCell.m in Sources */,
 				AF59ABA71A1594F60017DA21 /* RightViewController.m in Sources */,
@@ -472,14 +549,17 @@
 				AFDA89901A48101200771476 /* LeftTableViewUserSectionView.m in Sources */,
 				AF59ABA41A1594DF0017DA21 /* LeftViewController.m in Sources */,
 				AF2CC7C11A5E29DD000B1D37 /* ArticlesDataSource.m in Sources */,
-				AF7FA6441A15FF5400EEC0CB /* ModalViewController.m in Sources */,
+				AF9E879E1A5F84BD006D00AF /* TagDataSource.m in Sources */,
+				AF9E87981A5F8485006D00AF /* TagModle.m in Sources */,
 				AF7684AB1A491F6D009C188D /* ArrayDataSource.m in Sources */,
+				AF9E87A11A5F8833006D00AF /* EditTagsTableViewController.m in Sources */,
 				AF2CC7E11A5E9343000B1D37 /* ArticleTableViewCell.m in Sources */,
 				AF2CC7BA1A5E272F000B1D37 /* STHTTPRequest+JSON.m in Sources */,
 				AF2CC7D81A5E8CB1000B1D37 /* ArticleModel.m in Sources */,
 				AF2CC7D21A5E2DF4000B1D37 /* QuestionStore.m in Sources */,
 				AF7684B41A494DD1009C188D /* MainAticlesTableViewController.m in Sources */,
 				AF2CC7BE1A5E29B2000B1D37 /* QuestionsDataSource.m in Sources */,
+				AF9E87A41A5F8B09006D00AF /* EditTagTableViewCell.m in Sources */,
 				AF2CC7DB1A5E8CD3000B1D37 /* ArticleStore.m in Sources */,
 				AFD762E61A14BCF6004826EC /* AppDelegate.m in Sources */,
 				AF2CC7CF1A5E2DDE000B1D37 /* Store.m in Sources */,

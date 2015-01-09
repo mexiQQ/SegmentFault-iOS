@@ -11,6 +11,7 @@
 #import "LeftTableViewSectionView.h"
 #import "LeftTableViewUserSectionView.h"
 #import "MainQuestionTableViewController.h"
+#import "TagStore.h"
 
 @interface LeftViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mytableview;

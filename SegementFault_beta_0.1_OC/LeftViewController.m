@@ -23,8 +23,11 @@
     _mytableview.dataSource = self;
     [_mytableview setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTags:) name:@"TagsChanged" object:nil];
+    
     NSArray *userhelp = @[@"Ask Questions"];
-    NSArray *sites = @[@"首页",@"iOS",@"Android"];
+    NSMutableArray *sites = [[TagStore sharedStore] getCurrentTags];
+    [sites insertObject:@"首页" atIndex:0];
     NSArray *others = @[@"About",@"Login Out"];
     
     _cellContent = [[NSMutableArray alloc] init];
@@ -34,7 +37,7 @@
 }
 
 
-#pragma mark - UITableViewDelegae and UITableViewDataSource
+#pragma mark - UITableViewDataSource
 
 //返回Section的数目
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -46,15 +49,15 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
         if (section == 0)
         {
-            return 1;
+            return ((NSArray *)[_cellContent objectAtIndex:0]).count;
         }
         else if (section == 1)
         {
-            return 3;
+            return ((NSArray *)[_cellContent objectAtIndex:1]).count;
         }
         else
         {
-            return 2;
+            return ((NSArray *)[_cellContent objectAtIndex:2]).count;
         }
 }
 
@@ -63,18 +66,19 @@
     
     NSString * MenuCellIdentifier = @"MenuCell";
     MeunTableViewCell* cell = [_mytableview dequeueReusableCellWithIdentifier:MenuCellIdentifier];
-    
-    cell.menuTitle.text = [[_cellContent objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     if (cell == nil)
     {
         cell = [[MeunTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                         reuseIdentifier:MenuCellIdentifier];
     }
+    cell.menuTitle.text = [[_cellContent objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     cell.backgroundColor = [UIColor clearColor];
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
     cell.selectedBackgroundView.backgroundColor = [[UIColor alloc] initWithRed:0/255.0f green:154/255.0f blue:97/255.0f alpha:0.3];
     return cell;
 }
+
+#pragma mark - UITableViewDelegate
 
 //指定每个Section的header高度
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
@@ -201,4 +205,11 @@
     }];
 }
 
+- (void)updateTags:(NSNotification *)notification{
+    NSMutableArray *temp = [[TagStore sharedStore] getCurrentTags];
+    //[temp insertObject:@"首页" atIndex:0];
+    [_cellContent replaceObjectAtIndex:1 withObject:temp];
+    
+    [_mytableview reloadData];
+}
 @end
