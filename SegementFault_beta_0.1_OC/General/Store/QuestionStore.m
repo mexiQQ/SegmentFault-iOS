@@ -12,8 +12,13 @@
 
 static QuestionStore *store = nil;
 
-+ (QuestionStore *)sharedStore{
-    store = (QuestionStore *)[super sharedStore];
+//单例类
++(QuestionStore *)sharedStore
+{
+    static dispatch_once_t once;
+    dispatch_once(&once,^{
+        store = [[self alloc] init];
+    });
     return store;
 }
 

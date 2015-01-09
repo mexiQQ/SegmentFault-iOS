@@ -11,9 +11,13 @@
 @implementation ArticleStore
 
 static  ArticleStore *store = nil;
-
-+ (ArticleStore *)sharedStore{
-    store = (ArticleStore *)[super sharedStore];
+//单例类
++(ArticleStore *)sharedStore
+{
+    static dispatch_once_t once;
+    dispatch_once(&once,^{
+        store = [[self alloc] init];
+    });
     return store;
 }
 

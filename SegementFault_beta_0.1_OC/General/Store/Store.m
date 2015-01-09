@@ -10,18 +10,6 @@
 
 @implementation Store
 
-static Store *store = nil;
-
-//单例类
-+(Store *)sharedStore
-{
-    static dispatch_once_t once;
-    dispatch_once(&once,^{
-        store = [[self alloc] init];
-    });
-    return store;
-}
-
 - (void)readNewData:(void(^)(NSMutableArray *))block{
 }
 - (void)readOldData:(void(^)(NSMutableArray *))block page:(int)page{

@@ -9,7 +9,7 @@
 #import "Store.h"
 
 @interface ArticleStore : Store
-+ (ArticleStore *)sharedStore;
-- (void)readNewData:(void(^)(NSMutableArray *))block;
-- (void)readOldData:(void(^)(NSMutableArray *))block page:(int)page;
++(ArticleStore *)sharedStore;
+- (void)readArticleNewData:(void(^)(NSMutableArray *))block;
+- (void)readArticleOldData:(void(^)(NSMutableArray *))block page:(int)page;
 @end
