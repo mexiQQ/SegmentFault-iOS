@@ -7,6 +7,7 @@
 //
 
 #import "Store.h"
+#import "TagStore.h"
 
 @interface QuestionStore : Store
 + (QuestionStore *)sharedStore;

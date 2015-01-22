@@ -10,7 +10,7 @@
 
 @implementation MeunTableViewCell
 @synthesize menuTitle = _menuTitle;
-
+@synthesize menuImage = _menuImage;
 - (void)awakeFromNib {
     // Initialization code
 }

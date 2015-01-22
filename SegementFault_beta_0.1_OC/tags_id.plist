@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>iOS</key>
+	<string>1040000000089442</string>
+	<key>Android</key>
+	<string>1040000000089658</string>
+	<key>node.js</key>
+	<string>1040000000089918</string>
+	<key>php</key>
+	<string>1040000000089387</string>
+	<key>javascript</key>
+	<string>1040000000089436</string>
+	<key>python</key>
+	<string>1040000000089534</string>
+	<key>ruby</key>
+	<string>1040000000089699</string>
+	<key>go</key>
+	<string>1040000000090203</string>
+	<key>html5</key>
+	<string>1040000000089409</string>
+	<key>CSS3</key>
+	<string>1040000000090141</string>
+	<key>jquery</key>
+	<string>1040000000089733</string>
+	<key>chrome</key>
+	<string>1040000000089407</string>
+	<key>mongodb</key>
+	<string>1040000000089488</string>
+	<key>mysql</key>
+	<string>1040000000089439</string>
+	<key>redis</key>
+	<string>1040000000089431</string>
+	<key>vim</key>
+	<string>1040000000089467</string>
+	<key>django</key>
+	<string>1040000000089564</string>
+</dict>
+</plist>

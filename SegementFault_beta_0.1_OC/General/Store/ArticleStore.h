@@ -7,7 +7,7 @@
 //
 
 #import "Store.h"
-
+#import "TagStore.h"
 @interface ArticleStore : Store
 +(ArticleStore *)sharedStore;
 - (void)readNewData:(void(^)(NSMutableArray *))block;

@@ -11,4 +11,5 @@
 @interface MeunTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *menuTitle;
+@property (weak, nonatomic) IBOutlet UIImageView *menuImage;
 @end

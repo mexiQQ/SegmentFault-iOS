@@ -23,7 +23,13 @@ static QuestionStore *store = nil;
 }
 
 - (void)readNewData:(void(^)(NSMutableArray *))block{
-    STHTTPRequest *r = [STHTTPRequest requestWithURLString:[NSString stringWithFormat:@"http://api.segmentfault.com/question/newest"]];
+    NSString *url = @"";
+    if([[TagStore sharedStore] getCurrentShowTagId]){
+        url = [NSString stringWithFormat:@"http://api.segmentfault.com/question/tagged/%@",[[TagStore sharedStore] getCurrentShowTagId]];
+    }else{
+        url = [NSString stringWithFormat:@"http://api.segmentfault.com/question/newest"];
+    }
+    STHTTPRequest *r = [STHTTPRequest requestWithURLString:url];
     [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
         NSMutableArray *array = [[jsonObj objectForKey:@"data"] objectForKey:@"rows"];
         block(array);
@@ -32,10 +38,17 @@ static QuestionStore *store = nil;
         NSLog(@"error is %@",error);
     };
     [r startAsynchronous];
+
 }
 
 - (void)readOldData:(void(^)(NSMutableArray *))block page:(int)page{
-    STHTTPRequest *r = [STHTTPRequest requestWithURLString:[NSString stringWithFormat:@"http://api.segmentfault.com/question/newest?page=%d",page]];
+    NSString *url = @"";
+    if([[TagStore sharedStore] getCurrentShowTagId]){
+        url = [NSString stringWithFormat:@"http://api.segmentfault.com/question/tagged/%@?page=%d",[[TagStore sharedStore] getCurrentShowTagId],page];
+    }else{
+        url = [NSString stringWithFormat:@"http://api.segmentfault.com/question/newest?page=%d",page];
+    }
+    STHTTPRequest *r = [STHTTPRequest requestWithURLString:url];
     [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
         NSMutableArray *array = [[jsonObj objectForKey:@"data"] objectForKey:@"rows"];
         block(array);

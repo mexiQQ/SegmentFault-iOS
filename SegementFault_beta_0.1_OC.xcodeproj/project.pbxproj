@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		956A094FC4B359F5CB3EBB8E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D57B3DADF21C12EEFD5EE77 /* libPods.a */; };
+		AF0F713F1A6F966300A23341 /* chrome.png in Resources */ = {isa = PBXBuildFile; fileRef = AF0F71381A6F966300A23341 /* chrome.png */; };
+		AF0F71401A6F966300A23341 /* jquery.png in Resources */ = {isa = PBXBuildFile; fileRef = AF0F71391A6F966300A23341 /* jquery.png */; };
+		AF0F71411A6F966300A23341 /* mongodb.png in Resources */ = {isa = PBXBuildFile; fileRef = AF0F713A1A6F966300A23341 /* mongodb.png */; };
+		AF0F71421A6F966300A23341 /* mysql.png in Resources */ = {isa = PBXBuildFile; fileRef = AF0F713B1A6F966300A23341 /* mysql.png */; };
+		AF0F71431A6F966300A23341 /* redis.png in Resources */ = {isa = PBXBuildFile; fileRef = AF0F713C1A6F966300A23341 /* redis.png */; };
+		AF0F71451A6F966300A23341 /* vim.png in Resources */ = {isa = PBXBuildFile; fileRef = AF0F713E1A6F966300A23341 /* vim.png */; };
+		AF0F71471A6F972F00A23341 /* django.png in Resources */ = {isa = PBXBuildFile; fileRef = AF0F71461A6F972F00A23341 /* django.png */; };
+		AF0F714A1A6FA32600A23341 /* 首页.png in Resources */ = {isa = PBXBuildFile; fileRef = AF0F71481A6FA32600A23341 /* 首页.png */; };
+		AF0F714B1A6FA32600A23341 /* Ask Questions.png in Resources */ = {isa = PBXBuildFile; fileRef = AF0F71491A6FA32600A23341 /* Ask Questions.png */; };
+		AF0F714F1A6FAB1800A23341 /* About.png in Resources */ = {isa = PBXBuildFile; fileRef = AF0F714C1A6FAB1800A23341 /* About.png */; };
+		AF0F71501A6FAB1800A23341 /* Login Out.png in Resources */ = {isa = PBXBuildFile; fileRef = AF0F714D1A6FAB1800A23341 /* Login Out.png */; };
+		AF0F71511A6FAB1800A23341 /* Login.png in Resources */ = {isa = PBXBuildFile; fileRef = AF0F714E1A6FAB1800A23341 /* Login.png */; };
+		AF0F71531A6FB58F00A23341 /* tags_id.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF0F71521A6FB58F00A23341 /* tags_id.plist */; };
 		AF2CC7BA1A5E272F000B1D37 /* STHTTPRequest+JSON.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2CC7B91A5E272F000B1D37 /* STHTTPRequest+JSON.m */; };
 		AF2CC7BE1A5E29B2000B1D37 /* QuestionsDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2CC7BD1A5E29B2000B1D37 /* QuestionsDataSource.m */; };
 		AF2CC7C11A5E29DD000B1D37 /* ArticlesDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2CC7C01A5E29DD000B1D37 /* ArticlesDataSource.m */; };
@@ -64,6 +77,19 @@
 /* Begin PBXFileReference section */
 		2D57B3DADF21C12EEFD5EE77 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DD4F6F37B0E956B84C437F7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		AF0F71381A6F966300A23341 /* chrome.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = chrome.png; sourceTree = "<group>"; };
+		AF0F71391A6F966300A23341 /* jquery.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = jquery.png; sourceTree = "<group>"; };
+		AF0F713A1A6F966300A23341 /* mongodb.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mongodb.png; sourceTree = "<group>"; };
+		AF0F713B1A6F966300A23341 /* mysql.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mysql.png; sourceTree = "<group>"; };
+		AF0F713C1A6F966300A23341 /* redis.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = redis.png; sourceTree = "<group>"; };
+		AF0F713E1A6F966300A23341 /* vim.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = vim.png; sourceTree = "<group>"; };
+		AF0F71461A6F972F00A23341 /* django.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = django.png; sourceTree = "<group>"; };
+		AF0F71481A6FA32600A23341 /* 首页.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "首页.png"; sourceTree = "<group>"; };
+		AF0F71491A6FA32600A23341 /* Ask Questions.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Ask Questions.png"; sourceTree = "<group>"; };
+		AF0F714C1A6FAB1800A23341 /* About.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = About.png; sourceTree = "<group>"; };
+		AF0F714D1A6FAB1800A23341 /* Login Out.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Login Out.png"; sourceTree = "<group>"; };
+		AF0F714E1A6FAB1800A23341 /* Login.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Login.png; sourceTree = "<group>"; };
+		AF0F71521A6FB58F00A23341 /* tags_id.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tags_id.plist; sourceTree = "<group>"; };
 		AF2CC7B81A5E272F000B1D37 /* STHTTPRequest+JSON.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "STHTTPRequest+JSON.h"; sourceTree = "<group>"; };
 		AF2CC7B91A5E272F000B1D37 /* STHTTPRequest+JSON.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "STHTTPRequest+JSON.m"; sourceTree = "<group>"; };
 		AF2CC7BC1A5E29B2000B1D37 /* QuestionsDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionsDataSource.h; path = General/Datasource/QuestionsDataSource.h; sourceTree = "<group>"; };
@@ -177,12 +203,12 @@
 			children = (
 				AF2CC7CD1A5E2DDE000B1D37 /* Store.h */,
 				AF2CC7CE1A5E2DDE000B1D37 /* Store.m */,
+				AF9E87991A5F84A3006D00AF /* TagStore.h */,
+				AF9E879A1A5F84A3006D00AF /* TagStore.m */,
 				AF2CC7D91A5E8CD3000B1D37 /* ArticleStore.h */,
 				AF2CC7DA1A5E8CD3000B1D37 /* ArticleStore.m */,
 				AF2CC7D01A5E2DF4000B1D37 /* QuestionStore.h */,
 				AF2CC7D11A5E2DF4000B1D37 /* QuestionStore.m */,
-				AF9E87991A5F84A3006D00AF /* TagStore.h */,
-				AF9E879A1A5F84A3006D00AF /* TagStore.m */,
 			);
 			name = Store;
 			sourceTree = "<group>";
@@ -212,7 +238,7 @@
 		AF59AB9E1A15942B0017DA21 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				AF7684A71A491EDC009C188D /* Modal */,
+				AF7684A71A491EDC009C188D /* Tags */,
 				AF59ABA11A1594730017DA21 /* Right */,
 				AF59ABA01A1594660017DA21 /* Left */,
 				AF59AB9F1A1594510017DA21 /* Main */,
@@ -249,26 +275,26 @@
 			name = Right;
 			sourceTree = "<group>";
 		};
-		AF7684A71A491EDC009C188D /* Modal */ = {
+		AF7684A71A491EDC009C188D /* Tags */ = {
 			isa = PBXGroup;
 			children = (
 				AF9E879F1A5F8833006D00AF /* EditTagsTableViewController.h */,
 				AF9E87A01A5F8833006D00AF /* EditTagsTableViewController.m */,
 			);
-			name = Modal;
+			name = Tags;
 			sourceTree = "<group>";
 		};
 		AF7684A81A491F2C009C188D /* Datasource */ = {
 			isa = PBXGroup;
 			children = (
+				AF9E879C1A5F84BD006D00AF /* TagDataSource.h */,
+				AF9E879D1A5F84BD006D00AF /* TagDataSource.m */,
 				AF7684A91A491F6D009C188D /* ArrayDataSource.h */,
 				AF7684AA1A491F6D009C188D /* ArrayDataSource.m */,
 				AF2CC7BF1A5E29DD000B1D37 /* ArticlesDataSource.h */,
 				AF2CC7C01A5E29DD000B1D37 /* ArticlesDataSource.m */,
 				AF2CC7BC1A5E29B2000B1D37 /* QuestionsDataSource.h */,
 				AF2CC7BD1A5E29B2000B1D37 /* QuestionsDataSource.m */,
-				AF9E879C1A5F84BD006D00AF /* TagDataSource.h */,
-				AF9E879D1A5F84BD006D00AF /* TagDataSource.m */,
 			);
 			name = Datasource;
 			sourceTree = "<group>";
@@ -303,6 +329,18 @@
 		AF9E87A61A5F905F006D00AF /* tagImge */ = {
 			isa = PBXGroup;
 			children = (
+				AF0F714C1A6FAB1800A23341 /* About.png */,
+				AF0F714D1A6FAB1800A23341 /* Login Out.png */,
+				AF0F714E1A6FAB1800A23341 /* Login.png */,
+				AF0F71481A6FA32600A23341 /* 首页.png */,
+				AF0F71491A6FA32600A23341 /* Ask Questions.png */,
+				AF0F71461A6F972F00A23341 /* django.png */,
+				AF0F71381A6F966300A23341 /* chrome.png */,
+				AF0F71391A6F966300A23341 /* jquery.png */,
+				AF0F713A1A6F966300A23341 /* mongodb.png */,
+				AF0F713B1A6F966300A23341 /* mysql.png */,
+				AF0F713C1A6F966300A23341 /* redis.png */,
+				AF0F713E1A6F966300A23341 /* vim.png */,
 				AF9E87A71A5F905F006D00AF /* Android.png */,
 				AF9E87A81A5F905F006D00AF /* CSS3.png */,
 				AF9E87A91A5F905F006D00AF /* go.png */,
@@ -371,6 +409,7 @@
 				AFD762EF1A14BCF6004826EC /* LaunchScreen.xib */,
 				AFD762ED1A14BCF6004826EC /* Images.xcassets */,
 				AFD762E11A14BCF6004826EC /* Info.plist */,
+				AF0F71521A6FB58F00A23341 /* tags_id.plist */,
 				AFD762E21A14BCF6004826EC /* main.m */,
 			);
 			name = "Supporting Files";
@@ -477,19 +516,32 @@
 			files = (
 				AF9E87B61A5F905F006D00AF /* javascript.png in Resources */,
 				AF9E87B31A5F905F006D00AF /* go.png in Resources */,
+				AF0F71511A6FAB1800A23341 /* Login.png in Resources */,
 				AF9E87B41A5F905F006D00AF /* html5.png in Resources */,
+				AF0F71431A6F966300A23341 /* redis.png in Resources */,
+				AF0F71421A6F966300A23341 /* mysql.png in Resources */,
 				AF9E87B71A5F905F006D00AF /* node.js.png in Resources */,
+				AF0F714B1A6FA32600A23341 /* Ask Questions.png in Resources */,
 				AFD762EC1A14BCF6004826EC /* Main.storyboard in Resources */,
+				AF0F71471A6F972F00A23341 /* django.png in Resources */,
 				AFDA89921A48108E00771476 /* MenuTableViewUserSection.xib in Resources */,
+				AF0F71411A6F966300A23341 /* mongodb.png in Resources */,
+				AF0F71451A6F966300A23341 /* vim.png in Resources */,
 				AF7FA63D1A15D79500EEC0CB /* MenuTableViewSectionView.xib in Resources */,
 				AF9E87B11A5F905F006D00AF /* Android.png in Resources */,
 				AFD762F11A14BCF6004826EC /* LaunchScreen.xib in Resources */,
 				AFD762EE1A14BCF6004826EC /* Images.xcassets in Resources */,
 				AF9E87B81A5F905F006D00AF /* php.png in Resources */,
+				AF0F71501A6FAB1800A23341 /* Login Out.png in Resources */,
+				AF0F713F1A6F966300A23341 /* chrome.png in Resources */,
 				AF9E87BA1A5F905F006D00AF /* ruby.png in Resources */,
 				AF9E87B91A5F905F006D00AF /* python.png in Resources */,
+				AF0F71531A6FB58F00A23341 /* tags_id.plist in Resources */,
 				AF9E87B21A5F905F006D00AF /* CSS3.png in Resources */,
 				AF9E87B51A5F905F006D00AF /* iOS.png in Resources */,
+				AF0F714F1A6FAB1800A23341 /* About.png in Resources */,
+				AF0F714A1A6FA32600A23341 /* 首页.png in Resources */,
+				AF0F71401A6F966300A23341 /* jquery.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

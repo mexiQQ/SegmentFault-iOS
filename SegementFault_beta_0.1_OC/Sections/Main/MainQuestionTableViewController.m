@@ -20,6 +20,7 @@ static BOOL firstInit = true;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    firstInit = true;
     [self setupTableView];
 }
 

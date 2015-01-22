@@ -12,6 +12,7 @@
 @end
 
 @implementation TagStore
+@synthesize currentShowTag = _currentShowTag;
 static TagStore *store = nil;
 
 //单例类
@@ -21,13 +22,12 @@ static TagStore *store = nil;
     dispatch_once(&once,^{
         store = [[self alloc] init];
     });
-    
     return store;
 }
 
 - (NSMutableArray *)getCurrentTags{
     if([[NSUserDefaults standardUserDefaults] objectForKey:@"tags"]){
-        NSMutableArray *array = [[NSUserDefaults standardUserDefaults] objectForKey:@"tags"];
+        NSMutableArray *array = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"tags"]];
         return array;
     }else{
         return [[NSMutableArray alloc] init];
@@ -41,7 +41,14 @@ static TagStore *store = nil;
     [self sendBocast];
 }
 
+//通过广播机制在 Tags 改变时更新 Menu 菜单
 - (void)sendBocast{
     [[NSNotificationCenter defaultCenter] postNotificationName:@"TagsChanged" object:self userInfo:nil];
+}
+
+- (NSString *)getCurrentShowTagId{
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"tags_id" ofType:@"plist"];
+    NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+    return [dictionary objectForKey:self.currentShowTag];
 }
 @end

@@ -47,23 +47,22 @@
 
 //返回每个Section的cell数目
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-        if (section == 0)
-        {
-            return ((NSArray *)[_cellContent objectAtIndex:0]).count;
-        }
-        else if (section == 1)
-        {
-            return ((NSArray *)[_cellContent objectAtIndex:1]).count;
-        }
-        else
-        {
-            return ((NSArray *)[_cellContent objectAtIndex:2]).count;
-        }
+    if (section == 0)
+    {
+        return ((NSArray *)[_cellContent objectAtIndex:0]).count;
+    }
+    else if (section == 1)
+    {
+        return ((NSArray *)[_cellContent objectAtIndex:1]).count;
+    }
+    else
+    {
+        return ((NSArray *)[_cellContent objectAtIndex:2]).count;
+    }
 }
 
 //对每个cell的内容进行定制
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    
     NSString * MenuCellIdentifier = @"MenuCell";
     MeunTableViewCell* cell = [_mytableview dequeueReusableCellWithIdentifier:MenuCellIdentifier];
     if (cell == nil)
@@ -71,7 +70,9 @@
         cell = [[MeunTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                         reuseIdentifier:MenuCellIdentifier];
     }
-    cell.menuTitle.text = [[_cellContent objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    NSString *title = [[_cellContent objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
+    cell.menuTitle.text = title;
+    cell.menuImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",title]];
     cell.backgroundColor = [UIColor clearColor];
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
     cell.selectedBackgroundView.backgroundColor = [[UIColor alloc] initWithRed:0/255.0f green:154/255.0f blue:97/255.0f alpha:0.3];
@@ -131,38 +132,8 @@
     {
         UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UITabBarController *mainViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"main"];
-        
-        //UINavigationController *nav = mainViewController.childViewControllers[0];
-        //MainTableViewController *center = nav.viewControllers[0];
-        
-        switch (indexPath.row)
-        {
-            case 0:
-            {
-                //center.tagType =@"home";
-                [self.mm_drawerController
-                setCenterViewController:mainViewController
-                withCloseAnimation:YES
-                completion:nil];
-                break;
-            }
-            case 1:{
-                //center.tagType =@"ios";
-                [self.mm_drawerController
-                setCenterViewController:mainViewController
-                withCloseAnimation:YES
-                completion:nil];
-                break;
-            }
-            case 2:{
-                //center.tagType =@"android";
-                [self.mm_drawerController
-                setCenterViewController:mainViewController
-                withCloseAnimation:YES
-                completion:nil];
-                break;
-            }
-        }
+        [self.mm_drawerController setCenterViewController:mainViewController withCloseAnimation:YES completion:nil];
+        [TagStore sharedStore].currentShowTag = [[_cellContent objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     }
     else
     {
@@ -207,7 +178,7 @@
 
 - (void)updateTags:(NSNotification *)notification{
     NSMutableArray *temp = [[TagStore sharedStore] getCurrentTags];
-    //[temp insertObject:@"首页" atIndex:0];
+    [temp insertObject:@"首页" atIndex:0];
     [_cellContent replaceObjectAtIndex:1 withObject:temp];
     
     [_mytableview reloadData];

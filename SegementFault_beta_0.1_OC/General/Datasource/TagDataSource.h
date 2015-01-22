@@ -6,8 +6,8 @@
 //  Copyright (c) 2015年 MexiQQ. All rights reserved.
 //
 
-#import "Store.h"
+#import "ArrayDataSource.h"
 
-@interface TagDataSource : Store
+@interface TagDataSource : ArrayDataSource
 
 @end

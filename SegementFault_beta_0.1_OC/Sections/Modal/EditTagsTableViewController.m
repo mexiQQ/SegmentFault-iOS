@@ -20,7 +20,7 @@
     [super viewDidLoad];
     self.tableView.dataSource = self;
     self.store = [TagStore sharedStore];
-    self.tags = (NSMutableArray *)@[@"iOS",@"Android",@"node.js",@"php",@"javascript",@"python",@"ruby",@"go",@"html5",@"CSS3"];
+    self.tags = (NSMutableArray *)@[@"iOS",@"Android",@"node.js",@"php",@"javascript",@"python",@"ruby",@"go",@"html5",@"CSS3",@"jquery",@"chrome",@"mongodb",@"mysql",@"redis",@"vim",@"django"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -34,7 +34,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.tags.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
