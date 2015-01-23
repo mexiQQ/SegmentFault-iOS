@@ -7,6 +7,7 @@
 //
 
 #import "MainAticlesTableViewController.h"
+#import "DetailArticleTableViewController.h"
 static BOOL firstInit = true;
 
 @interface MainAticlesTableViewController ()
@@ -73,9 +74,9 @@ static BOOL firstInit = true;
             firstInit = false;
         }else{
             self.myArticleDataSource.items = dic;
+            [self.tableView reloadData];
         }
         self.page = 1;
-        [self.tableView reloadData];
         [self.refreshControl endRefreshing];
         [self createTableFooter];
     }];
@@ -152,8 +153,13 @@ static BOOL firstInit = true;
     return height;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [self performSegueWithIdentifier:@"gotoArticleDetail" sender:self];
+}
+
 - (IBAction)sliderLeft:(id)sender {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
+
 
 @end

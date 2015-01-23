@@ -11,6 +11,6 @@
 #import "QuestionStore.h"
 #import "QuestionTableViewCell.h"
 #import "UIViewController+MMDrawerController.h"
-@interface MainQuestionTableViewController : UITableViewController<UITableViewDelegate>
+@interface MainQuestionTableViewController : UITableViewController
 
 @end

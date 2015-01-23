@@ -72,9 +72,9 @@ static BOOL firstInit = true;
             firstInit = false;
         }else{
             self.myQuestionDataSource.items = dic;
+            [self.tableView reloadData];
         }
         self.page = 1;
-        [self.tableView reloadData];
         [self.refreshControl endRefreshing];
         [self createTableFooter];
     }];

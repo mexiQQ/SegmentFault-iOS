@@ -11,6 +11,6 @@
 #import "ArticlesDataSource.h"
 #import "ArticleStore.h"
 #import "ArticleTableViewCell.h"
-@interface MainAticlesTableViewController : UITableViewController<UITableViewDelegate>
+@interface MainAticlesTableViewController : UITableViewController
 
 @end

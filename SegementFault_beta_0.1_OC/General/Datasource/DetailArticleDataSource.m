@@ -1,62 +1,51 @@
 //
-//  MeunTableViewCell.h
+//  DetailArticleDataSource.m
 //  SegementFault_beta_0.1_OC
 //
-//  Created by MexiQQ on 14/11/14.
-//  Copyright (c) 2014年 MexiQQ. All rights reserved.
+//  Created by MexiQQ on 15/1/23.
+//  Copyright (c) 2015年 MexiQQ. All rights reserved.
 //
 
-#import "ArrayDataSource.h"
-
-
-@interface ArrayDataSource ()
+#import "DetailArticleDataSource.h"
+@interface DetailArticleDataSource ()
 
 @property (nonatomic, copy) NSString *cellIdentifier;
 @property (nonatomic, copy) TableViewCellConfigureBlock configureCellBlock;
 
 @end
 
-
-@implementation ArrayDataSource
+@implementation DetailArticleDataSource
 
 - (id)init
 {
     return [super init];
 }
 
-- (id)initWithItems:(NSArray *)anItems
+- (id)initWithItems:(NSDictionary *)anItem
      cellIdentifier:(NSString *)aCellIdentifier
  configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock
 {
-    self = [self init];
+    self = [super init];
     if (self) {
-        self.items = anItems;
+        self.item = anItem;
         self.cellIdentifier = aCellIdentifier;
         self.configureCellBlock = [aConfigureCellBlock copy];
     }
     return self;
 }
 
-- (id)itemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return self.items[(NSUInteger) indexPath.row];
-}
-
-
 #pragma mark UITableViewDataSource
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return self.items.count;
+    return 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier
                                                             forIndexPath:indexPath];
-    id item = [self itemAtIndexPath:indexPath];
-    self.configureCellBlock(cell, item);
+    self.configureCellBlock(cell, self.item);
     return cell;
 }
-
 @end
