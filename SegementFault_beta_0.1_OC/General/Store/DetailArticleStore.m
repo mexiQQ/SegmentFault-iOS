@@ -9,7 +9,9 @@
 #import "DetailArticleStore.h"
 
 @implementation DetailArticleStore
-
+@synthesize articleHeight = _articleHeight;
+@synthesize commentHeight = _commentHeight;
+@synthesize isRefreshHeight = _isRefreshHeight;
 static DetailArticleStore *store = nil;
 
 //单例类
@@ -23,7 +25,7 @@ static DetailArticleStore *store = nil;
 }
 
 - (void)readNewData:(void(^)(NSDictionary *))block{
-    NSString *url = @"http://api.segmentfault.com/article/1190000002507729";
+    NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/article/%@",[ArticleStore sharedStore].currentShowArticleId];
     STHTTPRequest *r = [STHTTPRequest requestWithURLString:url];
     [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
         NSDictionary *dic = [jsonObj objectForKey:@"data"];

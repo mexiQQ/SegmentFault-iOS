@@ -7,8 +7,14 @@
 //
 
 #import "Store.h"
-
+#import "ArticleStore.h"
+#import <UIKit/UIKit.h>
 @interface DetailArticleStore : Store
+
+@property (nonatomic,strong) NSNumber *articleHeight;
+@property (nonatomic,strong) NSNumber *commentHeight;
+@property (nonatomic) BOOL isRefreshHeight;
+
 +(DetailArticleStore *)sharedStore;
 - (void)readNewData:(void(^)(NSDictionary *))block;
 

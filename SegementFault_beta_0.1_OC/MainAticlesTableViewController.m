@@ -154,6 +154,7 @@ static BOOL firstInit = true;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    [ArticleStore sharedStore].currentShowArticleId = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"id"];
     [self performSegueWithIdentifier:@"gotoArticleDetail" sender:self];
 }
 

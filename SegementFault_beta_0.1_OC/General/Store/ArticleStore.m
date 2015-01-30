@@ -9,7 +9,7 @@
 #import "ArticleStore.h"
 
 @implementation ArticleStore
-
+@synthesize currentShowArticleId = _currentShowArticleId;
 static  ArticleStore *store = nil;
 //单例类
 +(ArticleStore *)sharedStore
@@ -56,5 +56,4 @@ static  ArticleStore *store = nil;
     };
     [r startAsynchronous];
 }
-
 @end

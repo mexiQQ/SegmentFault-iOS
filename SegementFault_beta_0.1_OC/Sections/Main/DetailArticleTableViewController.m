@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableViewHeight:) name:@"refreshHeight" object:nil];
     [self setupTableView];
 }
 
@@ -68,21 +69,17 @@
 
 // 计算高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    DetailArticleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailArticleCell"];
-    [cell configureForCell:self.articleDic];
-    
-    [cell setNeedsLayout];
-    [cell layoutIfNeeded];
-    
-    CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-    NSLog(@"height is %f",height);
-    
-    height += 1;
-    return height;
+    return [DetailArticleStore sharedStore].articleHeight.floatValue;
 }
 
+// 重新加载webView的高度
+- (void)refreshTableViewHeight:(NSNotification *)notification{
+    [DetailArticleStore sharedStore].isRefreshHeight = true;
+    [self.tableView reloadData];
+}
 
 - (IBAction)backAction:(id)sender {
     [self.navigationController popViewControllerAnimated:YES];
 }
+
 @end

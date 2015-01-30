@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailArticleTableViewCell : UITableViewCell
+@interface DetailArticleTableViewCell : UITableViewCell<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *TopView;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorRateLabel;
