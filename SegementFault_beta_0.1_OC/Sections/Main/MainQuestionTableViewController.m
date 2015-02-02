@@ -41,7 +41,7 @@ static BOOL firstInit = true;
                           delay:0
                         options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         self.tableView.contentOffset = CGPointMake(0, -self.refreshControl.frame.size.height-15);
+                         self.tableView.contentOffset = CGPointMake(0, -self.refreshControl.frame.size.height-20);
                      } completion:^(BOOL finished){
                          [self.refreshControl beginRefreshing];
                          [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];

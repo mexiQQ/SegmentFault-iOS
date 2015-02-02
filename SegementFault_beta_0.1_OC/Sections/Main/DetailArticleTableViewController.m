@@ -10,6 +10,9 @@
 #import "DetailArticleStore.h"
 #import "DetailArticleTableViewCell.h"
 #import "DetailArticleDataSource.h"
+#import "MBProgressHUD.h"
+#import <ShareSDK/ShareSDK.h>
+
 @interface DetailArticleTableViewController ()
 @property (nonatomic, strong) DetailArticleDataSource   *myDetailArticleDataSource;
 @property (nonatomic,strong) NSDictionary *articleDic;
@@ -76,6 +79,100 @@
 - (void)refreshTableViewHeight:(NSNotification *)notification{
     [DetailArticleStore sharedStore].isRefreshHeight = true;
     [self.tableView reloadData];
+}
+
+- (IBAction)moreAction:(id)sender {
+    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                  initWithTitle:nil
+                                  delegate:self
+                                  cancelButtonTitle:@"取消"
+                                  destructiveButtonTitle:nil
+                                  otherButtonTitles:@"分享",@"收藏",nil];
+    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    [actionSheet showInView:self.view];
+}
+
+//点击 ActionSheet 的操作
+- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
+    if(buttonIndex == 0){
+        NSString *url = [NSString stringWithFormat:@"http://segmentfault.com%@",[[self articleDic] objectForKey:@"editUrl"]];
+        NSRange range = NSMakeRange (0, url.length-5);
+        url = [url substringWithRange:range];
+        
+        NSString *shareContent = [NSString stringWithFormat:@"【%@】分享自 @SegmentFault，问题传送门：%@",[[self articleDic] objectForKey:@"title"],url];
+        
+        UIImage *image = [UIImage imageNamed:@"sf.png"];
+        //构造分享内容
+        id<ISSContent> publishContent = [ShareSDK content:shareContent
+                                           defaultContent:[[self articleDic] objectForKey:@"title"]
+                                                    image:[ShareSDK pngImageWithImage:image]
+                                                    title:@"SegmentFault"
+                                                      url:url
+                                              description:@"这是一条测试信息"
+                                                mediaType:SSPublishContentMediaTypeNews];
+        //创建弹出菜单容器
+        id<ISSContainer> container = [ShareSDK container];
+        [container setIPadContainerWithView:actionSheet arrowDirect:UIPopoverArrowDirectionUp];
+        
+        //powerByHidden:这个参数是去掉授权界面Powered by ShareSDK的标志
+        id<ISSAuthOptions> authOptions = [ShareSDK authOptionsWithAutoAuth:YES
+                                                             allowCallback:NO
+                                                                    scopes:nil
+                                                             powerByHidden:YES
+                                                            followAccounts:nil
+                                                             authViewStyle:SSAuthViewStyleFullScreenPopup
+                                                              viewDelegate:nil
+                                                   authManagerViewDelegate:nil];
+        
+        //通过shareViewDelegate:参数修改分享界面的导航栏背景
+        id<ISSShareOptions> shareOptions = [ShareSDK defaultShareOptionsWithTitle:@"内容分享"
+                                                                  oneKeyShareList:[NSArray defaultOneKeyShareList]
+                                                                   qqButtonHidden:YES
+                                                            wxSessionButtonHidden:YES
+                                                           wxTimelineButtonHidden:YES
+                                                             showKeyboardOnAppear:NO
+                                                                shareViewDelegate:nil
+                                                              friendsViewDelegate:nil
+                                                            picViewerViewDelegate:nil];
+
+        //弹出分享菜单
+        [ShareSDK showShareActionSheet:container
+                             shareList:nil
+                               content:publishContent
+                         statusBarTips:YES
+                           authOptions:authOptions
+                          shareOptions:shareOptions
+                                result:^(ShareType type, SSResponseState state, id<ISSPlatformShareInfo> statusInfo, id<ICMErrorInfo> error, BOOL end) {
+                                    
+                                    if (state == SSResponseStateSuccess)
+                                    {
+                                        NSLog(NSLocalizedString(@"TEXT_ShARE_SUC", @"分享成功"));
+                                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                                        hud.mode = MBProgressHUDModeText;
+                                        hud.labelText = @"分享成功";
+                                        hud.margin = 10.f;
+                                        hud.yOffset = 150.f;
+                                        hud.removeFromSuperViewOnHide = YES;
+                                        [hud hide:YES afterDelay:1.5];
+                                    }
+                                    else if (state == SSResponseStateFail)
+                                    {
+                                        NSLog(NSLocalizedString(@"TEXT_ShARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
+                                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
+                                        hud.mode = MBProgressHUDModeText;
+                                        hud.labelText = @"分享失败";
+                                        hud.margin = 10.f;
+                                        hud.yOffset = 150.f;
+                                        hud.removeFromSuperViewOnHide = YES;
+                                        [hud hide:YES afterDelay:1.5];
+
+                                    }
+                                }];
+    }else if(buttonIndex == 1){
+        NSLog(@"收藏");
+    }else{
+    
+    }
 }
 
 - (IBAction)backAction:(id)sender {

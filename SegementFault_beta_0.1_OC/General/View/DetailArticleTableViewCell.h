@@ -15,6 +15,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *productTime;
 @property (weak, nonatomic) IBOutlet UIWebView *contentWebView;
 @property (weak, nonatomic) IBOutlet UIView *TagView;
+@property (weak, nonatomic) IBOutlet UILabel *articleTitle;
 - (void)configureForCell:(NSDictionary *)item;
 
 @end

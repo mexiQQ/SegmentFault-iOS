@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailArticleTableViewController : UITableViewController<UIWebViewDelegate>
+@interface DetailArticleTableViewController : UITableViewController<UIWebViewDelegate,UIActionSheetDelegate>
 
 @end
 

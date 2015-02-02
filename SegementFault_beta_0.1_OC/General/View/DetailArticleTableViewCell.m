@@ -17,7 +17,7 @@
 @synthesize productTime = _productTime;
 @synthesize contentWebView = _contentWebView;
 @synthesize TagView = _TagView;
-
+@synthesize articleTitle = _articleTitle;
 - (void)awakeFromNib {
     self.contentWebView.delegate = self;
 }
@@ -35,6 +35,7 @@
         self.authorLabel.text = [user objectForKey:@"name"];
         self.authorRateLabel.text =[user objectForKey:@"rank"];
         self.productTime.text = [item objectForKey:@"createdDate"];
+        self.articleTitle.text = [item objectForKey:@"title"];
         
         CGFloat height = [self systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
         [DetailArticleStore sharedStore].articleHeight = [NSNumber numberWithFloat:height];
@@ -61,7 +62,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
     CGFloat documentHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('foo').offsetHeight"] floatValue];
-    documentHeight += [DetailArticleStore sharedStore].articleHeight.floatValue + 20;
+    documentHeight += [DetailArticleStore sharedStore].articleHeight.floatValue + 40;
     [DetailArticleStore sharedStore].articleHeight = [NSNumber numberWithFloat:documentHeight];
     //通知webView 刷新高度
     [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshHeight" object:self userInfo:nil];

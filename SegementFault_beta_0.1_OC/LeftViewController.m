@@ -121,7 +121,7 @@
     }
 }
 
-//指定点击每个Cell后执行的操作
+//指定点击每个 Cell 后执行的操作
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (indexPath.section == 0)

@@ -1,4 +1,5 @@
 PODS:
+  - MBProgressHUD (0.9)
   - MMDrawerController (0.5.7):
     - MMDrawerController/Core (= 0.5.7)
     - MMDrawerController/MMDrawerBarButtonItem (= 0.5.7)
@@ -16,12 +17,14 @@ PODS:
   - STHTTPRequest (1.0.2)
 
 DEPENDENCIES:
+  - MBProgressHUD (~> 0.9)
   - MMDrawerController (~> 0.5.7)
   - MMMarkdown (~> 0.4.1)
   - MXMarkdownKeyboard (~> 0.0.4)
   - STHTTPRequest (~> 1.0.2)
 
 SPEC CHECKSUMS:
+  MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   MMDrawerController: c3ab7a318ddc7e2bcd133139c3161af08c6e1197
   MMMarkdown: c82c9024dd80f088312909023dd6d6d013bd668f
   MXMarkdownKeyboard: 73e39e89cdfcab57791b7f8fd1f1ec52e62b2f73
