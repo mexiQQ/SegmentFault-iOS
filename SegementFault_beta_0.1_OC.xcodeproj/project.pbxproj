@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		956A094FC4B359F5CB3EBB8E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D57B3DADF21C12EEFD5EE77 /* libPods.a */; };
+		AF0A0C911A81F21F001CC174 /* MXUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0A0C901A81F21F001CC174 /* MXUtil.m */; };
 		AF0F71531A6FB58F00A23341 /* tags_id.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF0F71521A6FB58F00A23341 /* tags_id.plist */; };
 		AF21DDA91A7B38BE003612E2 /* default.min.css in Resources */ = {isa = PBXBuildFile; fileRef = AF21DD651A7B38BE003612E2 /* default.min.css */; };
 		AF21DDAA1A7B38BE003612E2 /* global.css in Resources */ = {isa = PBXBuildFile; fileRef = AF21DD661A7B38BE003612E2 /* global.css */; };
@@ -161,6 +162,8 @@
 /* Begin PBXFileReference section */
 		2D57B3DADF21C12EEFD5EE77 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		3DD4F6F37B0E956B84C437F7 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		AF0A0C8F1A81F21F001CC174 /* MXUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MXUtil.h; path = Utils/MXUtil.h; sourceTree = "<group>"; };
+		AF0A0C901A81F21F001CC174 /* MXUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MXUtil.m; path = Utils/MXUtil.m; sourceTree = "<group>"; };
 		AF0F71521A6FB58F00A23341 /* tags_id.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tags_id.plist; sourceTree = "<group>"; };
 		AF21DD651A7B38BE003612E2 /* default.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.min.css; sourceTree = "<group>"; };
 		AF21DD661A7B38BE003612E2 /* global.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = global.css; sourceTree = "<group>"; };
@@ -636,6 +639,8 @@
 			children = (
 				AF2CC7B81A5E272F000B1D37 /* STHTTPRequest+JSON.h */,
 				AF2CC7B91A5E272F000B1D37 /* STHTTPRequest+JSON.m */,
+				AF0A0C8F1A81F21F001CC174 /* MXUtil.h */,
+				AF0A0C901A81F21F001CC174 /* MXUtil.m */,
 			);
 			name = Utils;
 			sourceTree = "<group>";
@@ -1028,6 +1033,7 @@
 				AF49193F1A7233BB00EEFFFF /* DetailArticleStore.m in Sources */,
 				AF4919421A7233EB00EEFFFF /* DetailArticleDataSource.m in Sources */,
 				AF4919451A72346000EEFFFF /* DetailArticleModle.m in Sources */,
+				AF0A0C911A81F21F001CC174 /* MXUtil.m in Sources */,
 				AF7684C41A498456009C188D /* QuestionTableViewCell.m in Sources */,
 				AF59ABA71A1594F60017DA21 /* RightViewController.m in Sources */,
 				AF2CC7CC1A5E2CBD000B1D37 /* MainQuestionTableViewController.m in Sources */,

@@ -10,8 +10,8 @@
 #import "DetailArticleStore.h"
 #import "DetailArticleTableViewCell.h"
 #import "DetailArticleDataSource.h"
-#import "MBProgressHUD.h"
 #import <ShareSDK/ShareSDK.h>
+#import "MXUtil.h"
 
 @interface DetailArticleTableViewController ()
 @property (nonatomic, strong) DetailArticleDataSource   *myDetailArticleDataSource;
@@ -87,7 +87,7 @@
                                   delegate:self
                                   cancelButtonTitle:@"取消"
                                   destructiveButtonTitle:nil
-                                  otherButtonTitles:@"分享",@"收藏",nil];
+                                  otherButtonTitles:@"分享",@"收藏",@"举报",nil];
     actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [actionSheet showInView:self.view];
 }
@@ -147,29 +147,18 @@
                                     if (state == SSResponseStateSuccess)
                                     {
                                         NSLog(NSLocalizedString(@"TEXT_ShARE_SUC", @"分享成功"));
-                                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-                                        hud.mode = MBProgressHUDModeText;
-                                        hud.labelText = @"分享成功";
-                                        hud.margin = 10.f;
-                                        hud.yOffset = 150.f;
-                                        hud.removeFromSuperViewOnHide = YES;
-                                        [hud hide:YES afterDelay:1.5];
+                                        [[MXUtil sharedUtil] showMessageScreen:@"分享成功" viewController:self.navigationController];
                                     }
                                     else if (state == SSResponseStateFail)
                                     {
                                         NSLog(NSLocalizedString(@"TEXT_ShARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
-                                        MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
-                                        hud.mode = MBProgressHUDModeText;
-                                        hud.labelText = @"分享失败";
-                                        hud.margin = 10.f;
-                                        hud.yOffset = 150.f;
-                                        hud.removeFromSuperViewOnHide = YES;
-                                        [hud hide:YES afterDelay:1.5];
-
+                                        [[MXUtil sharedUtil] showMessageScreen:@"分享失败" viewController:self.navigationController];
                                     }
                                 }];
     }else if(buttonIndex == 1){
-        NSLog(@"收藏");
+
+    }else if(buttonIndex == 2){
+    
     }else{
     
     }
