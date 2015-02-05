@@ -31,13 +31,13 @@ static BOOL firstInit = true;
 }
 
 #pragma mark - table datasource
-//设置tableview
+// 设置tableview
 - (void)setupTableView{
     [self setupRefreshControl];
     [self firstInitData];
 }
 
-//第一次加载数据
+// 第一次加载数据
 - (void)firstInitData{
     [UIView animateWithDuration:0.25
                           delay:0
@@ -50,7 +50,7 @@ static BOOL firstInit = true;
                      }];
 }
 
-//设置下拉刷新进度条
+// 设置下拉刷新进度条
 - (void) setupRefreshControl{
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = [UIColor whiteColor];
@@ -60,7 +60,7 @@ static BOOL firstInit = true;
                   forControlEvents:UIControlEventValueChanged];
 }
 
-//设置初始化和刷新的数据源
+// 设置初始化和刷新的数据源
 - (void)getLatestLoans{
     [self setRefreshTitle];
     ArticleStore *store = [ArticleStore sharedStore];
@@ -84,7 +84,7 @@ static BOOL firstInit = true;
 
 #pragma mark - table More
 
-//创建上拉加载更多
+// 创建上拉加载更多的地步View
 - (void) createTableFooter{
     self.tableView.tableFooterView = nil;
     UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 40.0f)];
@@ -97,13 +97,14 @@ static BOOL firstInit = true;
     self.tableView.tableFooterView = tableFooterView;
 }
 
+// 上拉到最底部时显示更多数据
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    // 上拉到最底部时显示更多数据
     if(!_loadingMore && scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height))){
         [self getPreLoansBegin];
     }
 }
 
+// 设置旋转进度条
 - (void)getPreLoansBegin{
     if (_loadingMore == NO){
         _loadingMore = YES;
@@ -115,6 +116,7 @@ static BOOL firstInit = true;
     }
 }
 
+// 获取更多数据
 - (void)getPreLoans{
     ArticleStore *store = [ArticleStore sharedStore];
     [store readOldData:^(NSMutableArray *dic) {
@@ -127,7 +129,7 @@ static BOOL firstInit = true;
 }
 
 
-//设置距离上次刷新的时间
+// 设置距离上次刷新的时间
 - (void)setRefreshTitle{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMM d, h:mm a"];
@@ -140,7 +142,7 @@ static BOOL firstInit = true;
 
 #pragma mark - table delegate
 
-//设置cell的高度
+// 设置cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     ArticleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"articleCell"];
     
@@ -153,6 +155,7 @@ static BOOL firstInit = true;
     return height;
 }
 
+// 点击进入文章的详细页面
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [ArticleStore sharedStore].currentShowArticleId = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"id"];
     [self performSegueWithIdentifier:@"gotoArticleDetail" sender:self];

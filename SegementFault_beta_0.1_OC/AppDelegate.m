@@ -72,9 +72,6 @@
     //添加微信应用 注册网址 http://open.weixin.qq.com
     [ShareSDK connectWeChatWithAppId:@"wx3e23410dafa9a06b" appSecret:@"c9323c787d46fe7b2eac56551e1facf0" wechatCls:[WXApi class]];
     
-    //连接邮件
-    [ShareSDK connectMail];
-    
     //Pocket
     [ShareSDK connectPocketWithConsumerKey:@"37105-d32d86350db6a9e907003736"
                                redirectUri:@"pocketapp1234"
@@ -84,7 +81,7 @@
     [ShareSDK connectEvernoteWithType:SSEverNoteTypeSandbox
                           consumerKey:@"segmentfault"
                        consumerSecret:@"1a5aa3845a630eec"];
-    
+    /*
     [ShareSDK connectEvernoteWithType:SSEverNoteTypeUS
                           consumerKey:@"segmentfault"
                        consumerSecret:@"1a5aa3845a630eec"];
@@ -92,6 +89,7 @@
     [ShareSDK connectEvernoteWithType:SSEverNoteTypeCN
                           consumerKey:@"segmentfault"
                        consumerSecret:@"1a5aa3845a630eec"];
+     */
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{

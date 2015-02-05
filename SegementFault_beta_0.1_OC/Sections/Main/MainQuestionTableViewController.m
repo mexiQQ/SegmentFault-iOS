@@ -35,7 +35,7 @@ static BOOL firstInit = true;
     [self firstInitData];
 }
 
-//第一次加载数据
+//第一次加载数据时自动弹出
 - (void)firstInitData{
     [UIView animateWithDuration:0.25
                           delay:0
@@ -48,7 +48,7 @@ static BOOL firstInit = true;
                      }];
 }
 
-//设置下拉刷新进度条
+// 设置下拉刷新进度条
 - (void) setupRefreshControl{
     self.refreshControl = [[UIRefreshControl alloc] init];
     self.refreshControl.backgroundColor = [UIColor whiteColor];
@@ -58,7 +58,7 @@ static BOOL firstInit = true;
                   forControlEvents:UIControlEventValueChanged];
 }
 
-//设置初始化和刷新的数据源
+// 设置初始化和刷新的数据源
 - (void)getLatestLoans{
     [self setRefreshTitle];
     QuestionStore *store = [QuestionStore sharedStore];
@@ -80,7 +80,7 @@ static BOOL firstInit = true;
     }];
 }
 
-//设置距离上次刷新的时间
+// 设置距离上次刷新的时间
 - (void)setRefreshTitle{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MMM d, h:mm a"];
@@ -93,7 +93,7 @@ static BOOL firstInit = true;
 
 #pragma mark - table More
 
-//创建上拉加载更多
+// 创建上拉加载更多的底部view
 - (void) createTableFooter{
     self.tableView.tableFooterView = nil;
     UIView *tableFooterView = [[UIView alloc] initWithFrame:CGRectMake(0.0f, 0.0f, self.tableView.bounds.size.width, 40.0f)];
@@ -106,13 +106,14 @@ static BOOL firstInit = true;
     self.tableView.tableFooterView = tableFooterView;
 }
 
+// 上拉到最底部时显示更多数据
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
-    // 上拉到最底部时显示更多数据
     if(!_loadingMore && scrollView.contentOffset.y > ((scrollView.contentSize.height - scrollView.frame.size.height))){
         [self getPreLoansBegin];
     }
 }
 
+// 设置旋转进度条
 - (void)getPreLoansBegin{
     if (_loadingMore == NO){
         _loadingMore = YES;
@@ -124,6 +125,7 @@ static BOOL firstInit = true;
     }
 }
 
+// 请求更多数据
 - (void)getPreLoans{
     QuestionStore *store = [QuestionStore sharedStore];
     [store readOldData:^(NSMutableArray *dic) {
@@ -137,7 +139,7 @@ static BOOL firstInit = true;
 
 #pragma mark - table delegate
 
-//设置cell的高度
+// 设置cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
     QuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
     
@@ -150,11 +152,19 @@ static BOOL firstInit = true;
     return height;
 }
 
+// 点击进入文章的详细页面
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+//  [QuestionStore sharedStore].currentShowArticleId = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"id"];
+    [self performSegueWithIdentifier:@"gotoQuestionDetail" sender:self];
+}
+
+// 点击弹出左边汉堡菜单
 - (IBAction)sliderLeft:(id)sender {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
     
 }
 
+// 点击弹出右边汉堡菜单
 - (IBAction)sliderRight:(id)sender {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }

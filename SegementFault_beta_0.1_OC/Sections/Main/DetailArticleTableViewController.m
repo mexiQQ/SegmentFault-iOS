@@ -22,7 +22,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    // 注册由于刷新 webview 高度的观察者
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableViewHeight:) name:@"refreshHeight" object:nil];
+    
+    // 设置 tableview
     [self setupTableView];
 }
 
@@ -51,6 +55,7 @@
                   forControlEvents:UIControlEventValueChanged];
 }
 
+// 设置 datasource 获取数据
 - (void)getLatestLoans{
     [[DetailArticleStore sharedStore] readNewData:^(NSDictionary *dic) {
         self.articleDic = dic;
@@ -81,6 +86,7 @@
     [self.tableView reloadData];
 }
 
+// 点击右上角更多操作
 - (IBAction)moreAction:(id)sender {
     UIActionSheet *actionSheet = [[UIActionSheet alloc]
                                   initWithTitle:nil
@@ -92,9 +98,10 @@
     [actionSheet showInView:self.view];
 }
 
-//点击 ActionSheet 的操作
+//点击 ActionSheet 的不同操作
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex == 0){
+        //分享
         NSString *url = [NSString stringWithFormat:@"http://segmentfault.com%@",[[self articleDic] objectForKey:@"editUrl"]];
         NSRange range = NSMakeRange (0, url.length-5);
         url = [url substringWithRange:range];
@@ -156,11 +163,11 @@
                                     }
                                 }];
     }else if(buttonIndex == 1){
-
+        // 收藏
     }else if(buttonIndex == 2){
-    
+        // 举报
     }else{
-    
+        // 取消
     }
 }
 

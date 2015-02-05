@@ -10,4 +10,15 @@
 
 @implementation QuestionModel
 
+- (id)transformTable{
+    return @{@"id":@"id_"};
+}
+
+- (NSString *)description
+{
+    NSMutableString *description = [NSMutableString stringWithFormat:@"<%@: ", NSStringFromClass([self class])];
+    [description appendFormat:@"id: %@, title: %@, exceprt: %@, url: %@", self.id_, self.title, self.excerpt, self.url];
+    [description appendString:@">"];
+    return description;
+}
 @end

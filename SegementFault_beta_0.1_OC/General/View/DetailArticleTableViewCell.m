@@ -8,7 +8,7 @@
 
 #import "DetailArticleTableViewCell.h"
 #import "DetailArticleStore.h"
-#import <MMMarkdown/MMMarkdown.h>
+#import "MXUtil.h"
 
 @implementation DetailArticleTableViewCell
 @synthesize TopView = _TopView;
@@ -37,55 +37,26 @@
         self.productTime.text = [item objectForKey:@"createdDate"];
         self.articleTitle.text = [item objectForKey:@"title"];
         
+        // 计算没有载入 webview 时 cell 的高度并存储
         CGFloat height = [self systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
         [DetailArticleStore sharedStore].articleHeight = [NSNumber numberWithFloat:height];
         
-        [self.contentWebView loadHTMLString:[self formatHTML:[item objectForKey:@"originalText"]] baseURL:[[NSBundle mainBundle] bundleURL]];
+        // 载入 webview 的内容
+        NSString *originalText = [item objectForKey:@"parsedText"];
+        [self.contentWebView loadHTMLString:[[MXUtil sharedUtil] formatHTMLFromMarkdown:originalText] baseURL:[[NSBundle mainBundle] bundleURL]];
     }
     [DetailArticleStore sharedStore].isRefreshHeight = false;
-}
-
-// 解析 markdown 语法
-- (NSString *)formatHTML:(NSString *)str{
-    NSError  *error;
-    NSString *textFileContents = [NSString stringWithContentsOfFile:[[NSBundle mainBundle]
-                                                            pathForResource:@"template"
-                                                            ofType:@"html"]
-                                                           encoding:NSUTF8StringEncoding
-                                                              error: & error];
-    NSString *htmlString = [MMMarkdown HTMLStringWithMarkdown:str error:&error];
-    htmlString = [NSString stringWithFormat:textFileContents,htmlString];
-    return [self rexMake:htmlString];
 }
 
 // 计算 webview 的高度并通知重新加载
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
+    // 更新存储的 cell 高度
     CGFloat documentHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('foo').offsetHeight"] floatValue];
     documentHeight += [DetailArticleStore sharedStore].articleHeight.floatValue + 40;
     [DetailArticleStore sharedStore].articleHeight = [NSNumber numberWithFloat:documentHeight];
-    //通知webView 刷新高度
+    
+    // 通知 webView 刷新高度
     [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshHeight" object:self userInfo:nil];
 }
-
-
-// 替换图片链接地址
-- (NSString *) rexMake:(NSString *)str{
-    NSString *parten2 = @"\\/img\\/\\w+";
-    NSMutableArray *array = [[NSMutableArray alloc] init];
-    NSError* error = NULL;
-    NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:parten2 options:NSRegularExpressionAnchorsMatchLines error:&error];
-    NSArray* match = [reg matchesInString:str options:NSMatchingWithoutAnchoringBounds range:NSMakeRange(0, [str length])];
-    if (match.count != 0){
-        for (NSTextCheckingResult *matc in match){
-            NSRange range = [matc range];
-            [array addObject:[str substringWithRange:range]];
-        }
-        for(NSString *a in array){
-            str = [str stringByReplacingOccurrencesOfString:a withString:[NSString stringWithFormat:@"http://segmentfault.com%@",a]];
-        }
-    }
-    return str;
-}
-
 @end
