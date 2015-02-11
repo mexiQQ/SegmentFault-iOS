@@ -7,7 +7,12 @@
 //
 
 #import "DetailQuestionStore.h"
+#import "QuestionStore.h"
+
 @implementation DetailQuestionStore
+@synthesize questionHeight = _questionHeight;
+@synthesize answersHeights = _answersHeights;
+
 static DetailQuestionStore *store = nil;
 
 //单例类
@@ -27,7 +32,7 @@ static DetailQuestionStore *store = nil;
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_async(group, dispatch_get_global_queue(0,0), ^{
         NSError *error = nil;
-        STHTTPRequest *r = [STHTTPRequest requestWithURL:[NSURL URLWithString:@"http://api.segmentfault.com/question/1010000002534328"]];
+        STHTTPRequest *r = [STHTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.segmentfault.com/question/%@",[QuestionStore sharedStore].currentShowQuestionId]]];
         [r startSynchronousWithError:&error];
         NSData *data = r.responseData;
         if(data){
@@ -37,7 +42,7 @@ static DetailQuestionStore *store = nil;
     
     dispatch_group_async(group, dispatch_get_global_queue(0,0), ^{
         NSError *error = nil;
-        STHTTPRequest *r = [STHTTPRequest requestWithURL:[NSURL URLWithString:@"http://api.segmentfault.com/answer/show/1010000002534328"]];
+        STHTTPRequest *r = [STHTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.segmentfault.com/answer/show/%@",[QuestionStore sharedStore].currentShowQuestionId]]];
         [r startSynchronousWithError:&error];
         NSData *data = r.responseData;
         if(data){
@@ -46,7 +51,10 @@ static DetailQuestionStore *store = nil;
     });
     
     dispatch_group_notify(group,dispatch_get_global_queue(0, 0),^{
-        block(detailQuestion,detailAnwser);
+        dispatch_async(dispatch_get_main_queue(), ^{
+            // 更新界面
+            block(detailQuestion,detailAnwser);
+        });
     });
     
     /*

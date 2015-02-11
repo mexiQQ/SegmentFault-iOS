@@ -7,17 +7,45 @@
 //
 
 #import "DetailAnswerTableViewCell.h"
-
+#import "AnswerModel.h"
+#import "DetailquestionStore.h"
+#import "MXUtil.h"
 @implementation DetailAnswerTableViewCell
+@synthesize TopView = _TopView;
+@synthesize authorLabel = _authorLabel;
+@synthesize authorRateLabel = _authorRateLabel;
+@synthesize productTime = _productTime;
+@synthesize contentWebView = _contentWebView;
+@synthesize indexTag = _indexTag;
 
 - (void)awakeFromNib {
-    // Initialization code
+    self.contentWebView.delegate=self;
 }
 
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+// 配置 cell
+- (void)configureForCell:(NSDictionary *)item index:(NSInteger *)indexpath{
+    AnswerModel *answerModel = [AnswerModel modelWithJsonObj:item];
+    self.authorLabel.text = [answerModel.user objectForKey:@"name"];
+    self.authorRateLabel.text =[answerModel.user objectForKey:@"rank"];
+    self.productTime.text = answerModel.createdDate;
+    self.indexTag = [NSString stringWithFormat:@"answer%d",(int)indexpath];
+    [self.contentWebView loadHTMLString:[[MXUtil sharedUtil] formatHTMLFromMarkdown:answerModel.parsedText] baseURL:[[NSBundle mainBundle] bundleURL]];
+}
+
+// 计算 webview 的高度并通知重新加载
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
+    // 更新存储的 cell 高度
+    CGFloat height = [self systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    CGFloat documentHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('foo').offsetHeight"] floatValue];
+    documentHeight += height;
     
-    // Configure the view for the selected state
+    if(![DetailQuestionStore sharedStore].answersHeights){
+        [DetailQuestionStore sharedStore].answersHeights = [[NSMutableDictionary alloc] init];
+    }
+    
+    if(![[DetailQuestionStore sharedStore].answersHeights objectForKey:self.indexTag] || (documentHeight - ((NSNumber *)[[DetailQuestionStore sharedStore].answersHeights objectForKey:self.indexTag]).floatValue) > 1){
+        [[DetailQuestionStore sharedStore].answersHeights setObject:[NSNumber numberWithFloat:documentHeight] forKey:self.indexTag];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshQuestionHeight" object:self userInfo:nil];
+    }
 }
-
 @end

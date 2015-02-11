@@ -9,7 +9,7 @@
 #import "QuestionStore.h"
 
 @implementation QuestionStore
-
+@synthesize currentShowQuestionId=_currentShowQuestionId;
 static QuestionStore *store = nil;
 
 //单例类

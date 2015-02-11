@@ -24,9 +24,9 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
 }
 
+// 配置 cell
 - (void)configureForCell:(NSDictionary *)item{
     // 检测是否为重新加载高度
     if(![DetailArticleStore sharedStore].isRefreshHeight){
@@ -42,21 +42,20 @@
         [DetailArticleStore sharedStore].articleHeight = [NSNumber numberWithFloat:height];
         
         // 载入 webview 的内容
-        NSString *originalText = [item objectForKey:@"parsedText"];
-        [self.contentWebView loadHTMLString:[[MXUtil sharedUtil] formatHTMLFromMarkdown:originalText] baseURL:[[NSBundle mainBundle] bundleURL]];
+        NSString *parsedText = [item objectForKey:@"parsedText"];
+        [self.contentWebView loadHTMLString:[[MXUtil sharedUtil] formatHTMLFromMarkdown:parsedText] baseURL:[[NSBundle mainBundle] bundleURL]];
     }
     [DetailArticleStore sharedStore].isRefreshHeight = false;
 }
 
 // 计算 webview 的高度并通知重新加载
-- (void)webViewDidFinishLoad:(UIWebView *)webView
-{
+- (void)webViewDidFinishLoad:(UIWebView *)webView{
     // 更新存储的 cell 高度
     CGFloat documentHeight = [[webView stringByEvaluatingJavaScriptFromString:@"document.getElementById('foo').offsetHeight"] floatValue];
     documentHeight += [DetailArticleStore sharedStore].articleHeight.floatValue + 40;
     [DetailArticleStore sharedStore].articleHeight = [NSNumber numberWithFloat:documentHeight];
     
     // 通知 webView 刷新高度
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshHeight" object:self userInfo:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshArticleHeight" object:self userInfo:nil];
 }
 @end

@@ -16,6 +16,8 @@
 		AF0A0CA01A8202F5001CC174 /* DetailWriteCommentTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0A0C9F1A8202F5001CC174 /* DetailWriteCommentTableViewCell.m */; };
 		AF0A0CA31A8205F3001CC174 /* DetailQuestionDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AF0A0CA21A8205F3001CC174 /* DetailQuestionDataSource.m */; };
 		AF0F71531A6FB58F00A23341 /* tags_id.plist in Resources */ = {isa = PBXBuildFile; fileRef = AF0F71521A6FB58F00A23341 /* tags_id.plist */; };
+		AF1A8F341A8A099600A17E17 /* NSString+FontAwesome.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1A8F311A8A099600A17E17 /* NSString+FontAwesome.m */; };
+		AF1A8F351A8A099600A17E17 /* UIButton+Bootstrap.m in Sources */ = {isa = PBXBuildFile; fileRef = AF1A8F331A8A099600A17E17 /* UIButton+Bootstrap.m */; };
 		AF21DDA91A7B38BE003612E2 /* default.min.css in Resources */ = {isa = PBXBuildFile; fileRef = AF21DD651A7B38BE003612E2 /* default.min.css */; };
 		AF21DDAA1A7B38BE003612E2 /* global.css in Resources */ = {isa = PBXBuildFile; fileRef = AF21DD661A7B38BE003612E2 /* global.css */; };
 		AF21DDAB1A7B38BE003612E2 /* highlight.min.js in Resources */ = {isa = PBXBuildFile; fileRef = AF21DD671A7B38BE003612E2 /* highlight.min.js */; };
@@ -184,6 +186,10 @@
 		AF0A0CA11A8205F3001CC174 /* DetailQuestionDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DetailQuestionDataSource.h; path = General/Datasource/DetailQuestionDataSource.h; sourceTree = "<group>"; };
 		AF0A0CA21A8205F3001CC174 /* DetailQuestionDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DetailQuestionDataSource.m; path = General/Datasource/DetailQuestionDataSource.m; sourceTree = "<group>"; };
 		AF0F71521A6FB58F00A23341 /* tags_id.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = tags_id.plist; sourceTree = "<group>"; };
+		AF1A8F301A8A099600A17E17 /* NSString+FontAwesome.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "NSString+FontAwesome.h"; path = "Utils/NSString+FontAwesome.h"; sourceTree = "<group>"; };
+		AF1A8F311A8A099600A17E17 /* NSString+FontAwesome.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "NSString+FontAwesome.m"; path = "Utils/NSString+FontAwesome.m"; sourceTree = "<group>"; };
+		AF1A8F321A8A099600A17E17 /* UIButton+Bootstrap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIButton+Bootstrap.h"; path = "Utils/UIButton+Bootstrap.h"; sourceTree = "<group>"; };
+		AF1A8F331A8A099600A17E17 /* UIButton+Bootstrap.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIButton+Bootstrap.m"; path = "Utils/UIButton+Bootstrap.m"; sourceTree = "<group>"; };
 		AF21DD651A7B38BE003612E2 /* default.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = default.min.css; sourceTree = "<group>"; };
 		AF21DD661A7B38BE003612E2 /* global.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = global.css; sourceTree = "<group>"; };
 		AF21DD671A7B38BE003612E2 /* highlight.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = highlight.min.js; sourceTree = "<group>"; };
@@ -662,6 +668,10 @@
 		AF45DBF31A4A989F0063E97C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				AF1A8F301A8A099600A17E17 /* NSString+FontAwesome.h */,
+				AF1A8F311A8A099600A17E17 /* NSString+FontAwesome.m */,
+				AF1A8F321A8A099600A17E17 /* UIButton+Bootstrap.h */,
+				AF1A8F331A8A099600A17E17 /* UIButton+Bootstrap.m */,
 				AF2CC7B81A5E272F000B1D37 /* STHTTPRequest+JSON.h */,
 				AF2CC7B91A5E272F000B1D37 /* STHTTPRequest+JSON.m */,
 				AF0A0C8F1A81F21F001CC174 /* MXUtil.h */,
@@ -1081,7 +1091,9 @@
 				AFDA89901A48101200771476 /* LeftTableViewUserSectionView.m in Sources */,
 				AF59ABA41A1594DF0017DA21 /* LeftViewController.m in Sources */,
 				AFFB4C4D1A836CA400923088 /* BaseModel.m in Sources */,
+				AF1A8F351A8A099600A17E17 /* UIButton+Bootstrap.m in Sources */,
 				AF2CC7C11A5E29DD000B1D37 /* ArticlesDataSource.m in Sources */,
+				AF1A8F341A8A099600A17E17 /* NSString+FontAwesome.m in Sources */,
 				AF9E879E1A5F84BD006D00AF /* TagDataSource.m in Sources */,
 				AF0A0CA01A8202F5001CC174 /* DetailWriteCommentTableViewCell.m in Sources */,
 				AF9E87981A5F8485006D00AF /* TagModle.m in Sources */,

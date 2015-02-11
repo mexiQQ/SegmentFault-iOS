@@ -7,6 +7,7 @@
 //
 
 #import "MainQuestionTableViewController.h"
+#import "DetailQuestionStore.h"
 static BOOL firstInit = true;
 
 @interface MainQuestionTableViewController ()
@@ -154,7 +155,14 @@ static BOOL firstInit = true;
 
 // 点击进入文章的详细页面
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-//  [QuestionStore sharedStore].currentShowArticleId = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"id"];
+    // 清空上一个问题的所有高度信息
+    [DetailQuestionStore sharedStore].answersHeights=nil;
+    [DetailQuestionStore sharedStore].questionHeight=nil;
+    
+    // 设置选中的问题id
+    [QuestionStore sharedStore].currentShowQuestionId = [[self.questions objectAtIndex:indexPath.row] objectForKey:@"id"];
+    
+    // 跳转
     [self performSegueWithIdentifier:@"gotoQuestionDetail" sender:self];
 }
 

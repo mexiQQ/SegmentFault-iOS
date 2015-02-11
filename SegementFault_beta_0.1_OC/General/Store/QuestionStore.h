@@ -10,6 +10,8 @@
 #import "TagStore.h"
 
 @interface QuestionStore : Store
+@property (nonatomic,strong) NSString *currentShowQuestionId;
+
 + (QuestionStore *)sharedStore;
 - (void)readNewData:(void(^)(NSMutableArray *))block;
 - (void)readOldData:(void(^)(NSMutableArray *))block page:(int)page;

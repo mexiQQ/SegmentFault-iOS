@@ -9,6 +9,10 @@
 #import "Store.h"
 
 @interface DetailQuestionStore : Store
+
+@property (nonatomic,strong) NSNumber *questionHeight;
+@property (nonatomic,strong) NSMutableDictionary * answersHeights;
+
 +(DetailQuestionStore *)sharedStore;
 - (void)readNewData:(void(^)(NSDictionary *,NSDictionary *))block;
 

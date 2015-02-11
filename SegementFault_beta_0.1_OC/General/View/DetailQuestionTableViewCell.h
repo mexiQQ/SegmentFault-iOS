@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailQuestionTableViewCell : UITableViewCell
+@interface DetailQuestionTableViewCell : UITableViewCell<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIView *TopView;
 @property (weak, nonatomic) IBOutlet UILabel *authorLabel;
 @property (weak, nonatomic) IBOutlet UILabel *authorRateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *productTime;
 @property (weak, nonatomic) IBOutlet UIWebView *contentWebView;
 @property (weak, nonatomic) IBOutlet UIView *TagView;
+@property (weak, nonatomic) IBOutlet UILabel *questinTitle;
 - (void)configureForCell:(NSDictionary *)item;
 @end

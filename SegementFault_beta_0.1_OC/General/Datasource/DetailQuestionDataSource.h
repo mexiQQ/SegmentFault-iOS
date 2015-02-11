@@ -8,14 +8,12 @@
 
 #import "ArrayDataSource.h"
 
-@interface DetailQuestionDataSource : ArrayDataSource
+@interface DetailQuestionDataSource : ArrayDataSource<UITableViewDelegate>
 
-@property (nonatomic, strong) NSDictionary *item;
+@property (nonatomic, strong) NSArray *items;
 
-- (id)initWithItems:(NSDictionary *)anItem
+- (id)initWithItems:(NSArray *)anItem
      cellIdentifier:(NSString *)aCellIdentifier
- configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock
-configureSectionBlock:(TableViewCellConfigureBlock)bConfigureCellBlock;
-
+ configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock;
 
 @end

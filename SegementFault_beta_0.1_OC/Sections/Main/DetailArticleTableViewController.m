@@ -24,7 +24,7 @@
     [super viewDidLoad];
     
     // 注册由于刷新 webview 高度的观察者
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableViewHeight:) name:@"refreshHeight" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshTableViewHeight:) name:@"refreshArticleHeight" object:nil];
     
     // 设置 tableview
     [self setupTableView];

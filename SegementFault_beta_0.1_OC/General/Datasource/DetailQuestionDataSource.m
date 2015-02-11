@@ -7,72 +7,42 @@
 //
 
 #import "DetailQuestionDataSource.h"
+#import "DetailQuestionStore.h"
 
 @interface DetailQuestionDataSource()
 @property (nonatomic, copy) NSString *cellIdentifier;
-@property (nonatomic, copy) NSString *questionTitle;
-@property (nonatomic, copy) NSArray *answers;
-@property (nonatomic, copy) TableViewCellConfigureBlock aconfigureCellBlock;
-@property (nonatomic, copy) TableViewCellConfigureBlock bconfigureCellBlock;
+@property (nonatomic, copy) TableViewCellConfigureBlock configureCellBlock;
 
 @end
 
 @implementation DetailQuestionDataSource
-- (id)init
-{
+- (id)init{
     return [super init];
 }
 
-- (id)initWithItems:(NSDictionary *)anItem
+- (id)initWithItems:(NSArray *)anItem
      cellIdentifier:(NSString *)aCellIdentifier
- configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock
-configureSectionBlock:(TableViewCellConfigureBlock)bConfigureCellBlock
-{
+ configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock{
     self = [super init];
     if (self) {
-        self.item = anItem;
+        self.items = anItem;
         self.cellIdentifier = aCellIdentifier;
-        self.aconfigureCellBlock = [aConfigureCellBlock copy];
-        self.bconfigureCellBlock = [bConfigureCellBlock copy];
-        self.questionTitle = [[[self.item objectForKey:@"question"] objectForKey:@"data"] objectForKey:@"title"];
-        self.answers = [[[self.item objectForKey:@"answer"] objectForKey:@"data"] objectForKey:@"available"];
+        self.configureCellBlock = [aConfigureCellBlock copy];
     }
     return self;
 }
 
 #pragma mark UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return  self.answers.count;
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 0;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if(indexPath.section == 0){
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier
-                                                            forIndexPath:indexPath];
-    self.aconfigureCellBlock(cell, self.item);
-        return cell;
-    }
-    return nil;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return  self.items.count + 1;
 }
 
-- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section{
-    if(0 == section){
-        return self.questionTitle;
-    }
-    return nil;
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
+    return [[UITableViewCell alloc] init] ;
 }
-
-// 从这开始修改
--(UIView *) tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
-    if(section != 0){
-        UITableViewCell *cell = [tableView dequeueReusableHeaderFooterViewWithIdentifier:self.cellIdentifier];
-        self.bconfigureCellBlock(cell, self.item);
-        return cell;
-    }
-    return nil;
-}
-
 @end
