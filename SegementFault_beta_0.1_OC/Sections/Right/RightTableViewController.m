@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     [self setupTableView];
     [self getMessagesNumberAndUpdateBarNumber];
 }
@@ -124,7 +125,6 @@
 }
 
 - (void)getMessageNumber:(NSNotification *)notification{
-    NSLog(@"%@",[NSThread currentThread]);
     NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/user/stat?token=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
     NSError *error = nil;
     STHTTPRequest *r = [STHTTPRequest requestWithURL:[NSURL URLWithString:url]];

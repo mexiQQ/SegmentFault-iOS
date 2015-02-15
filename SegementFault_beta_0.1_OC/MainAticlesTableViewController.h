@@ -13,4 +13,5 @@
 #import "ArticleTableViewCell.h"
 @interface MainAticlesTableViewController : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UIButton *titleButton;
 @end

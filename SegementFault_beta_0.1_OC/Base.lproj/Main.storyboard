@@ -11,7 +11,7 @@
             <objects>
                 <tableViewController id="3WM-WI-hOM" customClass="MainQuestionTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="66" sectionHeaderHeight="22" sectionFooterHeight="22" id="Mha-e5-wtB">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -69,20 +69,34 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="lng-23-6cA">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="menu" id="K2U-ff-Oo0">
                             <color key="tintColor" red="0.97143002899999997" green="0.97857252179999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="sliderLeft:" destination="3WM-WI-hOM" id="ISG-pC-pQp"/>
                             </connections>
                         </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Vy8-C3-qaJ">
+                            <rect key="frame" x="85" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="19"/>
+                            <state key="normal">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="titleButtonAction:" destination="3WM-WI-hOM" eventType="touchUpInside" id="u0V-OJ-JtT"/>
+                            </connections>
+                        </button>
                     </navigationItem>
                     <connections>
+                        <outlet property="titleButton" destination="Vy8-C3-qaJ" id="Cdr-AA-exY"/>
                         <segue destination="jQe-dN-a5N" kind="push" identifier="gotoQuestionDetail" id="ZME-wM-pOc"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GKE-7d-6TQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1627" y="344"/>
+            <point key="canvasLocation" x="1639" y="344"/>
         </scene>
         <!--Left View Controller-->
         <scene sceneID="f4M-2N-bMR">
@@ -399,7 +413,7 @@
             <objects>
                 <tableViewController id="VWD-0j-Mgc" customClass="RightTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="85" sectionHeaderHeight="22" sectionFooterHeight="22" id="U1W-6g-pBc">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -551,7 +565,7 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="gSK-q6-ges" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="文章" image="articles" id="uVW-hU-TZC"/>
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Ake-eq-5wt">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Ake-eq-5wt">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.1019607843" green="0.13725490200000001" blue="0.1215686275" alpha="1" colorSpace="calibratedRGB"/>
@@ -570,7 +584,7 @@
             <objects>
                 <tableViewController id="bE2-N1-mcC" customClass="MainAticlesTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="94" sectionHeaderHeight="22" sectionFooterHeight="22" id="jNK-7y-VBl">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -635,17 +649,28 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="ews-30-Sfo">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="menu" id="MRJ-Nj-kxW">
                             <color key="tintColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="sliderLeft:" destination="bE2-N1-mcC" id="i6f-57-r11"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="note" id="dl3-ba-f4Q">
-                            <color key="tintColor" red="0.97143002899999997" green="0.97857252179999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                        </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="aVw-9s-Lf3">
+                            <rect key="frame" x="85" y="7" width="150" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="19"/>
+                            <state key="normal">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                            <connections>
+                                <action selector="titleButtonAction:" destination="bE2-N1-mcC" eventType="touchUpInside" id="Dss-LX-fpG"/>
+                            </connections>
+                        </button>
                     </navigationItem>
                     <connections>
+                        <outlet property="titleButton" destination="aVw-9s-Lf3" id="Wei-1p-0to"/>
                         <segue destination="urD-5w-eCA" kind="push" identifier="gotoArticleDetail" id="KGc-x2-Ucm"/>
                     </connections>
                 </tableViewController>
@@ -659,8 +684,10 @@
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="C7A-zh-7YB" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="问题" image="question" id="qLf-5F-fug"/>
                     <toolbarItems/>
-                    <navigationItem key="navigationItem" id="aZy-sh-lul"/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xe1-uh-swR">
+                    <navigationItem key="navigationItem" id="aZy-sh-lul">
+                        <nil key="title"/>
+                    </navigationItem>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Xe1-uh-swR">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.12549019607843137" green="0.14901960784313725" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
@@ -679,7 +706,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="detailArticlePage" hidesBottomBarWhenPushed="YES" id="urD-5w-eCA" customClass="DetailArticleTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="vyr-gy-jUP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -786,12 +813,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="zYv-VR-Kdr">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="icon_btn_back.png" id="POe-Yq-qh1">
                             <color key="tintColor" red="0.97143002899999997" green="0.97857252179999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="backAction:" destination="urD-5w-eCA" id="dK2-iG-qDe"/>
                             </connections>
                         </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="AvU-Fr-Xin">
+                            <rect key="frame" x="96" y="7" width="128" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="19"/>
+                            <state key="normal" title="文章详情">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
                         <barButtonItem key="rightBarButtonItem" tag="1" image="icon_more.png" id="ZB4-eE-hpF">
                             <color key="tintColor" red="0.97143002899999997" green="0.97857252179999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
@@ -802,14 +839,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6H8-VU-aPb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1618" y="1038"/>
+            <point key="canvasLocation" x="1639" y="1038"/>
         </scene>
         <!--Detail Question Table View Controller-->
         <scene sceneID="r4P-Sy-HjU">
             <objects>
                 <tableViewController storyboardIdentifier="detailQuestionPage" hidesBottomBarWhenPushed="YES" id="jQe-dN-a5N" customClass="DetailQuestionTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="yGF-Xx-R3n">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -1236,12 +1273,22 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="hll-g5-lhb">
+                        <nil key="title"/>
                         <barButtonItem key="leftBarButtonItem" image="icon_btn_back.png" id="1YY-0E-GH1">
                             <color key="tintColor" red="0.97143002899999997" green="0.97857252179999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                             <connections>
                                 <action selector="backAction:" destination="jQe-dN-a5N" id="N18-ll-cyr"/>
                             </connections>
                         </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="p3L-R9-ah7">
+                            <rect key="frame" x="96" y="7" width="128" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="Arial-BoldMT" family="Arial" pointSize="19"/>
+                            <state key="normal" title="问题详情">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rmG-Xc-bau" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1253,7 +1300,7 @@
             <objects>
                 <navigationController storyboardIdentifier="messagePage" automaticallyAdjustsScrollViewInsets="NO" id="PZn-Vf-gxY" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Ar-dO-IMl">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="5Ar-dO-IMl">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="barTintColor" red="0.12549019607843137" green="0.14901960784313725" blue="0.13725490196078433" alpha="1" colorSpace="calibratedRGB"/>
@@ -1281,7 +1328,6 @@
         <image name="icon_qq.png" width="29" height="29"/>
         <image name="icon_sina.png" width="29" height="29"/>
         <image name="menu" width="25" height="26"/>
-        <image name="note" width="32" height="26"/>
         <image name="question" width="34" height="34"/>
         <image name="sf-logo-cmyk_dark.png" width="1139" height="421"/>
         <image name="up_rate_dark.png" width="10" height="6"/>

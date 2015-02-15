@@ -13,5 +13,5 @@
 #import "UIViewController+MMDrawerController.h"
 @interface MainQuestionTableViewController : UITableViewController
 
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *rightBarItem;
+@property (weak, nonatomic) IBOutlet UIButton *titleButton;
 @end

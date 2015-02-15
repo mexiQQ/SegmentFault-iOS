@@ -10,6 +10,8 @@
 #import "DetailQuestionStore.h"
 #import "DetailQuestionTableViewController.h"
 #import "BBBadgeBarButtonItem.h"
+#import <CoreText/CoreText.h>
+#import "MXUtil.h"
 static BOOL firstInit = true;
 
 @interface MainQuestionTableViewController ()
@@ -20,8 +22,7 @@ static BOOL firstInit = true;
 @end
 
 @implementation MainQuestionTableViewController
-@synthesize rightBarItem = _rightBarItem;
-
+@synthesize titleButton= _titleButton;
 - (void)viewDidLoad {
     [super viewDidLoad];
     firstInit = true;
@@ -29,16 +30,18 @@ static BOOL firstInit = true;
     // 注册用于刷新 messages 数量的观察者
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMessagesNumber:) name:@"refreshMessagesNumber" object:nil];
     
-    [self setupRightBarItem];
+    [self setupBar];
     [self setupTableView];
+    
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
 }
 
-// 设置 barButton
-- (void)setupRightBarItem{
+// 设置 bar
+- (void)setupBar{
+    // 设置 rightBaritem
     UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 26)];
     [customButton setImage:[UIImage imageNamed:@"note"] forState:UIControlStateNormal];
     [customButton addTarget:self action:@selector(sliderRight:) forControlEvents:UIControlEventTouchUpInside];
@@ -47,6 +50,9 @@ static BOOL firstInit = true;
     barButton.badgeOriginX = 20;
     barButton.badgeOriginY = -9;
     self.navigationItem.rightBarButtonItem = barButton;
+    
+    // 设置 barTitle
+    [self.titleButton setBackgroundImage:[UIImage imageNamed:@"NavigationBar_title"] forState:UIControlStateNormal];
 }
 
 #pragma mark - table datasource
@@ -193,6 +199,7 @@ static BOOL firstInit = true;
 - (void)refreshMessagesNumber:(NSNotification *)notification{
     NSString *messagesNumber = [[[notification userInfo] objectForKey:@"data"] objectForKey:@"events"];
     BBBadgeBarButtonItem *barButton = (BBBadgeBarButtonItem *)self.navigationItem.rightBarButtonItem;
+    barButton.badgeBGColor = [[MXUtil sharedUtil] getUIColor:@"2a5caa"];
     barButton.badgeValue = [NSString stringWithFormat:@"%@",messagesNumber];
 }
 
@@ -205,5 +212,9 @@ static BOOL firstInit = true;
 // 点击弹出右边汉堡菜单
 - (IBAction)sliderRight:(id)sender {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
+}
+
+- (IBAction)titleButtonAction:(id)sender {
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
 }
 @end

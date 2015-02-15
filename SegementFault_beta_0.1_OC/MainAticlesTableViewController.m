@@ -8,6 +8,8 @@
 
 #import "MainAticlesTableViewController.h"
 #import "DetailArticleTableViewController.h"
+#import "BBBadgeBarButtonItem.h"
+#import "MXUtil.h"
 static BOOL firstInit = true;
 
 @interface MainAticlesTableViewController ()
@@ -22,12 +24,31 @@ static BOOL firstInit = true;
 - (void)viewDidLoad {
     [super viewDidLoad];
     firstInit = true;
-    self.tableView.delegate = self;
+    
+    // 注册用于刷新 messages 数量的观察者
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMessagesNumber:) name:@"refreshMessagesNumber" object:nil];
+    
+    [self setupBar];
     [self setupTableView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+// 设置 bar
+- (void)setupBar{
+    UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 26)];
+    [customButton setImage:[UIImage imageNamed:@"note"] forState:UIControlStateNormal];
+    [customButton addTarget:self action:@selector(sliderRight:) forControlEvents:UIControlEventTouchUpInside];
+    BBBadgeBarButtonItem *barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
+    barButton.badgeValue = @"";
+    barButton.badgeOriginX = 20;
+    barButton.badgeOriginY = -9;
+    self.navigationItem.rightBarButtonItem = barButton;
+    
+    // 设置 barTitle
+    [self.titleButton setBackgroundImage:[UIImage imageNamed:@"NavigationBar_title"] forState:UIControlStateNormal];
 }
 
 #pragma mark - table datasource
@@ -128,7 +149,6 @@ static BOOL firstInit = true;
     } page:++self.page];
 }
 
-
 // 设置距离上次刷新的时间
 - (void)setRefreshTitle{
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
@@ -158,6 +178,14 @@ static BOOL firstInit = true;
     return height;
 }
 
+// 刷新 Messages 数量的操作
+- (void)refreshMessagesNumber:(NSNotification *)notification{
+    NSString *messagesNumber = [[[notification userInfo] objectForKey:@"data"] objectForKey:@"events"];
+    BBBadgeBarButtonItem *barButton = (BBBadgeBarButtonItem *)self.navigationItem.rightBarButtonItem;
+    barButton.badgeBGColor = [[MXUtil sharedUtil] getUIColor:@"2a5caa"];
+    barButton.badgeValue = [NSString stringWithFormat:@"%@",messagesNumber];
+}
+
 // 点击进入文章的详细页面
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     [ArticleStore sharedStore].currentShowArticleId = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"id"];
@@ -168,5 +196,12 @@ static BOOL firstInit = true;
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
 }
 
+- (IBAction)sliderRight:(id)sender {
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
+}
+
+- (IBAction)titleButtonAction:(id)sender {
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+}
 
 @end
