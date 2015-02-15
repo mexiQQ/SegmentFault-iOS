@@ -10,7 +10,9 @@
 
 @interface MXUtil : NSObject
 + (MXUtil *)sharedUtil;
-- (void) showMessageScreen:(NSString *)value viewController:(UINavigationController *)controller;
+- (void) showMessageScreen:(NSString *)value;
 - (NSString *) rexMake:(NSString *)str;
 - (NSString *) formatHTMLFromMarkdown:(NSString *)str;
+- (UIColor *)getUIColor:(NSString*)hexColorString;
+- (id) rexMake:(NSString *)str rex:(NSString *)rex;
 @end

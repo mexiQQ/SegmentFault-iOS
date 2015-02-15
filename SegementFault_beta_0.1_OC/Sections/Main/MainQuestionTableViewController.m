@@ -8,6 +8,8 @@
 
 #import "MainQuestionTableViewController.h"
 #import "DetailQuestionStore.h"
+#import "DetailQuestionTableViewController.h"
+#import "BBBadgeBarButtonItem.h"
 static BOOL firstInit = true;
 
 @interface MainQuestionTableViewController ()
@@ -18,15 +20,33 @@ static BOOL firstInit = true;
 @end
 
 @implementation MainQuestionTableViewController
+@synthesize rightBarItem = _rightBarItem;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     firstInit = true;
+    
+    // 注册用于刷新 messages 数量的观察者
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMessagesNumber:) name:@"refreshMessagesNumber" object:nil];
+    
+    [self setupRightBarItem];
     [self setupTableView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+// 设置 barButton
+- (void)setupRightBarItem{
+    UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 26)];
+    [customButton setImage:[UIImage imageNamed:@"note"] forState:UIControlStateNormal];
+    [customButton addTarget:self action:@selector(sliderRight:) forControlEvents:UIControlEventTouchUpInside];
+    BBBadgeBarButtonItem *barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
+    barButton.badgeValue = @"";
+    barButton.badgeOriginX = 20;
+    barButton.badgeOriginY = -9;
+    self.navigationItem.rightBarButtonItem = barButton;
 }
 
 #pragma mark - table datasource
@@ -142,7 +162,10 @@ static BOOL firstInit = true;
 
 // 设置cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    QuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    QuestionTableViewCell *cell;
+    if(!cell){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
+    }
     
     [cell configureForCell:[self.questions objectAtIndex:indexPath.row]];
     [cell setNeedsLayout];
@@ -164,6 +187,13 @@ static BOOL firstInit = true;
     
     // 跳转
     [self performSegueWithIdentifier:@"gotoQuestionDetail" sender:self];
+}
+
+// 刷新 Messages 数量的操作
+- (void)refreshMessagesNumber:(NSNotification *)notification{
+    NSString *messagesNumber = [[[notification userInfo] objectForKey:@"data"] objectForKey:@"events"];
+    BBBadgeBarButtonItem *barButton = (BBBadgeBarButtonItem *)self.navigationItem.rightBarButtonItem;
+    barButton.badgeValue = [NSString stringWithFormat:@"%@",messagesNumber];
 }
 
 // 点击弹出左边汉堡菜单

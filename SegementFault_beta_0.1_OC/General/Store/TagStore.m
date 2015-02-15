@@ -30,7 +30,8 @@ static TagStore *store = nil;
         NSMutableArray *array = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"tags"]];
         return array;
     }else{
-        return [[NSMutableArray alloc] init];
+        NSArray *defaultTags = @[@"iOS",@"python",@"ruby"];
+        return [[NSMutableArray alloc] initWithArray:defaultTags];
     }
 }
 

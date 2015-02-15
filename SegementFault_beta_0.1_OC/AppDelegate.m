@@ -22,15 +22,14 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     
-    UITabBarController *mainViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"main"];
-    
-    UIViewController *leftDrawer = [mainStoryboard instantiateViewControllerWithIdentifier:@"menu"];
-    UIViewController * rightDrawer = [[UIViewController alloc] init];
-    rightDrawer.view.backgroundColor = [UIColor greenColor];
-    
+    UITabBarController *mainViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainPage"];
+    UIViewController *leftDrawer = [mainStoryboard instantiateViewControllerWithIdentifier:@"menuPage"];
+    UIViewController *rightDrawer = [mainStoryboard instantiateViewControllerWithIdentifier:@"messagePage"];
+    //UIViewController *rightDrawer = [[UIViewController alloc] init];
+    //UIViewController *leftDrawer = [[UIViewController alloc] init];
+
     MMDrawerController* drawerController = [[MMDrawerController alloc]
                                             initWithCenterViewController:mainViewController
                                             leftDrawerViewController:leftDrawer
@@ -42,6 +41,9 @@
     
     window.rootViewController = drawerController;
     [window makeKeyAndVisible];
+    
+    // 注册查看消息的页面
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(readMessage:) name:@"readMessage" object:nil];
     
     [self setupSocial];
     return YES;
@@ -69,6 +71,15 @@
     
     [ShareSDK connectQQWithAppId:@"100522525" qqApiCls:[QQApiInterface class]];
     
+    [ShareSDK connectQZoneWithAppKey:@"100522525"
+                           appSecret:@"847a2742c2fe5d6c13e5fbb68967f128"
+                   qqApiInterfaceCls:[QQApiInterface class]
+                     tencentOAuthCls:[TencentOAuth class]];
+    
+    //导入QQ互联和QQ好友分享需要的外部库类型，如果不需要QQ空间SSO和QQ好友分享可以不调用此方法
+    [ShareSDK importQQClass:[QQApiInterface class]
+            tencentOAuthCls:[TencentOAuth class]];
+    
     //添加微信应用 注册网址 http://open.weixin.qq.com
     [ShareSDK connectWeChatWithAppId:@"wx3e23410dafa9a06b" appSecret:@"c9323c787d46fe7b2eac56551e1facf0" wechatCls:[WXApi class]];
     
@@ -90,6 +101,15 @@
                           consumerKey:@"segmentfault"
                        consumerSecret:@"1a5aa3845a630eec"];
      */
+}
+
+- (void)readMessage:(NSNotification *)notification{
+    MMDrawerController *draw = (MMDrawerController *)window.rootViewController;
+    if(draw.maximumRightDrawerWidth == [[UIScreen mainScreen] bounds].size.width){
+        [draw setMaximumRightDrawerWidth:200];
+    }else{
+        [draw setMaximumRightDrawerWidth:[[UIScreen mainScreen] bounds].size.width];
+    }
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{

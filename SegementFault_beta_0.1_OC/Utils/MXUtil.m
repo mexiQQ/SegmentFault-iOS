@@ -24,8 +24,8 @@ static MXUtil *util = nil;
 }
 
 // 弹框消息通知用户
-- (void)showMessageScreen:(NSString *)value viewController:(UINavigationController *)controller{
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:controller.view animated:YES];
+- (void)showMessageScreen:(NSString *)value{
+    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:[UIApplication sharedApplication].keyWindow animated:YES];
     hud.mode = MBProgressHUDModeText;
     hud.labelText = value;
     hud.margin = 10.f;
@@ -36,10 +36,10 @@ static MXUtil *util = nil;
 
 // 替换图片链接地址
 - (NSString *) rexMake:(NSString *)str{
-    NSString *parten2 = @"\\/img\\/\\w+";
+    NSString *parten = @"\\/img\\/\\w+";
     NSMutableArray *array = [[NSMutableArray alloc] init];
     NSError* error = NULL;
-    NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:parten2 options:NSRegularExpressionAnchorsMatchLines error:&error];
+    NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:parten options:NSRegularExpressionAnchorsMatchLines error:&error];
     NSArray* match = [reg matchesInString:str options:NSMatchingWithoutAnchoringBounds range:NSMakeRange(0, [str length])];
     if (match.count != 0){
         for (NSTextCheckingResult *matc in match){
@@ -66,4 +66,41 @@ static MXUtil *util = nil;
     NSString *htmlString = [NSString stringWithFormat:textFileContents,str];
     return [self rexMake:htmlString];
 }
+
+// 从 16 进制的数值中抽取颜色
+- (UIColor *)getUIColor:(NSString*)hexColorString
+{
+    unsigned int red,green,blue;
+    NSRange range;
+    range.length = 2;
+    
+    range.location = 0;
+    [[NSScanner scannerWithString:[hexColorString substringWithRange:range]]scanHexInt:&red];
+    
+    range.location = 2;
+    [[NSScanner scannerWithString:[hexColorString substringWithRange:range]]scanHexInt:&green];
+    
+    range.location = 4;
+    [[NSScanner scannerWithString:[hexColorString substringWithRange:range]]scanHexInt:&blue];
+    
+    //要进行颜色的RGB设置，要进行对255.0的相除（与其他语言不同）
+    return [UIColor colorWithRed:(float)(red/255.0f)green:(float)(green / 255.0f) blue:(float)(blue / 255.0f)alpha:1.0f];
+}
+
+// 替换图片链接地址
+- (id) rexMake:(NSString *)str rex:(NSString *)rex{
+    NSMutableArray *array = [[NSMutableArray alloc] init];
+    NSError* error = NULL;
+    NSRegularExpression *reg = [NSRegularExpression regularExpressionWithPattern:rex options:NSRegularExpressionAnchorsMatchLines error:&error];
+    NSArray* match = [reg matchesInString:str options:NSMatchingWithoutAnchoringBounds range:NSMakeRange(0, [str length])];
+    if (match.count != 0){
+        for (NSTextCheckingResult *matc in match){
+            NSRange range = [matc range];
+            [array addObject:[str substringWithRange:range]];
+        }
+        return array;
+    }
+    return str;
+}
+
 @end

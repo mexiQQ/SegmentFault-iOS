@@ -144,7 +144,10 @@ static BOOL firstInit = true;
 
 // 设置cell的高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    ArticleTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"articleCell"];
+    static ArticleTableViewCell *cell;
+    if(!cell){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"articleCell"];
+    }
     
     [cell configureForCell:[self.articles objectAtIndex:indexPath.row]];
     [cell setNeedsLayout];

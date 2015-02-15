@@ -1,4 +1,5 @@
 PODS:
+  - BBBadgeBarButtonItem (1.1)
   - MBProgressHUD (0.9)
   - MMDrawerController (0.5.7):
     - MMDrawerController/Core (= 0.5.7)
@@ -14,22 +15,28 @@ PODS:
     - MMDrawerController/Core
   - MMMarkdown (0.4.1)
   - MXMarkdownKeyboard (0.0.4)
+  - MXOAuthSignUtil (0.1.3):
+    - STHTTPRequest (~> 1.0.2)
   - ObjectiveSugar (1.1.0)
   - STHTTPRequest (1.0.2)
 
 DEPENDENCIES:
+  - BBBadgeBarButtonItem (~> 1.1)
   - MBProgressHUD (~> 0.9)
   - MMDrawerController (~> 0.5.7)
   - MMMarkdown (~> 0.4.1)
   - MXMarkdownKeyboard (~> 0.0.4)
+  - MXOAuthSignUtil (~> 0.1.3)
   - ObjectiveSugar
   - STHTTPRequest (~> 1.0.2)
 
 SPEC CHECKSUMS:
+  BBBadgeBarButtonItem: 457055ec6c09197e78e681df74062ad9acb29836
   MBProgressHUD: 2038dbcf3dce73215abed6001657043d53aa79a8
   MMDrawerController: c3ab7a318ddc7e2bcd133139c3161af08c6e1197
   MMMarkdown: c82c9024dd80f088312909023dd6d6d013bd668f
   MXMarkdownKeyboard: 73e39e89cdfcab57791b7f8fd1f1ec52e62b2f73
+  MXOAuthSignUtil: df5b4f6d6666c1550cb18def9f1ed490a48ea53c
   ObjectiveSugar: f48793f5902c77cfc02a4ce46d2e8ecddcad4dc2
   STHTTPRequest: 9aee3fd1557dcaa380198a9e56d36527ede342d1
 

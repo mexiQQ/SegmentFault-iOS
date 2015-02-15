@@ -10,6 +10,7 @@
 #import "DetailArticleStore.h"
 #import "DetailArticleTableViewCell.h"
 #import "DetailArticleDataSource.h"
+#import "MessageStore.h"
 #import <ShareSDK/ShareSDK.h>
 #import "MXUtil.h"
 
@@ -154,12 +155,12 @@
                                     if (state == SSResponseStateSuccess)
                                     {
                                         NSLog(NSLocalizedString(@"TEXT_ShARE_SUC", @"分享成功"));
-                                        [[MXUtil sharedUtil] showMessageScreen:@"分享成功" viewController:self.navigationController];
+                                        [[MXUtil sharedUtil] showMessageScreen:@"分享成功"];
                                     }
                                     else if (state == SSResponseStateFail)
                                     {
                                         NSLog(NSLocalizedString(@"TEXT_ShARE_FAI", @"分享失败,错误码:%d,错误描述:%@"), [error errorCode], [error errorDescription]);
-                                        [[MXUtil sharedUtil] showMessageScreen:@"分享失败" viewController:self.navigationController];
+                                        [[MXUtil sharedUtil] showMessageScreen:@"分享失败"];
                                     }
                                 }];
     }else if(buttonIndex == 1){
@@ -171,7 +172,12 @@
     }
 }
 
+
 - (IBAction)backAction:(id)sender {
+    if([MessageStore sharedStore].isMessages){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"readMessage" object:self userInfo:nil];
+        [MessageStore sharedStore].isMessages = false;
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

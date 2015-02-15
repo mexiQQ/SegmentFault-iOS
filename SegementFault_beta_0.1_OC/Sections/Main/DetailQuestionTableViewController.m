@@ -12,6 +12,7 @@
 #import "DetailQuestionTableViewCell.h"
 #import "DetailAnswerTableViewCell.h"
 #import "UIButton+Bootstrap.h"
+#import "MessageStore.h"
 
 @interface DetailQuestionTableViewController ()
 @property (nonatomic, strong) DetailQuestionDataSource   *myDetailQuestionDataSource;
@@ -32,20 +33,6 @@
 }
 
 #pragma mark - table datasource
-
-// 第一次加载数据
-- (void)firstInitData{
-    // 更新界面
-    [UIView animateWithDuration:0.25
-                          delay:0
-                        options:UIViewAnimationOptionBeginFromCurrentState
-                     animations:^(void){
-                         self.tableView.contentOffset = CGPointMake(0, -self.refreshControl.frame.size.height-15);
-                     } completion:^(BOOL finished){
-                         [self.refreshControl beginRefreshing];
-                         [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
-                     }];
-}
 
 // 设置下拉刷新进度条
 - (void) setupRefreshControl{
@@ -69,6 +56,20 @@
         self.tableView.dataSource = self.myDetailQuestionDataSource;
     }];
 }
+
+// 第一次加载数据
+- (void)firstInitData{
+    [UIView animateWithDuration:0.25
+                          delay:0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         self.tableView.contentOffset = CGPointMake(0, -self.refreshControl.frame.size.height-20);
+                     } completion:^(BOOL finished){
+                         [self.refreshControl beginRefreshing];
+                         [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
+                     }];
+}
+
 
 - (void)setupTableView{
     [self setupRefreshControl];
@@ -182,6 +183,10 @@
 }
 
 - (IBAction)backAction:(id)sender {
+    if([MessageStore sharedStore].isMessages){
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"readMessage" object:self userInfo:nil];
+        [MessageStore sharedStore].isMessages = false;
+    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

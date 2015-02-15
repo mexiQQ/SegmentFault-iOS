@@ -9,7 +9,6 @@
 #import "LeftViewController.h"
 
 @interface LeftViewController ()
-
 @end
 
 @implementation LeftViewController
@@ -23,12 +22,23 @@
     _mytableview.dataSource = self;
     [_mytableview setSeparatorStyle:UITableViewCellSeparatorStyleSingleLineEtched];
     
+    // 注册通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(updateTags:) name:@"TagsChanged" object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:@"loginSuccess" object:nil];
     
+    // 初始化侧边栏菜单
     NSArray *userhelp = @[@"Ask Questions"];
+    
     NSMutableArray *sites = [[TagStore sharedStore] getCurrentTags];
     [sites insertObject:@"首页" atIndex:0];
-    NSArray *others = @[@"About",@"Login Out"];
+    
+    NSString *temp = @"Login";
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"user"])
+    {
+        temp = @"Login Out";
+    }
+    NSArray *a = @[@"About",temp];
+    NSMutableArray *others = [[NSMutableArray alloc] initWithArray:a];
     
     _cellContent = [[NSMutableArray alloc] init];
     [_cellContent addObject:userhelp];
@@ -39,72 +49,80 @@
 
 #pragma mark - UITableViewDataSource
 
-//返回Section的数目
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
-{
+// 返回 Section 的数目
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
     return 3;
 }
 
-//返回每个Section的cell数目
+// 返回每个 Section 的 cell 数目
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    if (section == 0)
-    {
+    if (section == 0){
         return ((NSArray *)[_cellContent objectAtIndex:0]).count;
-    }
-    else if (section == 1)
-    {
+    }else if (section == 1){
         return ((NSArray *)[_cellContent objectAtIndex:1]).count;
-    }
-    else
-    {
+    }else{
         return ((NSArray *)[_cellContent objectAtIndex:2]).count;
     }
 }
 
-//对每个cell的内容进行定制
+// 对每个 cell 的内容进行定制
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
     NSString * MenuCellIdentifier = @"MenuCell";
     MeunTableViewCell* cell = [_mytableview dequeueReusableCellWithIdentifier:MenuCellIdentifier];
-    if (cell == nil)
-    {
+    if (cell == nil){
         cell = [[MeunTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                         reuseIdentifier:MenuCellIdentifier];
     }
+    
+    // 设置 cell 标题和图标
     NSString *title = [[_cellContent objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
     cell.menuTitle.text = title;
     cell.menuImage.image = [UIImage imageNamed:[NSString stringWithFormat:@"%@.png",title]];
+    
+    //设置 cell 背景色和view
     cell.backgroundColor = [UIColor clearColor];
     cell.selectedBackgroundView = [[UIView alloc] initWithFrame:cell.frame];
+    
+    // 设置选中 cell 的颜色
     cell.selectedBackgroundView.backgroundColor = [[UIColor alloc] initWithRed:0/255.0f green:154/255.0f blue:97/255.0f alpha:0.3];
     return cell;
 }
 
 #pragma mark - UITableViewDelegate
 
-//指定每个Section的header高度
-- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section
-{
+// 指定每个 Section 的 header 高度
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section{
     if (section ==0)
         return 80.0f;
     else
         return 30.0f;
 }
 
-//指定每个Section的header内容
-- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section
-{
-    if (section == 0)
-    {
+// 指定每个 Section 的 header 内容
+- (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section{
+    if (section == 0){
         LeftTableViewUserSectionView *header = [[[NSBundle mainBundle] loadNibNamed: @"MenuTableViewUserSection"
                                                                           owner: self
                                                                         options: nil] lastObject];
-        header.userName.text = @"么西QQ";
-        header.userAvator.image = [UIImage imageNamed:@"t_avator"];
-        header.userResu.text = @"登录后定制感兴趣的内容";
+        NSDictionary *user = [[NSUserDefaults standardUserDefaults] objectForKey:@"user"];
+        if(user){
+            // 使用 GCD 异步获取用户头像
+            __block NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"http://sfault-avatar.b0.upaiyun.com%@",[user objectForKey:@"avatar"]]];
+            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+                NSData *data = [NSData dataWithContentsOfURL:url];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    header.userAvator.image = [UIImage imageWithData:data];
+                });
+            });
+            header.userName.text = [user objectForKey:@"name"];
+            header.userResu.text = [NSString stringWithFormat:@"%@ 声望",[user objectForKey:@"rank"]];
+        }else{
+            header.userName.text = @"Anonymous";
+            header.userAvator.image = [UIImage imageNamed:@"t_avator"];
+            header.userResu.text = @"登录后定制感兴趣的内容";
+        }
         return header;
-    }
-    else if (section == 1)
-    {
+    }else if (section == 1){
         LeftTableViewSectionView *header = [[[NSBundle mainBundle] loadNibNamed: @"MenuTableViewSectionView"
                                                         owner: self
                                                       options: nil] lastObject];
@@ -121,49 +139,51 @@
     }
 }
 
-//指定点击每个 Cell 后执行的操作
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (indexPath.section == 0)
-    {
+// 指定点击每个 Cell 后执行的操作
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    if (indexPath.section == 0){
         return;
     }
-    else if(indexPath.section==1)
-    {
+    else if(indexPath.section==1){
         UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-        UITabBarController *mainViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"main"];
+        UITabBarController *mainViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainPage"];
         [self.mm_drawerController setCenterViewController:mainViewController withCloseAnimation:YES completion:nil];
         [TagStore sharedStore].currentShowTag = [[_cellContent objectAtIndex:indexPath.section] objectAtIndex:indexPath.row];
-    }
-    else
-    {
-        switch (indexPath.row)
-        {
-            case 0:
-            {
+    }else{
+        switch (indexPath.row){
+            case 0:{
                 break;
-            }
-            case 1:{
-                UIActionSheet *actionSheet = [[UIActionSheet alloc]
-                                              initWithTitle:nil
-                                              delegate:self
-                                              cancelButtonTitle:@"取消"
-                                              destructiveButtonTitle:@"退出账号"
-                                              otherButtonTitles:nil,nil];
-                actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-                [actionSheet showInView:self.view];
-                break;
+            }case 1:{
+                if([[NSUserDefaults standardUserDefaults] objectForKey:@"user"]){
+                    UIActionSheet *actionSheet = [[UIActionSheet alloc]
+                                                  initWithTitle:nil
+                                                  delegate:self
+                                                  cancelButtonTitle:@"取消"
+                                                  destructiveButtonTitle:@"退出账号"
+                                                  otherButtonTitles:nil,nil];
+                    actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+                    [actionSheet showInView:self.view];
+                    break;
+                }else{
+                    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                    UIViewController *loginViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"login"];
+                    loginViewController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
+                    [self presentViewController:loginViewController animated:YES completion:nil];
+                    break;
+                }
             }
         }
     }
 }
 
-//点击ActionSheet的操作
+// 点击 ActionSheet 的操作
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex == 0){
-        NSLog(@"hello");
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"user"];
+        [_cellContent[2] replaceObjectAtIndex:1 withObject:@"Login"];
+        [_mytableview reloadData];
     }else{
-        NSLog(@"hi");
+        NSLog(@"取消");
     }
 }
 
@@ -171,16 +191,20 @@
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     UIViewController *addMenuController = [mainStoryboard instantiateViewControllerWithIdentifier:@"addMenu"];
     addMenuController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
-    [self presentViewController:addMenuController animated:YES completion:^{
-        NSLog(@"hello world");
-    }];
+    [self presentViewController:addMenuController animated:YES completion:nil];
 }
 
 - (void)updateTags:(NSNotification *)notification{
     NSMutableArray *temp = [[TagStore sharedStore] getCurrentTags];
     [temp insertObject:@"首页" atIndex:0];
     [_cellContent replaceObjectAtIndex:1 withObject:temp];
-    
     [_mytableview reloadData];
 }
+
+- (void)loginSuccess:(NSNotification *)notification{
+    NSLog(@"登录成功");
+    [_cellContent[2] replaceObjectAtIndex:1 withObject:@"Login Out"];
+    [_mytableview reloadData];
+}
+
 @end

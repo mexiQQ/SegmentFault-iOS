@@ -62,6 +62,13 @@
     [self setBackgroundImage:[self buttonImageFromColor:[UIColor colorWithRed:210/255.0 green:48/255.0 blue:51/255.0 alpha:1]] forState:UIControlStateHighlighted];
 }
 
+-(void)sfStyle{
+    [self bootstrapStyle];
+    self.backgroundColor = [UIColor colorWithRed:24/255.0 green:140/255.0 blue:79/255.0 alpha:1];
+    self.layer.borderColor = [[UIColor colorWithRed:24/255.0 green:140/255.0 blue:79/255.0 alpha:1] CGColor];
+    [self setBackgroundImage:[self buttonImageFromColor:[UIColor colorWithRed:51/255.0 green:119/255.0 blue:172/255.0 alpha:1]] forState:UIControlStateHighlighted];
+}
+
 - (void)addAwesomeIcon:(FAIcon)icon beforeTitle:(BOOL)before
 {
     NSString *iconString = [NSString stringFromAwesomeIcon:icon];
