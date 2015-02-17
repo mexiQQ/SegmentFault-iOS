@@ -9,6 +9,7 @@
 #import "RightTableViewController.h"
 #import "QuestionStore.h"
 #import "DetailQuestionStore.h"
+#import "DetailArticleStore.h"
 #import "ArticleStore.h"
 #import "MessageStore.h"
 #import "MessageDataSource.h"
@@ -79,9 +80,6 @@
 
 // 设置点击选择
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    // 发出通知重新设置右边栏宽度
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"readMessage" object:self userInfo:nil];
-    
     // 设定问题文章详细页面为消息模式
     [MessageStore sharedStore].isMessages = true;
     
@@ -92,6 +90,9 @@
     NSArray *id_ = [[MXUtil sharedUtil] rexMake:url rex:@"[0-9]+(?=\\?)"];
     
     if([type isEqualToString:@"question"]){
+        // 发出通知重新设置右边栏宽度
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"readMessage" object:self userInfo:nil];
+        
         // 清空上一个问题的所有高度信息
         [DetailQuestionStore sharedStore].answersHeights=nil;
         [DetailQuestionStore sharedStore].questionHeight=nil;
@@ -101,10 +102,18 @@
         UIViewController *deatailQuestionController = [mainStoryboard instantiateViewControllerWithIdentifier:@"detailQuestionPage"];
         [self.navigationController pushViewController:deatailQuestionController animated:YES];
     }else if([type isEqualToString:@"article"]){
+        // 发出通知重新设置右边栏宽度
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"readMessage" object:self userInfo:nil];
+        
+        // 清空上一个 article 高度信息
+        [DetailArticleStore sharedStore].articleHeight = nil;
+        
         [ArticleStore sharedStore].currentShowArticleId = id_[0];
         UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UIViewController *deatailQuestionController = [mainStoryboard instantiateViewControllerWithIdentifier:@"detailArticlePage"];
         [self.navigationController pushViewController:deatailQuestionController animated:YES];
+    }else{
+        [[MXUtil sharedUtil] showMessageScreen:@"暂不支持此操作"];
     }
 }
 
@@ -127,6 +136,7 @@
 - (void)getMessageNumber:(NSNotification *)notification{
     NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/user/stat?token=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
     NSError *error = nil;
+    NSLog(@"user token is %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]);
     STHTTPRequest *r = [STHTTPRequest requestWithURL:[NSURL URLWithString:url]];
     [r startSynchronousWithError:&error];
     NSData *data = r.responseData;

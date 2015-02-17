@@ -138,6 +138,9 @@
 		AF7992411A7F62E100BBD602 /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AF7992401A7F62E100BBD602 /* MessageUI.framework */; };
 		AF7FA63D1A15D79500EEC0CB /* MenuTableViewSectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = AF7FA63C1A15D79500EEC0CB /* MenuTableViewSectionView.xib */; };
 		AF7FA6401A15D8AE00EEC0CB /* LeftTableViewSectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = AF7FA63F1A15D8AE00EEC0CB /* LeftTableViewSectionView.m */; };
+		AF897E281A91BB8C00AC5555 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF897E271A91BB8C00AC5555 /* AboutViewController.m */; };
+		AF897E2D1A91C3BB00AC5555 /* about.html in Resources */ = {isa = PBXBuildFile; fileRef = AF897E2B1A91C3BB00AC5555 /* about.html */; };
+		AF897E2E1A91C3BB00AC5555 /* assets in Resources */ = {isa = PBXBuildFile; fileRef = AF897E2C1A91C3BB00AC5555 /* assets */; };
 		AF98B6F11A8ADD1000951113 /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF98B6F01A8ADD1000951113 /* LoginViewController.m */; };
 		AF98B6F51A8B09F200951113 /* sf-logo-cmyk_dark.png in Resources */ = {isa = PBXBuildFile; fileRef = AF98B6F41A8B09F200951113 /* sf-logo-cmyk_dark.png */; };
 		AF98B6FC1A8B0D9B00951113 /* cancelX.png in Resources */ = {isa = PBXBuildFile; fileRef = AF98B6FA1A8B0D9B00951113 /* cancelX.png */; };
@@ -343,6 +346,10 @@
 		AF7FA63C1A15D79500EEC0CB /* MenuTableViewSectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewSectionView.xib; sourceTree = "<group>"; };
 		AF7FA63E1A15D8AE00EEC0CB /* LeftTableViewSectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LeftTableViewSectionView.h; sourceTree = "<group>"; };
 		AF7FA63F1A15D8AE00EEC0CB /* LeftTableViewSectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LeftTableViewSectionView.m; sourceTree = "<group>"; };
+		AF897E261A91BB8C00AC5555 /* AboutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AboutViewController.h; path = Sections/Left/AboutViewController.h; sourceTree = "<group>"; };
+		AF897E271A91BB8C00AC5555 /* AboutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AboutViewController.m; path = Sections/Left/AboutViewController.m; sourceTree = "<group>"; };
+		AF897E2B1A91C3BB00AC5555 /* about.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = about.html; sourceTree = "<group>"; };
+		AF897E2C1A91C3BB00AC5555 /* assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = assets; sourceTree = "<group>"; };
 		AF98B6EF1A8ADD1000951113 /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LoginViewController.h; path = Sections/Left/LoginViewController.h; sourceTree = "<group>"; };
 		AF98B6F01A8ADD1000951113 /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LoginViewController.m; path = Sections/Left/LoginViewController.m; sourceTree = "<group>"; };
 		AF98B6F41A8B09F200951113 /* sf-logo-cmyk_dark.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sf-logo-cmyk_dark.png"; sourceTree = "<group>"; };
@@ -470,10 +477,12 @@
 		AF21DD641A7B38BE003612E2 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				AF897E2B1A91C3BB00AC5555 /* about.html */,
 				AF21DD651A7B38BE003612E2 /* default.min.css */,
 				AF21DD661A7B38BE003612E2 /* global.css */,
 				AF21DD671A7B38BE003612E2 /* highlight.min.js */,
 				AF21DDA81A7B38BE003612E2 /* template.html */,
+				AF897E2C1A91C3BB00AC5555 /* assets */,
 				AF21DD681A7B38BE003612E2 /* Image */,
 				AF21DD911A7B38BE003612E2 /* tagImge */,
 			);
@@ -745,6 +754,8 @@
 				AF98B6F01A8ADD1000951113 /* LoginViewController.m */,
 				AF98B7001A8B464500951113 /* BindViewController.h */,
 				AF98B7011A8B464500951113 /* BindViewController.m */,
+				AF897E261A91BB8C00AC5555 /* AboutViewController.h */,
+				AF897E271A91BB8C00AC5555 /* AboutViewController.m */,
 			);
 			name = Left;
 			sourceTree = "<group>";
@@ -794,6 +805,8 @@
 				AFDA898F1A48101200771476 /* LeftTableViewUserSectionView.m */,
 				AF9E87A21A5F8B09006D00AF /* EditTagTableViewCell.h */,
 				AF9E87A31A5F8B09006D00AF /* EditTagTableViewCell.m */,
+				AFD511811A8C950600AB5C34 /* MessageTableViewCell.h */,
+				AFD511821A8C950600AB5C34 /* MessageTableViewCell.m */,
 				AF0A0C981A81FF91001CC174 /* DetailQuestionTableViewCell.h */,
 				AF0A0C991A81FF91001CC174 /* DetailQuestionTableViewCell.m */,
 				AF4919371A722FFA00EEFFFF /* DetailArticleTableViewCell.h */,
@@ -804,8 +817,6 @@
 				AF49193B1A72320D00EEFFFF /* DetailCommentTableViewCell.m */,
 				AF0A0C9E1A8202F5001CC174 /* DetailWriteCommentTableViewCell.h */,
 				AF0A0C9F1A8202F5001CC174 /* DetailWriteCommentTableViewCell.m */,
-				AFD511811A8C950600AB5C34 /* MessageTableViewCell.h */,
-				AFD511821A8C950600AB5C34 /* MessageTableViewCell.m */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1041,6 +1052,7 @@
 				AF21DDC91A7B38BE003612E2 /* icon_sina@2x.png in Resources */,
 				AF21DDBC1A7B38BE003612E2 /* icon_github.png in Resources */,
 				AF21DDC61A7B38BE003612E2 /* icon_rate.png in Resources */,
+				AF897E2D1A91C3BB00AC5555 /* about.html in Resources */,
 				AF21DDA91A7B38BE003612E2 /* default.min.css in Resources */,
 				AF21DDD61A7B38BE003612E2 /* Ask Questions.png in Resources */,
 				AF21DDE81A7B38BE003612E2 /* vim.png in Resources */,
@@ -1050,6 +1062,7 @@
 				AF21DDAB1A7B38BE003612E2 /* highlight.min.js in Resources */,
 				AFD762EE1A14BCF6004826EC /* Images.xcassets in Resources */,
 				AF21DDDC1A7B38BE003612E2 /* iOS.png in Resources */,
+				AF897E2E1A91C3BB00AC5555 /* assets in Resources */,
 				AF21DDE21A7B38BE003612E2 /* mysql.png in Resources */,
 				AF21DDDE1A7B38BE003612E2 /* jquery.png in Resources */,
 				AF21DDE11A7B38BE003612E2 /* mongodb.png in Resources */,
@@ -1137,6 +1150,7 @@
 				AF59ABA41A1594DF0017DA21 /* LeftViewController.m in Sources */,
 				AFFB4C4D1A836CA400923088 /* BaseModel.m in Sources */,
 				AF1A8F351A8A099600A17E17 /* UIButton+Bootstrap.m in Sources */,
+				AF897E281A91BB8C00AC5555 /* AboutViewController.m in Sources */,
 				AF2CC7C11A5E29DD000B1D37 /* ArticlesDataSource.m in Sources */,
 				AF1A8F341A8A099600A17E17 /* NSString+FontAwesome.m in Sources */,
 				AF9E879E1A5F84BD006D00AF /* TagDataSource.m in Sources */,

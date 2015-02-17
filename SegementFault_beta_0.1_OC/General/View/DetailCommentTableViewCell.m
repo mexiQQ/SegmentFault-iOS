@@ -9,15 +9,24 @@
 #import "DetailCommentTableViewCell.h"
 
 @implementation DetailCommentTableViewCell
-
+@synthesize commentContent = _commentContent;
+@synthesize commentLike = _commentLike;
+@synthesize commentUsername = _commentUsername;
+@synthesize commentUserRepu = _commentUserRepu;
 - (void)awakeFromNib {
     // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
+}
 
-    // Configure the view for the selected state
+// 配置 cell
+- (void)configureForCell:(NSDictionary *)item{
+    self.commentContent.text = [item objectForKey:@"originalText"];
+    self.commentUsername.text = [[item objectForKey:@"user"] objectForKey:@"name"];
+    self.commentUserRepu.text = [item objectForKey:@"createdDate"];
+    [self.commentLike setTitle:[item objectForKey:@"votes" ] forState:UIControlStateNormal];
 }
 
 @end

@@ -9,6 +9,7 @@
 #import "MainAticlesTableViewController.h"
 #import "DetailArticleTableViewController.h"
 #import "BBBadgeBarButtonItem.h"
+#import "DetailArticleStore.h"
 #import "MXUtil.h"
 static BOOL firstInit = true;
 
@@ -188,6 +189,10 @@ static BOOL firstInit = true;
 
 // 点击进入文章的详细页面
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    // 清空 article 的高度信息
+    [DetailArticleStore sharedStore].articleHeight=nil;
+    
+    // 执行跳转
     [ArticleStore sharedStore].currentShowArticleId = [[self.articles objectAtIndex:indexPath.row] objectForKey:@"id"];
     [self performSegueWithIdentifier:@"gotoArticleDetail" sender:self];
 }

@@ -11,12 +11,15 @@
 #import "DetailArticleTableViewCell.h"
 #import "DetailArticleDataSource.h"
 #import "MessageStore.h"
+#import "DetailCommentTableViewCell.h"
+#import "UIButton+Bootstrap.h"
 #import <ShareSDK/ShareSDK.h>
 #import "MXUtil.h"
 
 @interface DetailArticleTableViewController ()
 @property (nonatomic, strong) DetailArticleDataSource   *myDetailArticleDataSource;
 @property (nonatomic,strong) NSDictionary *articleDic;
+@property (nonatomic,strong) NSArray *commentsArray;
 @end
 
 @implementation DetailArticleTableViewController
@@ -39,7 +42,7 @@
                           delay:0
                         options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         self.tableView.contentOffset = CGPointMake(0, -self.refreshControl.frame.size.height-15);
+                         self.tableView.contentOffset = CGPointMake(0, -self.refreshControl.frame.size.height);
                      } completion:^(BOOL finished){
                          [self.refreshControl beginRefreshing];
                          [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
@@ -58,15 +61,17 @@
 
 // 设置 datasource 获取数据
 - (void)getLatestLoans{
-    [[DetailArticleStore sharedStore] readNewData:^(NSDictionary *dic) {
-        self.articleDic = dic;
-        self.myDetailArticleDataSource = [[DetailArticleDataSource alloc] initWithItems:dic cellIdentifier:@"detailArticleCell" configureCellBlock:^(DetailArticleTableViewCell *cell, NSDictionary *item) {
+    [[DetailArticleStore sharedStore] readNewData:^(NSDictionary *detailArticle,NSDictionary *detailComment) {
+        self.articleDic = [detailArticle objectForKey:@"data"];
+        self.commentsArray = [[detailComment objectForKey:@"data"] objectForKey:@"comment"];
+        self.myDetailArticleDataSource = [[DetailArticleDataSource alloc] initWithItems:self.articleDic andArray:self.commentsArray cellIdentifier:@"detailArticleCell" aconfigureCellBlock:^(id cell, id item) {
+            [cell configureForCell:item];
+        } bconfigureCellBlock:^(id cell, id item) {
             [cell configureForCell:item];
         }];
         [self.refreshControl endRefreshing];
         self.tableView.dataSource = self.myDetailArticleDataSource;
     }];
-
 }
 
 - (void)setupTableView{
@@ -78,12 +83,76 @@
 
 // 计算高度
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [DetailArticleStore sharedStore].articleHeight.floatValue;
+    if(0==indexPath.section){
+        NSNumber *a =(NSNumber *)[DetailArticleStore sharedStore].articleHeight;
+        if(a == nil){
+            return 80.01;
+        }else{
+            return a.floatValue;
+        }
+    }
+    static  DetailCommentTableViewCell *cell;
+    if(!cell){
+        cell = [tableView dequeueReusableCellWithIdentifier:@"detailCommentCell"];
+    }
+    
+    [cell configureForCell:[self.commentsArray objectAtIndex:indexPath.row]];
+    [cell setNeedsLayout];
+    [cell layoutIfNeeded];
+    
+    CGFloat height = [cell.contentView systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
+    height += 1;
+    return height;
 }
+
+// 计算 footView 高度
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section{
+    if(!self.articleDic){
+        return 0;
+    }else{
+        if(section == 0){
+            return 50;
+        }else{
+            return 0;
+        }
+    }
+}
+
+// 配置首尾 footView 内容
+- (UIView *)tableView:(UITableView *)tableView viewForFooterInSection:(NSInteger)section{
+    if(!self.articleDic){
+        UITableViewCell *cell = [[UITableViewCell alloc] init];
+        return cell;
+    }else{
+        if(section == 0){
+            UITableViewCell *cell = [[UITableViewCell alloc] initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 50)];
+            cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
+            
+            UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 100, 30)];
+            [label setFont:[UIFont boldSystemFontOfSize:20]];
+            label.text = @"2条评论";
+            
+            UIButton *a = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 140, 10, 60, 30)];
+            [a setTitle:@"关注" forState:UIControlStateNormal];
+            [a successStyle];
+            
+            UIButton *b = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 70, 10, 60, 30)];
+            [b setTitle:@"收藏" forState:UIControlStateNormal];
+            [b defaultStyle];
+            
+            [cell addSubview:a];
+            [cell addSubview:b];
+            [cell addSubview:label];
+            return cell;
+        }else{
+            return nil;
+        }
+    }
+}
+
 
 // 重新加载webView的高度
 - (void)refreshTableViewHeight:(NSNotification *)notification{
-    [DetailArticleStore sharedStore].isRefreshHeight = true;
     [self.tableView reloadData];
 }
 

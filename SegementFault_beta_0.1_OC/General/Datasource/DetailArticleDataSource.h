@@ -10,10 +10,14 @@
 
 @interface DetailArticleDataSource : ArrayDataSource
 
-@property (nonatomic, strong) NSDictionary *item;
+@property (nonatomic, strong) NSDictionary *articleDic;
+@property (nonatomic,strong) NSArray *commentsArray;
 
 - (id)initWithItems:(NSDictionary *)anItem
+           andArray:(NSArray *)items
      cellIdentifier:(NSString *)aCellIdentifier
- configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock;
+aconfigureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock
+bconfigureCellBlock:(TableViewCellConfigureBlock)bConfigureCellBlock;
+
 
 @end

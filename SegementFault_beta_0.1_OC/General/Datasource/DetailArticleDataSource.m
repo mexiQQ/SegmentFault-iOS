@@ -7,11 +7,12 @@
 //
 
 #import "DetailArticleDataSource.h"
+#import "DetailCommentTableViewCell.h"
 @interface DetailArticleDataSource ()
 
 @property (nonatomic, copy) NSString *cellIdentifier;
-@property (nonatomic, copy) TableViewCellConfigureBlock configureCellBlock;
-
+@property (nonatomic, copy) TableViewCellConfigureBlock aconfigureCellBlock;
+@property (nonatomic, copy) TableViewCellConfigureBlock bconfigureCellBlock;
 @end
 
 @implementation DetailArticleDataSource
@@ -22,30 +23,49 @@
 }
 
 - (id)initWithItems:(NSDictionary *)anItem
+           andArray:(NSArray *) items
      cellIdentifier:(NSString *)aCellIdentifier
- configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock
+ aconfigureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock
+bconfigureCellBlock:(TableViewCellConfigureBlock)bConfigureCellBlock
 {
     self = [super init];
     if (self) {
-        self.item = anItem;
+        self.articleDic = anItem;
+        self.commentsArray = items;
         self.cellIdentifier = aCellIdentifier;
-        self.configureCellBlock = [aConfigureCellBlock copy];
+        self.aconfigureCellBlock = [aConfigureCellBlock copy];
+        self.bconfigureCellBlock = [bConfigureCellBlock copy];
     }
     return self;
 }
 
 #pragma mark UITableViewDataSource
 
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
+    return 2;
+}
+
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    if(0==section){
+        return 1;
+    }else{
+        return self.commentsArray.count;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier
-                                                            forIndexPath:indexPath];
-    self.configureCellBlock(cell, self.item);
-    return cell;
+    if(indexPath.section == 0){
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.cellIdentifier
+                                                                forIndexPath:indexPath];
+        self.aconfigureCellBlock(cell, self.articleDic);
+        return cell;
+    }else{
+        DetailCommentTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailCommentCell"
+                                                                forIndexPath:indexPath];
+        [cell configureForCell:[self.commentsArray objectAtIndex:indexPath.row]];
+        return cell;
+    }
 }
 @end

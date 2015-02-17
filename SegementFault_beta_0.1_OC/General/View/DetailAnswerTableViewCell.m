@@ -28,7 +28,10 @@
     self.authorLabel.text = [answerModel.user objectForKey:@"name"];
     self.authorRateLabel.text =[answerModel.user objectForKey:@"rank"];
     self.productTime.text = answerModel.createdDate;
+    
+    // 使用此 tag 表示第几个回答，存储每个答案的高度
     self.indexTag = [NSString stringWithFormat:@"answer%d",(int)indexpath];
+    
     [self.contentWebView loadHTMLString:[[MXUtil sharedUtil] formatHTMLFromMarkdown:answerModel.parsedText] baseURL:[[NSBundle mainBundle] bundleURL]];
 }
 

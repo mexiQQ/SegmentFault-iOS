@@ -63,7 +63,7 @@
                           delay:0
                         options:UIViewAnimationOptionBeginFromCurrentState
                      animations:^(void){
-                         self.tableView.contentOffset = CGPointMake(0, -self.refreshControl.frame.size.height-20);
+                         self.tableView.contentOffset = CGPointMake(0, -self.refreshControl.frame.size.height);
                      } completion:^(BOOL finished){
                          [self.refreshControl beginRefreshing];
                          [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
@@ -152,7 +152,7 @@
             
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 100, 30)];
             [label setFont:[UIFont boldSystemFontOfSize:20]];
-            label.text = @"2个回答";
+            label.text = @"3个回答";
             
             UIButton *a = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 140, 10, 60, 30)];
             [a setTitle:@"关注" forState:UIControlStateNormal];

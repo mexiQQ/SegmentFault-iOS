@@ -152,6 +152,9 @@
     }else{
         switch (indexPath.row){
             case 0:{
+                UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+                UITabBarController *mainViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"aboutPage"];
+                [self.mm_drawerController setCenterViewController:mainViewController withCloseAnimation:YES completion:nil];
                 break;
             }case 1:{
                 if([[NSUserDefaults standardUserDefaults] objectForKey:@"user"]){

@@ -13,9 +13,8 @@
 
 @property (nonatomic,strong) NSNumber *articleHeight;
 @property (nonatomic,strong) NSNumber *commentHeight;
-@property (nonatomic) BOOL isRefreshHeight;
 
 +(DetailArticleStore *)sharedStore;
-- (void)readNewData:(void(^)(NSDictionary *))block;
+- (void)readNewData:(void(^)(NSDictionary *,NSDictionary *))block;
 
 @end
