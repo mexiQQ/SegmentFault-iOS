@@ -376,7 +376,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zwa-BE-dRY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3037" y="-273"/>
+            <point key="canvasLocation" x="2049" y="-1517"/>
         </scene>
         <!--Right Table View Controller-->
         <scene sceneID="r2C-IM-dL3">
@@ -438,7 +438,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Adi-LU-taZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1210" y="-902"/>
+            <point key="canvasLocation" x="1108" y="-910"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="WWQ-p4-HHX">
@@ -1388,6 +1388,52 @@
             </objects>
             <point key="canvasLocation" x="2049" y="344"/>
         </scene>
+        <!--Markdown Editor View Controller-->
+        <scene sceneID="lSA-I5-1d0">
+            <objects>
+                <viewController id="f9c-60-S0x" customClass="MarkdownEditorViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="p7O-rY-p8p"/>
+                        <viewControllerLayoutGuide type="bottom" id="wM5-SB-cMO"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tnJ-mT-Q40">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="rL2-55-Zyn">
+                        <nil key="title"/>
+                        <barButtonItem key="leftBarButtonItem" title="取消" id="IUm-2T-VTh">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cancelAction:" destination="f9c-60-S0x" id="Hdi-GV-ZIT"/>
+                            </connections>
+                        </barButtonItem>
+                        <button key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iwv-QU-u3W">
+                            <rect key="frame" x="96" y="7" width="128" height="30"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <fontDescription key="fontDescription" name="STHeitiTC-Medium" family="Heiti TC" pointSize="19"/>
+                            <state key="normal" title="撰写页面">
+                                <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                            </state>
+                        </button>
+                        <barButtonItem key="rightBarButtonItem" title="提交" id="Alp-7g-yrh">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="submitAction:" destination="f9c-60-S0x" id="3CB-3r-XdM"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="leftBarItem" destination="IUm-2T-VTh" id="Fgg-cl-a67"/>
+                        <outlet property="rightBarItem" destination="Alp-7g-yrh" id="8dc-Cg-tb8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EJb-oN-TjR" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2049" y="-902"/>
+        </scene>
         <!--About View Controller-->
         <scene sceneID="ru8-Ss-KQl">
             <objects>
@@ -1439,7 +1485,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="FTj-wO-rqE" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1210" y="-1517"/>
+            <point key="canvasLocation" x="1102" y="-1517"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YhN-J6-daM">
@@ -1496,7 +1542,26 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8v3-mb-oeq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2505" y="-273"/>
+            <point key="canvasLocation" x="1627" y="-1517"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="X7u-Qd-4e9">
+            <objects>
+                <navigationController storyboardIdentifier="markdownEdit" automaticallyAdjustsScrollViewInsets="NO" id="Dhv-Sq-Qen" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="Aj3-uO-KWK">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.094117647060000004" green="0.20392156859999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="f9c-60-S0x" kind="relationship" relationship="rootViewController" id="z6v-Ru-P8P"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AMS-fR-mkc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1627" y="-902"/>
         </scene>
     </scenes>
     <resources>

@@ -11,6 +11,7 @@
 #import "DetailQuestionStore.h"
 #import "DetailQuestionTableViewCell.h"
 #import "DetailAnswerTableViewCell.h"
+#import "MarkdownEditorViewController.h"
 #import "UIButton+Bootstrap.h"
 #import <ShareSDK/ShareSDK.h>
 #import "MXUtil.h"
@@ -202,7 +203,7 @@
             UIButton *c = [[UIButton alloc] initWithFrame:CGRectMake(10, 10, self.view.bounds.size.width-20, 50)];
             [c setTitle:@"撰写答案" forState:UIControlStateNormal];
             [c successStyle];
-            //[c addTarget:self action:editAnswer forControlEvents:UIControlEventTouchDragInside];
+            [c addTarget:self action:@selector(editAnswer:) forControlEvents:UIControlEventTouchUpInside];
             
             [cell addSubview:c];
             return cell;
@@ -341,6 +342,14 @@
 
 // 撰写答案
 - (IBAction)editAnswer:(id)sender{
-    //
+    UINavigationController *markdownNav = (UINavigationController *)[[MarkdownEditorViewController alloc] init];
+    MarkdownEditorViewController *markdown=markdownNav.childViewControllers[0];
+    [markdown setHandler:^(NSString *tagValue) {
+        [self dismissViewControllerAnimated:YES completion:nil];
+    } PullHandler:^(NSString *text) {
+        [[MXUtil sharedUtil] showMessageScreen:@"提交成功"];
+        [self dismissViewControllerAnimated:YES completion:nil];
+    }];
+    [self presentViewController:markdownNav animated:YES completion:nil];
 }
 @end

@@ -152,6 +152,7 @@
 		AF9E87A11A5F8833006D00AF /* EditTagsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9E87A01A5F8833006D00AF /* EditTagsTableViewController.m */; };
 		AF9E87A41A5F8B09006D00AF /* EditTagTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9E87A31A5F8B09006D00AF /* EditTagTableViewCell.m */; };
 		AFAEA3F51A15AF2E00C31F6A /* MeunTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAEA3F41A15AF2E00C31F6A /* MeunTableViewCell.m */; };
+		AFB637CB1A973BEF003CB671 /* MarkdownEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB637CA1A973BEF003CB671 /* MarkdownEditorViewController.m */; };
 		AFD5116E1A8C61AC00AB5C34 /* RightTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD5116D1A8C61AC00AB5C34 /* RightTableViewController.m */; };
 		AFD5117A1A8C825100AB5C34 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD511791A8C825100AB5C34 /* MessageModel.m */; };
 		AFD5117D1A8C826D00AB5C34 /* MessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD5117C1A8C826D00AB5C34 /* MessageStore.m */; };
@@ -368,6 +369,8 @@
 		AF9E87A31A5F8B09006D00AF /* EditTagTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditTagTableViewCell.m; path = General/View/EditTagTableViewCell.m; sourceTree = "<group>"; };
 		AFAEA3F31A15AF2E00C31F6A /* MeunTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MeunTableViewCell.h; sourceTree = "<group>"; };
 		AFAEA3F41A15AF2E00C31F6A /* MeunTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeunTableViewCell.m; sourceTree = "<group>"; };
+		AFB637C91A973BEF003CB671 /* MarkdownEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MarkdownEditorViewController.h; path = Sections/Modal/MarkdownEditorViewController.h; sourceTree = "<group>"; };
+		AFB637CA1A973BEF003CB671 /* MarkdownEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MarkdownEditorViewController.m; path = Sections/Modal/MarkdownEditorViewController.m; sourceTree = "<group>"; };
 		AFD5116C1A8C61AC00AB5C34 /* RightTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightTableViewController.h; sourceTree = "<group>"; };
 		AFD5116D1A8C61AC00AB5C34 /* RightTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightTableViewController.m; sourceTree = "<group>"; };
 		AFD511781A8C825100AB5C34 /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageModel.h; path = General/Model/MessageModel.h; sourceTree = "<group>"; };
@@ -722,7 +725,7 @@
 		AF59AB9E1A15942B0017DA21 /* Sections */ = {
 			isa = PBXGroup;
 			children = (
-				AF7684A71A491EDC009C188D /* Tags */,
+				AF7684A71A491EDC009C188D /* Other */,
 				AFD5116B1A8C61AC00AB5C34 /* Right */,
 				AF59ABA01A1594660017DA21 /* Left */,
 				AF59AB9F1A1594510017DA21 /* Main */,
@@ -760,13 +763,15 @@
 			name = Left;
 			sourceTree = "<group>";
 		};
-		AF7684A71A491EDC009C188D /* Tags */ = {
+		AF7684A71A491EDC009C188D /* Other */ = {
 			isa = PBXGroup;
 			children = (
 				AF9E879F1A5F8833006D00AF /* EditTagsTableViewController.h */,
 				AF9E87A01A5F8833006D00AF /* EditTagsTableViewController.m */,
+				AFB637C91A973BEF003CB671 /* MarkdownEditorViewController.h */,
+				AFB637CA1A973BEF003CB671 /* MarkdownEditorViewController.m */,
 			);
-			name = Tags;
+			name = Other;
 			sourceTree = "<group>";
 		};
 		AF7684A81A491F2C009C188D /* Datasource */ = {
@@ -1145,6 +1150,7 @@
 				AF7684C41A498456009C188D /* QuestionTableViewCell.m in Sources */,
 				AF2CC7CC1A5E2CBD000B1D37 /* MainQuestionTableViewController.m in Sources */,
 				AFD5116E1A8C61AC00AB5C34 /* RightTableViewController.m in Sources */,
+				AFB637CB1A973BEF003CB671 /* MarkdownEditorViewController.m in Sources */,
 				AF2CC7C61A5E2B19000B1D37 /* QuestionModel.m in Sources */,
 				AFDA89901A48101200771476 /* LeftTableViewUserSectionView.m in Sources */,
 				AF59ABA41A1594DF0017DA21 /* LeftViewController.m in Sources */,

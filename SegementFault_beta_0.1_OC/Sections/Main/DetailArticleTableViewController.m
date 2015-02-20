@@ -12,6 +12,7 @@
 #import "DetailArticleDataSource.h"
 #import "MessageStore.h"
 #import "DetailCommentTableViewCell.h"
+#import "MarkdownEditorViewController.h"
 #import "UIButton+Bootstrap.h"
 #import <ShareSDK/ShareSDK.h>
 #import "MXUtil.h"
@@ -163,7 +164,7 @@
                                   delegate:self
                                   cancelButtonTitle:@"取消"
                                   destructiveButtonTitle:nil
-                                  otherButtonTitles:@"分享",@"收藏",@"举报",nil];
+                                  otherButtonTitles:@"分享",@"评论",nil];
     actionSheet.actionSheetStyle = UIActionSheetStyleBlackOpaque;
     [actionSheet showInView:self.view];
 }
@@ -233,9 +234,16 @@
                                     }
                                 }];
     }else if(buttonIndex == 1){
-        // 收藏
-    }else if(buttonIndex == 2){
-        // 举报
+        // 评论
+        UINavigationController *markdownNav = (UINavigationController *)[[MarkdownEditorViewController alloc] init];
+        MarkdownEditorViewController *markdown=markdownNav.childViewControllers[0];
+        [markdown setHandler:^(NSString *tagValue) {
+            [self dismissViewControllerAnimated:YES completion:nil];
+        } PullHandler:^(NSString *text) {
+            [[MXUtil sharedUtil] showMessageScreen:@"提交成功"];
+            [self dismissViewControllerAnimated:YES completion:nil];
+        }];
+        [self presentViewController:markdownNav animated:YES completion:nil];
     }else{
         // 取消
     }

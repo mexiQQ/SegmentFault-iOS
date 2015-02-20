@@ -183,6 +183,7 @@
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex{
     if(buttonIndex == 0){
         [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"user"];
+        [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"token"];
         [_cellContent[2] replaceObjectAtIndex:1 withObject:@"Login"];
         [_mytableview reloadData];
     }else{
