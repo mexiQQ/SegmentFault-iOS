@@ -10,6 +10,7 @@
 #import "LoginViewController.h"
 #import "UIButton+Bootstrap.h"
 #import "STHTTPRequest+JSON.h"
+#import "BindViewController.h"
 #import <ShareSDK/ShareSDK.h>
 #import <QuartzCore/QuartzCore.h>
 
@@ -161,6 +162,7 @@
 - (void)thirdLogin:(NSString *)access_Token type:(NSString *)type{
     self.activityIndicator.hidden = NO;
     [self.activityIndicator startAnimating];
+    NSLog(@"token is %@",access_Token);
     
     STHTTPRequest *r = [STHTTPRequest requestWithURLString:@"http://api.segmentfault.com/user/oauth"];
     [r setPOSTDictionary:@{@"accessToken": access_Token, @"type": type}];
@@ -178,10 +180,22 @@
                 [[NSNotificationCenter defaultCenter] postNotificationName:@"loginSuccess" object:self userInfo:nil];
             }];
         }else{
+            // 发送 accessToken 给服务器，绑定邮箱
+            NSHTTPCookieStorage *httpCookieStorage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+            
+            NSString *t = jsonObj[@"data"][1];
+            NSHTTPCookie *c = [NSHTTPCookie cookieWithProperties:@{NSHTTPCookieDomain: @"segmentfault.com", NSHTTPCookieName: @"PHPSESSID", NSHTTPCookieValue: t, NSHTTPCookiePath: @"/"}];
+            [httpCookieStorage setCookie:c];
+            
+            NSDictionary *dictionary = @{@"UserAgent": @"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/39.0.2171.95 Safari/537.36"};
+            [[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];
+            
             UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-            UIViewController *loginViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"bind"];
-            loginViewController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
-            [self presentViewController:loginViewController animated:YES completion:nil];
+            UINavigationController *bindNavigationController = [mainStoryboard instantiateViewControllerWithIdentifier:@"bind"];
+            BindViewController *bindViewConttoller = bindNavigationController.childViewControllers[0];
+            bindViewConttoller.accessToken = t;
+            bindNavigationController.modalTransitionStyle = UIModalTransitionStyleFlipHorizontal;
+            [self presentViewController:bindNavigationController animated:YES completion:nil];
         }
     }];
     r.errorBlock = ^(NSError *error) {

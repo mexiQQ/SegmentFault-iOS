@@ -13,17 +13,19 @@
 @end
 
 @implementation BindViewController
-@synthesize registerButton = _registerButton;
+@synthesize accessToken= _accessToken;
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.registerButton sfStyle];
+    self.bindWebView.delegate = self;
+    
+    NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"http://segmentfault.com/user/bind"]];
+    [self.bindWebView loadRequest:req];
 }
 
 - (IBAction)cacelAction:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
-
-- (IBAction)bindAction:(id)sender {
+    NSHTTPCookieStorage *hs = [NSHTTPCookieStorage sharedHTTPCookieStorage];
+    [hs deleteCookie:[NSHTTPCookie cookieWithProperties:@{@"PHPSESSID": self.accessToken}]];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:@{@"UserAgent": @""}];
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

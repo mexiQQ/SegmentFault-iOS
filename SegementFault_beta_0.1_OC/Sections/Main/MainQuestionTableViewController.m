@@ -197,10 +197,10 @@ static BOOL firstInit = true;
 
 // 刷新 Messages 数量的操作
 - (void)refreshMessagesNumber:(NSNotification *)notification{
-    NSString *messagesNumber = [[[notification userInfo] objectForKey:@"data"] objectForKey:@"events"];
-    BBBadgeBarButtonItem *barButton = (BBBadgeBarButtonItem *)self.navigationItem.rightBarButtonItem;
-    barButton.badgeBGColor = [[MXUtil sharedUtil] getUIColor:@"2a5caa"];
-    barButton.badgeValue = [NSString stringWithFormat:@"%@",messagesNumber];
+        NSString *messagesNumber = [[[notification userInfo] objectForKey:@"data"] objectForKey:@"events"];
+        BBBadgeBarButtonItem *barButton = (BBBadgeBarButtonItem *)self.navigationItem.rightBarButtonItem;
+        barButton.badgeBGColor = [[MXUtil sharedUtil] getUIColor:@"2a5caa"];
+        barButton.badgeValue = [NSString stringWithFormat:@"%@",messagesNumber];
 }
 
 // 点击弹出左边汉堡菜单

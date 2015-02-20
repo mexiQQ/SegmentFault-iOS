@@ -31,7 +31,7 @@ static MXUtil *util = nil;
     hud.margin = 10.f;
     hud.yOffset = 150.f;
     hud.removeFromSuperViewOnHide = YES;
-    [hud hide:YES afterDelay:1.5];
+    [hud hide:YES afterDelay:0.5];
 }
 
 // 替换图片链接地址

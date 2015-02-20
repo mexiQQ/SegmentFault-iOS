@@ -10,9 +10,7 @@
 
 @interface DetailQuestionDataSource : ArrayDataSource<UITableViewDelegate>
 
-@property (nonatomic, strong) NSArray *items;
-
-- (id)initWithItems:(NSArray *)anItem
+- (id)initWithItems:(NSInteger *)sectionsNumber
      cellIdentifier:(NSString *)aCellIdentifier
  configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock;
 

@@ -15,6 +15,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *productTime;
 @property (weak, nonatomic) IBOutlet UIWebView *contentWebView;
 @property (weak, nonatomic) IBOutlet UIView *TagView;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UIButton *hateButton;
 @property (weak, nonatomic) IBOutlet UILabel *questinTitle;
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
+
+
 - (void)configureForCell:(NSDictionary *)item;
 @end

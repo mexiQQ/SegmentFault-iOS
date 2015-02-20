@@ -8,8 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BindViewController : UIViewController
-@property (weak, nonatomic) IBOutlet UITextField *emailTextFeild;
+@interface BindViewController : UIViewController<UIWebViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIButton *registerButton;
+@property (weak, nonatomic) IBOutlet UIWebView *bindWebView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property (nonatomic,strong) NSString *accessToken;
 @end

@@ -176,7 +176,7 @@
         NSRange range = NSMakeRange (0, url.length-5);
         url = [url substringWithRange:range];
         
-        NSString *shareContent = [NSString stringWithFormat:@"【%@】分享自 @SegmentFault，问题传送门：%@",[[self articleDic] objectForKey:@"title"],url];
+        NSString *shareContent = [NSString stringWithFormat:@"【%@】分享自 @SegmentFault，文章传送门：%@",[[self articleDic] objectForKey:@"title"],url];
         
         UIImage *image = [UIImage imageNamed:@"sf.png"];
         //构造分享内容
@@ -185,7 +185,7 @@
                                                     image:[ShareSDK pngImageWithImage:image]
                                                     title:@"SegmentFault"
                                                       url:url
-                                              description:@"这是一条测试信息"
+                                              description:@"SegmentFault-iOS"
                                                 mediaType:SSPublishContentMediaTypeNews];
         //创建弹出菜单容器
         id<ISSContainer> container = [ShareSDK container];

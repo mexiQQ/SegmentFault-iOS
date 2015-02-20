@@ -134,18 +134,20 @@
 }
 
 - (void)getMessageNumber:(NSNotification *)notification{
-    NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/user/stat?token=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
-    NSError *error = nil;
-    NSLog(@"user token is %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]);
-    STHTTPRequest *r = [STHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-    [r startSynchronousWithError:&error];
-    NSData *data = r.responseData;
-    NSDictionary *message;
-    if(data){
-        message= [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]){
+        NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/user/stat?token=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
+        NSError *error = nil;
+        NSLog(@"user token is %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]);
+        STHTTPRequest *r = [STHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+        [r startSynchronousWithError:&error];
+        NSData *data = r.responseData;
+        NSDictionary *message;
+        if(data){
+            message= [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshMessagesNumber" object:self userInfo:message];
+        });
     }
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshMessagesNumber" object:self userInfo:message];
-    });
 }
 @end

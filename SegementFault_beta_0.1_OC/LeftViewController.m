@@ -192,7 +192,7 @@
 
 -(void)changeMenu{
     UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UIViewController *addMenuController = [mainStoryboard instantiateViewControllerWithIdentifier:@"addMenu"];
+    UIViewController *addMenuController = [mainStoryboard instantiateViewControllerWithIdentifier:@"addMenuPage"];
     addMenuController.modalTransitionStyle = UIModalTransitionStyleCoverVertical;
     [self presentViewController:addMenuController animated:YES completion:nil];
 }

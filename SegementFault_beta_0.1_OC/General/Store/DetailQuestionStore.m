@@ -32,7 +32,7 @@ static DetailQuestionStore *store = nil;
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_async(group, dispatch_get_global_queue(0,0), ^{
         NSError *error = nil;
-        STHTTPRequest *r = [STHTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.segmentfault.com/question/%@",[QuestionStore sharedStore].currentShowQuestionId]]];
+        STHTTPRequest *r = [STHTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.segmentfault.com/question/%@?token=%@",[QuestionStore sharedStore].currentShowQuestionId,[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]]]];
         [r startSynchronousWithError:&error];
         NSData *data = r.responseData;
         if(data){
@@ -71,4 +71,81 @@ static DetailQuestionStore *store = nil;
     */
 }
 
+- (void)hateQuestion:(NSString *)id_ handle:(void(^)(NSDictionary * dic)) block{
+    NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/question/%@/hate?token=%@",id_,[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
+    STHTTPRequest *r = [STHTTPRequest requestWithURLString:url];
+    r.POSTDictionary=@{@"token":[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]};
+    [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
+        block(jsonObj);
+    }];
+    r.errorBlock = ^(NSError *error) {
+        NSLog(@"error is %@",error);
+    };
+    [r startAsynchronous];
+}
+
+- (void)likeQuestion:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block;{
+    NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/question/%@/like?token=%@",id_,[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
+    STHTTPRequest *r = [STHTTPRequest requestWithURLString:url];
+    r.POSTDictionary=@{@"token":[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]};
+    [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
+        block(jsonObj);
+    }];
+    r.errorBlock = ^(NSError *error) {
+        NSLog(@"error is %@",error);
+    };
+    [r startAsynchronous];
+}
+
+- (void)followQuestion:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block{
+    NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/question/%@/follow?token=%@",id_,[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
+    STHTTPRequest *r = [STHTTPRequest requestWithURLString:url];
+    r.POSTDictionary=@{@"token":[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]};
+    [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
+        block(jsonObj);
+    }];
+    r.errorBlock = ^(NSError *error) {
+        NSLog(@"error is %@",error);
+    };
+    [r startAsynchronous];
+}
+
+- (void)unfollowQuestion:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block{
+    NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/question/%@/unfollow?token=%@",id_,[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
+    STHTTPRequest *r = [STHTTPRequest requestWithURLString:url];
+    r.POSTDictionary=@{@"token":[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]};
+    [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
+        block(jsonObj);
+    }];
+    r.errorBlock = ^(NSError *error) {
+        NSLog(@"error is %@",error);
+    };
+    [r startAsynchronous];
+}
+
+- (void)hateAnswer:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block{
+    NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/answer/%@/hate?token=%@",id_,[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
+    STHTTPRequest *r = [STHTTPRequest requestWithURLString:url];
+    r.POSTDictionary=@{@"token":[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]};
+    [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
+        block(jsonObj);
+    }];
+    r.errorBlock = ^(NSError *error) {
+        NSLog(@"error is %@",error);
+    };
+    [r startAsynchronous];
+}
+
+- (void)likeAnswer:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block{
+    NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/answer/%@/like?token=%@",id_,[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
+    STHTTPRequest *r = [STHTTPRequest requestWithURLString:url];
+    r.POSTDictionary=@{@"token":[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]};
+    [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
+        block(jsonObj);
+    }];
+    r.errorBlock = ^(NSError *error) {
+        NSLog(@"error is %@",error);
+    };
+    [r startAsynchronous];
+}
 @end

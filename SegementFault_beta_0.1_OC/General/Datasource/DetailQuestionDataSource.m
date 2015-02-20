@@ -10,6 +10,7 @@
 #import "DetailQuestionStore.h"
 
 @interface DetailQuestionDataSource()
+@property (nonatomic, assign)NSInteger *sectionsNumber;
 @property (nonatomic, copy) NSString *cellIdentifier;
 @property (nonatomic, copy) TableViewCellConfigureBlock configureCellBlock;
 
@@ -20,12 +21,12 @@
     return [super init];
 }
 
-- (id)initWithItems:(NSArray *)anItem
+- (id)initWithItems:(NSInteger *)sectionsNumber
      cellIdentifier:(NSString *)aCellIdentifier
  configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock{
     self = [super init];
     if (self) {
-        self.items = anItem;
+        self.sectionsNumber = sectionsNumber;
         self.cellIdentifier = aCellIdentifier;
         self.configureCellBlock = [aConfigureCellBlock copy];
     }
@@ -39,7 +40,7 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return  self.items.count + 1;
+    return  (int)self.sectionsNumber;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{

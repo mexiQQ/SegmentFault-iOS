@@ -15,5 +15,11 @@
 
 +(DetailQuestionStore *)sharedStore;
 - (void)readNewData:(void(^)(NSDictionary *,NSDictionary *))block;
+- (void)hateQuestion:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block;
+- (void)likeQuestion:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block;
+- (void)followQuestion:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block;
+- (void)unfollowQuestion:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block;
+- (void)hateAnswer:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block;
+- (void)likeAnswer:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block;
 
 @end

@@ -339,74 +339,44 @@
         <!--Bind View Controller-->
         <scene sceneID="AhQ-cb-mpv">
             <objects>
-                <viewController storyboardIdentifier="bind" id="ABo-qc-dyn" customClass="BindViewController" sceneMemberID="viewController">
+                <viewController id="ABo-qc-dyn" customClass="BindViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="3dg-Ll-CvL"/>
                         <viewControllerLayoutGuide type="bottom" id="rHH-Eh-V4n"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="PvT-mz-eJa">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sf-logo-cmyk_dark.png" translatesAutoresizingMaskIntoConstraints="NO" id="ao5-R6-9DC">
-                                <rect key="frame" x="72" y="67" width="174" height="60"/>
-                            </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKZ-1Q-8RX">
-                                <rect key="frame" x="20" y="207" width="276" height="30"/>
-                                <color key="backgroundColor" red="0.43936328471459302" green="0.85861028439153442" blue="0.22727671127939406" alpha="1" colorSpace="calibratedRGB"/>
-                                <state key="normal" title="完成注册">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="bindAction:" destination="ABo-qc-dyn" eventType="touchUpInside" id="eI9-pW-4Vy"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rnw-lU-G81">
-                                <rect key="frame" x="271" y="25" width="49" height="22"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="49" id="vqo-Gf-358"/>
-                                </constraints>
-                                <state key="normal" image="cancelX.png">
-                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <action selector="cacelAction:" destination="ABo-qc-dyn" eventType="touchUpInside" id="vnB-5l-UOS"/>
-                                </connections>
-                            </button>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="绑定邮箱" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9Jq-oA-GS2">
-                                <rect key="frame" x="22" y="160" width="276" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="9Jq-oA-GS2" secondAttribute="height" multiplier="46:5" id="F0y-KF-5F2"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Uy-qU-1bM">
+                                <rect key="frame" x="0.0" y="0.0" width="338" height="504"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </webView>
                         </subviews>
                         <color key="backgroundColor" red="0.094117647058823528" green="0.20392156862745098" blue="0.17254901960784313" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="9Jq-oA-GS2" secondAttribute="trailing" constant="7" id="16J-7w-vrc"/>
-                            <constraint firstItem="9Jq-oA-GS2" firstAttribute="top" secondItem="ao5-R6-9DC" secondAttribute="bottom" constant="33" id="Ih5-os-CUZ"/>
-                            <constraint firstItem="rHH-Eh-V4n" firstAttribute="top" secondItem="9Jq-oA-GS2" secondAttribute="bottom" constant="378" id="It8-dN-oFi"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="rnw-lU-G81" secondAttribute="trailing" constant="-16" id="J5J-G4-r7N"/>
-                            <constraint firstItem="kKZ-1Q-8RX" firstAttribute="leading" secondItem="9Jq-oA-GS2" secondAttribute="leading" constant="-1" id="MAK-MO-GYj"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="ao5-R6-9DC" secondAttribute="trailing" constant="58" id="NqL-3M-40z"/>
-                            <constraint firstItem="9Jq-oA-GS2" firstAttribute="leading" secondItem="PvT-mz-eJa" secondAttribute="leadingMargin" constant="5" id="ZXe-Ah-GeT"/>
-                            <constraint firstItem="9Jq-oA-GS2" firstAttribute="width" secondItem="PvT-mz-eJa" secondAttribute="height" multiplier="69:142" id="e0H-W8-guD"/>
-                            <constraint firstItem="rnw-lU-G81" firstAttribute="top" secondItem="3dg-Ll-CvL" secondAttribute="bottom" constant="5" id="lmY-HI-phf"/>
-                            <constraint firstItem="ao5-R6-9DC" firstAttribute="leading" secondItem="PvT-mz-eJa" secondAttribute="leadingMargin" constant="56" id="obM-OD-OEh"/>
-                            <constraint firstItem="kKZ-1Q-8RX" firstAttribute="trailing" secondItem="9Jq-oA-GS2" secondAttribute="trailing" constant="-1" id="rzR-PE-PP2"/>
-                            <constraint firstItem="kKZ-1Q-8RX" firstAttribute="top" secondItem="9Jq-oA-GS2" secondAttribute="bottom" constant="17" id="uOp-Xy-Y6s"/>
-                            <constraint firstItem="ao5-R6-9DC" firstAttribute="top" secondItem="3dg-Ll-CvL" secondAttribute="bottom" constant="47" id="wXU-GD-qZS"/>
+                            <constraint firstItem="1Uy-qU-1bM" firstAttribute="leading" secondItem="PvT-mz-eJa" secondAttribute="leadingMargin" constant="-16" id="Erg-jt-hkT"/>
+                            <constraint firstItem="1Uy-qU-1bM" firstAttribute="top" secondItem="3dg-Ll-CvL" secondAttribute="bottom" id="YCF-iB-zd4"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="1Uy-qU-1bM" secondAttribute="bottom" id="fLl-xl-PPR"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1Uy-qU-1bM" secondAttribute="trailing" constant="-34" id="nAq-Ru-CWb"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="dlL-nh-paF">
+                        <barButtonItem key="leftBarButtonItem" systemItem="done" id="dpE-cB-Yhp">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="cacelAction:" destination="ABo-qc-dyn" id="ctB-Ic-WTs"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="emailTextFeild" destination="9Jq-oA-GS2" id="PLI-zX-DeL"/>
-                        <outlet property="registerButton" destination="kKZ-1Q-8RX" id="hjb-2Z-1cZ"/>
+                        <outlet property="bindWebView" destination="1Uy-qU-1bM" id="GxW-n3-wTz"/>
+                        <outlet property="cancelButton" destination="dpE-cB-Yhp" id="jw9-45-dlp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Zwa-BE-dRY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2505" y="-273"/>
+            <point key="canvasLocation" x="3037" y="-273"/>
         </scene>
         <!--Right Table View Controller-->
         <scene sceneID="r2C-IM-dL3">
@@ -475,9 +445,10 @@
             <objects>
                 <navigationController storyboardIdentifier="addMenuPage" automaticallyAdjustsScrollViewInsets="NO" id="DcH-6Z-ah5" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="PWj-g2-BIX">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="PWj-g2-BIX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.094117647060000004" green="0.20392156859999999" blue="0.16862745100000001" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
@@ -493,7 +464,7 @@
             <objects>
                 <tableViewController id="di6-D9-ab6" customClass="EditTagsTableViewController" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="13x-PT-Ugx">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="504"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -530,6 +501,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="Dym-mF-9kq">
                         <barButtonItem key="leftBarButtonItem" style="done" systemItem="done" id="1fw-KO-p3Z">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="successEditMenu:" destination="di6-D9-ab6" id="sNs-eR-UXZ"/>
                             </connections>
@@ -1089,7 +1061,10 @@
                                     <outlet property="TopView" destination="4KL-tv-QtI" id="cNE-V7-r7O"/>
                                     <outlet property="authorLabel" destination="eXa-NV-bo2" id="frn-XD-Xag"/>
                                     <outlet property="authorRateLabel" destination="Hpi-vs-CBe" id="8HS-bY-mbk"/>
+                                    <outlet property="commentLabel" destination="Or2-AI-xt6" id="YTe-2F-IFv"/>
                                     <outlet property="contentWebView" destination="HFI-ch-VH8" id="Wvb-jj-5uC"/>
+                                    <outlet property="hateButton" destination="8Hf-x7-LjW" id="EsS-hw-2gV"/>
+                                    <outlet property="likeButton" destination="puJ-qw-dh1" id="XT3-OK-ICD"/>
                                     <outlet property="productTime" destination="bpr-si-W3p" id="Us8-DH-6Qu"/>
                                     <outlet property="questinTitle" destination="NSp-e6-UEg" id="xSr-XI-o1O"/>
                                 </connections>
@@ -1368,9 +1343,13 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="TopView" destination="Ch3-mj-qQM" id="6ca-Bu-aH3"/>
+                                    <outlet property="acceptButton" destination="LVI-5Q-XXF" id="gra-T8-MaL"/>
                                     <outlet property="authorLabel" destination="cVu-Ji-qNu" id="y2M-p6-pRi"/>
                                     <outlet property="authorRateLabel" destination="xQ7-c4-AgR" id="Mz8-5u-bb9"/>
+                                    <outlet property="commentLabel" destination="cww-D3-pqH" id="Uvj-Zf-zmw"/>
                                     <outlet property="contentWebView" destination="HQ5-be-DaB" id="4Bs-44-01l"/>
+                                    <outlet property="hateButton" destination="PdM-j2-oev" id="Sci-9s-dDh"/>
+                                    <outlet property="likeButton" destination="QCz-OK-ZAt" id="p9I-UG-Gmk"/>
                                     <outlet property="productTime" destination="Bj1-nb-xf0" id="PHL-TE-p47"/>
                                 </connections>
                             </tableViewCell>
@@ -1397,6 +1376,12 @@
                                 <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                             </state>
                         </button>
+                        <barButtonItem key="rightBarButtonItem" image="icon_more.png" id="ABk-j5-65O">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="moreAction:" destination="jQe-dN-a5N" id="9Iz-OG-gn3"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="rmG-Xc-bau" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1493,6 +1478,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="csY-4V-CLo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="603" y="-1517"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="F75-c4-1x0">
+            <objects>
+                <navigationController storyboardIdentifier="bind" automaticallyAdjustsScrollViewInsets="NO" id="14l-Gd-lIY" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="W8k-1T-oQz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.094117647058823528" green="0.20392156862745098" blue="0.16862745098039217" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ABo-qc-dyn" kind="relationship" relationship="rootViewController" id="JWU-gH-mKe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8v3-mb-oeq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2505" y="-273"/>
         </scene>
     </scenes>
     <resources>

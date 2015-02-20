@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailQuestionTableViewController : UITableViewController
+@interface DetailQuestionTableViewController : UITableViewController<UIActionSheetDelegate>
 
 @end

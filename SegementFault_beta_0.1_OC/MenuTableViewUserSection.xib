@@ -12,7 +12,7 @@
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Xmj-WA-tUH" id="TVP-Xl-srM">
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="o9L-MC-qZi">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="t_avator" translatesAutoresizingMaskIntoConstraints="NO" id="o9L-MC-qZi">
                         <rect key="frame" x="8" y="27" width="45" height="45"/>
                     </imageView>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BPB-hG-GZ8">
@@ -37,4 +37,7 @@
             <point key="canvasLocation" x="481" y="180"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="t_avator" width="72" height="72"/>
+    </resources>
 </document>

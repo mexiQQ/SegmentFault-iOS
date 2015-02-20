@@ -10,6 +10,10 @@
 #import "AnswerModel.h"
 #import "DetailquestionStore.h"
 #import "MXUtil.h"
+@interface DetailAnswerTableViewCell()
+@property (nonatomic, strong) AnswerModel *answerModel;
+@end
+
 @implementation DetailAnswerTableViewCell
 @synthesize TopView = _TopView;
 @synthesize authorLabel = _authorLabel;
@@ -23,16 +27,24 @@
 }
 
 // 配置 cell
-- (void)configureForCell:(NSDictionary *)item index:(NSInteger *)indexpath{
-    AnswerModel *answerModel = [AnswerModel modelWithJsonObj:item];
-    self.authorLabel.text = [answerModel.user objectForKey:@"name"];
-    self.authorRateLabel.text =[answerModel.user objectForKey:@"rank"];
-    self.productTime.text = answerModel.createdDate;
+- (void)configureForCell:(NSDictionary *)item index:(NSInteger *)indexpath accepted:(BOOL) isAccepted{
+    self.answerModel = [AnswerModel modelWithJsonObj:item];
+    self.authorLabel.text = [self.answerModel.user objectForKey:@"name"];
+    self.authorRateLabel.text =[self.answerModel.user objectForKey:@"rank"];
+    self.productTime.text = self.answerModel.createdDate;
+    [self.likeButton setTitle:self.answerModel.votes forState:UIControlStateNormal];
+    self.commentLabel.text = [NSString stringWithFormat:@"%@评论",self.answerModel.comments];
+    if(!isAccepted){
+        self.acceptButton.hidden = YES;
+    }
+    
+    [self.likeButton addTarget:self action:@selector(liketap:) forControlEvents:UIControlEventTouchUpInside];
+    [self.hateButton addTarget:self action:@selector(hatetap:) forControlEvents:UIControlEventTouchUpInside];
     
     // 使用此 tag 表示第几个回答，存储每个答案的高度
     self.indexTag = [NSString stringWithFormat:@"answer%d",(int)indexpath];
     
-    [self.contentWebView loadHTMLString:[[MXUtil sharedUtil] formatHTMLFromMarkdown:answerModel.parsedText] baseURL:[[NSBundle mainBundle] bundleURL]];
+    [self.contentWebView loadHTMLString:[[MXUtil sharedUtil] formatHTMLFromMarkdown:self.answerModel.parsedText] baseURL:[[NSBundle mainBundle] bundleURL]];
 }
 
 // 计算 webview 的高度并通知重新加载
@@ -49,6 +61,34 @@
     if(![[DetailQuestionStore sharedStore].answersHeights objectForKey:self.indexTag] || (documentHeight - ((NSNumber *)[[DetailQuestionStore sharedStore].answersHeights objectForKey:self.indexTag]).floatValue) > 1){
         [[DetailQuestionStore sharedStore].answersHeights setObject:[NSNumber numberWithFloat:documentHeight] forKey:self.indexTag];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshQuestionHeight" object:self userInfo:nil];
+    }
+}
+
+- (IBAction)liketap:(id)sender{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]){
+        [[DetailQuestionStore sharedStore] likeAnswer:self.answerModel.id_ handle:^(NSDictionary * dic) {
+            NSLog(@"%@",dic);
+            NSString * status = [dic objectForKey:@"status"];
+            if(status.integerValue == 0){
+                [self.likeButton setTitle:[dic objectForKey:@"data"] forState:UIControlStateNormal];
+            }
+        }];
+    }else{
+        [[MXUtil sharedUtil] showMessageScreen:@"未登录"];
+    }
+}
+
+- (IBAction)hatetap:(id)sender{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]){
+        [[DetailQuestionStore sharedStore] hateAnswer:self.answerModel.id_ handle:^(NSDictionary * dic) {
+            NSLog(@"%@",dic);
+            NSString * status = [dic objectForKey:@"status"];
+            if(status.integerValue == 0){
+                [self.likeButton setTitle:[dic objectForKey:@"data"] forState:UIControlStateNormal];
+            }
+        }];
+    }else{
+        [[MXUtil sharedUtil] showMessageScreen:@"未登录"];
     }
 }
 @end

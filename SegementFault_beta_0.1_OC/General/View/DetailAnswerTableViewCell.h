@@ -15,6 +15,11 @@
 @property (weak, nonatomic) IBOutlet UILabel *productTime;
 @property (weak, nonatomic) IBOutlet UIWebView *contentWebView;
 @property (nonatomic,strong) NSString *indexTag;
-- (void)configureForCell:(NSDictionary *)item index:(NSInteger *)indexpath;
 
+- (void)configureForCell:(NSDictionary *)item index:(NSInteger *)indexpath accepted:(BOOL) isAccepted;
+
+@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
+@property (weak, nonatomic) IBOutlet UIButton *acceptButton;
+@property (weak, nonatomic) IBOutlet UIButton *likeButton;
+@property (weak, nonatomic) IBOutlet UIButton *hateButton;
 @end
