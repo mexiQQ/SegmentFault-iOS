@@ -7,7 +7,7 @@
 //
 
 #import "DetailArticleStore.h"
-
+#import "ArticleStore.h"
 @implementation DetailArticleStore
 @synthesize articleHeight = _articleHeight;
 @synthesize commentHeight = _commentHeight;
@@ -29,7 +29,7 @@ static DetailArticleStore *store = nil;
     dispatch_group_t group = dispatch_group_create();
     dispatch_group_async(group, dispatch_get_global_queue(0,0), ^{
         NSError *error = nil;
-        STHTTPRequest *r = [STHTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.segmentfault.com/article/%@",[ArticleStore sharedStore].currentShowArticleId]]];
+        STHTTPRequest *r = [STHTTPRequest requestWithURL:[NSURL URLWithString:[NSString stringWithFormat:@"http://api.segmentfault.com/article/%@?token=%@",[ArticleStore sharedStore].currentShowArticleId,[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]]]];
         [r startSynchronousWithError:&error];
         NSData *data = r.responseData;
         if(data){
@@ -66,4 +66,41 @@ static DetailArticleStore *store = nil;
 //    [r startAsynchronous];
 }
 
+- (void)likeArticle:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block;{
+    NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/article/%@/like?token=%@",id_,[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
+    STHTTPRequest *r = [STHTTPRequest requestWithURLString:url];
+    r.POSTDictionary=@{@"token":[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]};
+    [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
+        block(jsonObj);
+    }];
+    r.errorBlock = ^(NSError *error) {
+        NSLog(@"error is %@",error);
+    };
+    [r startAsynchronous];
+}
+
+- (void)unlikeArticle:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block;{
+    NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/article/%@/unlike?token=%@",id_,[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
+    STHTTPRequest *r = [STHTTPRequest requestWithURLString:url];
+    r.POSTDictionary=@{@"token":[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]};
+    [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
+        block(jsonObj);
+    }];
+    r.errorBlock = ^(NSError *error) {
+        NSLog(@"error is %@",error);
+    };
+    [r startAsynchronous];
+}
+
+- (void)commentArticle:(NSString *)commentContent handle:(void(^)(NSDictionary *dic)) block{
+    STHTTPRequest *r = [STHTTPRequest requestWithURLString:@"http://api.segmentfault.com/comment/post"];
+    [r setPOSTDictionary:@{@"text": commentContent, @"id": [ArticleStore sharedStore].currentShowArticleId, @"token": [[NSUserDefaults standardUserDefaults] objectForKey:@"token"]}];
+    [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
+        block(jsonObj);
+    }];
+    r.errorBlock = ^(NSError *error) {
+        NSLog(@"error is %@",error);
+    };
+    [r startAsynchronous];
+}
 @end

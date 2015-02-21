@@ -7,7 +7,7 @@
 //
 
 #import "LeftViewController.h"
-
+#import "MXUtil.h"
 @interface LeftViewController ()
 @end
 
@@ -142,7 +142,7 @@
 // 指定点击每个 Cell 后执行的操作
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0){
-        return;
+        [[MXUtil sharedUtil] showMessageScreen:@"未支持"];
     }
     else if(indexPath.section==1){
         UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];

@@ -7,6 +7,7 @@
 //
 
 #import "DetailCommentTableViewCell.h"
+#import "MXUtil.h"
 
 @implementation DetailCommentTableViewCell
 @synthesize commentContent = _commentContent;
@@ -27,6 +28,10 @@
     self.commentUsername.text = [[item objectForKey:@"user"] objectForKey:@"name"];
     self.commentUserRepu.text = [item objectForKey:@"createdDate"];
     [self.commentLike setTitle:[item objectForKey:@"votes" ] forState:UIControlStateNormal];
+    [self.commentLike addTarget:self action:@selector(likeAction:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (IBAction)likeAction:(id)sender{
+    [[MXUtil sharedUtil] showMessageScreen:@"未完成"];
+}
 @end

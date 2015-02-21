@@ -21,6 +21,7 @@
 @property (nonatomic, strong) DetailArticleDataSource   *myDetailArticleDataSource;
 @property (nonatomic,strong) NSDictionary *articleDic;
 @property (nonatomic,strong) NSArray *commentsArray;
+@property (nonatomic,strong) NSString *isLike;
 @end
 
 @implementation DetailArticleTableViewController
@@ -131,15 +132,18 @@
             
             UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(10, 10, 100, 30)];
             [label setFont:[UIFont boldSystemFontOfSize:20]];
-            label.text = @"2条评论";
+            NSString *commentNumber=[self.articleDic objectForKey:@"comments"];
+            label.text = [NSString stringWithFormat:@"%@条评论",commentNumber];
             
             UIButton *a = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 140, 10, 60, 30)];
-            [a setTitle:@"关注" forState:UIControlStateNormal];
+            [a setTitle:@"推荐" forState:UIControlStateNormal];
             [a successStyle];
+            [a addTarget:self action:@selector(attentionAction:) forControlEvents:UIControlEventTouchUpInside];
             
             UIButton *b = [[UIButton alloc] initWithFrame:CGRectMake(self.view.bounds.size.width - 70, 10, 60, 30)];
             [b setTitle:@"收藏" forState:UIControlStateNormal];
             [b defaultStyle];
+            [b addTarget:self action:@selector(collectAction:) forControlEvents:UIControlEventTouchUpInside];
             
             [cell addSubview:a];
             [cell addSubview:b];
@@ -157,6 +161,7 @@
     [self.tableView reloadData];
 }
 
+#pragma mark moreAction
 // 点击右上角更多操作
 - (IBAction)moreAction:(id)sender {
     UIActionSheet *actionSheet = [[UIActionSheet alloc]
@@ -234,14 +239,26 @@
                                     }
                                 }];
     }else if(buttonIndex == 1){
-        // 评论
         UINavigationController *markdownNav = (UINavigationController *)[[MarkdownEditorViewController alloc] init];
         MarkdownEditorViewController *markdown=markdownNav.childViewControllers[0];
         [markdown setHandler:^(NSString *tagValue) {
             [self dismissViewControllerAnimated:YES completion:nil];
         } PullHandler:^(NSString *text) {
-            [[MXUtil sharedUtil] showMessageScreen:@"提交成功"];
-            [self dismissViewControllerAnimated:YES completion:nil];
+            if([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]){
+                [[DetailArticleStore sharedStore] commentArticle:text handle:^(NSDictionary *dic){
+                    NSString *status = [dic objectForKey:@"status"];
+                    if(status.integerValue==1){
+                        NSArray *a = [dic objectForKey:@"data"];
+                        [[MXUtil sharedUtil] showMessageScreen:[a[1] objectForKey:@"text"]];
+                    }else{
+                        [self dismissViewControllerAnimated:YES completion:nil];
+                        [[MXUtil sharedUtil] showMessageScreen:@"提交成功"];
+                        [self firstInitData];
+                    }
+                }];
+            }else{
+                [[MXUtil sharedUtil] showMessageScreen:@"未登录"];
+            }
         }];
         [self presentViewController:markdownNav animated:YES completion:nil];
     }else{
@@ -257,5 +274,40 @@
     }
     [self.navigationController popViewControllerAnimated:YES];
 }
+
+#pragma mark footViewAction
+// 关注该文章
+- (IBAction)attentionAction:(id)sender{
+    UIButton *button = (UIButton *)sender;
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]){
+        if(self.isLike.integerValue == 0){
+            [[DetailArticleStore sharedStore] likeArticle:[self.articleDic objectForKey:@"id"] handle:^(NSDictionary * dic) {
+                NSLog(@"%@",dic);
+                NSString * status = [dic objectForKey:@"status"];
+                if(status.integerValue == 0){
+                    [button setTitle:@"已推荐" forState:UIControlStateNormal];
+                    self.isLike = @"1";
+                }
+            }];
+        }else{
+            [[DetailArticleStore sharedStore] unlikeArticle:[self.articleDic objectForKey:@"id"] handle:^(NSDictionary * dic) {
+                NSLog(@"%@",dic);
+                NSString * status = [dic objectForKey:@"status"];
+                if(status.integerValue == 0){
+                    [button setTitle:@"推荐" forState:UIControlStateNormal];
+                    self.isLike = @"0";
+                }
+            }];
+        }
+    }else{
+        [[MXUtil sharedUtil] showMessageScreen:@"未登录"];
+    }
+}
+
+// 收藏该问题
+- (IBAction)collectAction:(id)sender{
+    [[MXUtil sharedUtil] showMessageScreen:@"未成功"];
+}
+
 
 @end

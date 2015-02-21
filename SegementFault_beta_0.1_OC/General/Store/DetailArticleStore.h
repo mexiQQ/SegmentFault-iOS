@@ -17,4 +17,8 @@
 +(DetailArticleStore *)sharedStore;
 - (void)readNewData:(void(^)(NSDictionary *,NSDictionary *))block;
 
+- (void)likeArticle:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block;
+- (void)unlikeArticle:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block;
+- (void)commentArticle:(NSString *)commentContent handle:(void(^)(NSDictionary *dic)) block;
+
 @end

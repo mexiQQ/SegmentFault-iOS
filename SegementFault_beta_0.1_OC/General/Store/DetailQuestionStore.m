@@ -148,4 +148,16 @@ static DetailQuestionStore *store = nil;
     };
     [r startAsynchronous];
 }
+
+- (void)answerwQuestion:(NSString *)answerContent handle:(void(^)(NSDictionary *dic)) block{
+    STHTTPRequest *r = [STHTTPRequest requestWithURLString:@"http://api.segmentfault.com/answer/post"];
+    [r setPOSTDictionary:@{@"text": answerContent, @"questionId": [QuestionStore sharedStore].currentShowQuestionId, @"token": [[NSUserDefaults standardUserDefaults] objectForKey:@"token"]}];
+    [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
+        block(jsonObj);
+    }];
+    r.errorBlock = ^(NSError *error) {
+        NSLog(@"error is %@",error);
+    };
+    [r startAsynchronous];
+}
 @end

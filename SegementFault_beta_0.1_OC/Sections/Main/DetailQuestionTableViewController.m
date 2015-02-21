@@ -347,8 +347,21 @@
     [markdown setHandler:^(NSString *tagValue) {
         [self dismissViewControllerAnimated:YES completion:nil];
     } PullHandler:^(NSString *text) {
-        [[MXUtil sharedUtil] showMessageScreen:@"提交成功"];
-        [self dismissViewControllerAnimated:YES completion:nil];
+        if([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]){
+            [[DetailQuestionStore sharedStore] answerwQuestion:text handle:^(NSDictionary *dic) {
+                NSString *status = [dic objectForKey:@"status"];
+                if(status.integerValue==1){
+                    NSArray *a = [dic objectForKey:@"data"];
+                    [[MXUtil sharedUtil] showMessageScreen:[a[1] objectForKey:@"text"]];
+                }else{
+                    [self dismissViewControllerAnimated:YES completion:nil];
+                    [[MXUtil sharedUtil] showMessageScreen:@"提交成功"];
+                    [self firstInitData];
+                }
+            }];
+        }else{
+            [[MXUtil sharedUtil] showMessageScreen:@"未登录"];
+        }
     }];
     [self presentViewController:markdownNav animated:YES completion:nil];
 }
