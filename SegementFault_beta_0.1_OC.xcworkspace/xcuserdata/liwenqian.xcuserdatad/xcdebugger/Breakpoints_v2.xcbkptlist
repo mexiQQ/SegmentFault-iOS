@@ -20,11 +20,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SegementFault_beta_0.1_OC/Sections/Main/DetailQuestionTableViewController.m"
-            timestampString = "446120555.575415"
+            timestampString = "446196648.651481"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "61"
+            endingLineNumber = "61"
             landmarkName = "-getLatestLoans"
             landmarkType = "5">
          </BreakpointContent>

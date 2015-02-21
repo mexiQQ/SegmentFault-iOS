@@ -153,6 +153,9 @@
 		AF9E87A41A5F8B09006D00AF /* EditTagTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9E87A31A5F8B09006D00AF /* EditTagTableViewCell.m */; };
 		AFAEA3F51A15AF2E00C31F6A /* MeunTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFAEA3F41A15AF2E00C31F6A /* MeunTableViewCell.m */; };
 		AFB637CB1A973BEF003CB671 /* MarkdownEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB637CA1A973BEF003CB671 /* MarkdownEditorViewController.m */; };
+		AFB637CE1A985E0E003CB671 /* CommetnTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB637CD1A985E0E003CB671 /* CommetnTableViewController.m */; };
+		AFB637D11A9864FD003CB671 /* CommentStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB637D01A9864FD003CB671 /* CommentStore.m */; };
+		AFB637D41A98684B003CB671 /* CommentDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB637D31A98684B003CB671 /* CommentDataSource.m */; };
 		AFD5116E1A8C61AC00AB5C34 /* RightTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD5116D1A8C61AC00AB5C34 /* RightTableViewController.m */; };
 		AFD5117A1A8C825100AB5C34 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD511791A8C825100AB5C34 /* MessageModel.m */; };
 		AFD5117D1A8C826D00AB5C34 /* MessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD5117C1A8C826D00AB5C34 /* MessageStore.m */; };
@@ -371,6 +374,12 @@
 		AFAEA3F41A15AF2E00C31F6A /* MeunTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MeunTableViewCell.m; sourceTree = "<group>"; };
 		AFB637C91A973BEF003CB671 /* MarkdownEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MarkdownEditorViewController.h; path = Sections/Modal/MarkdownEditorViewController.h; sourceTree = "<group>"; };
 		AFB637CA1A973BEF003CB671 /* MarkdownEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MarkdownEditorViewController.m; path = Sections/Modal/MarkdownEditorViewController.m; sourceTree = "<group>"; };
+		AFB637CC1A985E0E003CB671 /* CommetnTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommetnTableViewController.h; sourceTree = "<group>"; };
+		AFB637CD1A985E0E003CB671 /* CommetnTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommetnTableViewController.m; sourceTree = "<group>"; };
+		AFB637CF1A9864FD003CB671 /* CommentStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentStore.h; path = General/Store/CommentStore.h; sourceTree = "<group>"; };
+		AFB637D01A9864FD003CB671 /* CommentStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentStore.m; path = General/Store/CommentStore.m; sourceTree = "<group>"; };
+		AFB637D21A98684B003CB671 /* CommentDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentDataSource.h; path = General/Datasource/CommentDataSource.h; sourceTree = "<group>"; };
+		AFB637D31A98684B003CB671 /* CommentDataSource.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentDataSource.m; path = General/Datasource/CommentDataSource.m; sourceTree = "<group>"; };
 		AFD5116C1A8C61AC00AB5C34 /* RightTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightTableViewController.h; sourceTree = "<group>"; };
 		AFD5116D1A8C61AC00AB5C34 /* RightTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightTableViewController.m; sourceTree = "<group>"; };
 		AFD511781A8C825100AB5C34 /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageModel.h; path = General/Model/MessageModel.h; sourceTree = "<group>"; };
@@ -584,6 +593,8 @@
 				AF2CC7DA1A5E8CD3000B1D37 /* ArticleStore.m */,
 				AFD5117B1A8C826D00AB5C34 /* MessageStore.h */,
 				AFD5117C1A8C826D00AB5C34 /* MessageStore.m */,
+				AFB637CF1A9864FD003CB671 /* CommentStore.h */,
+				AFB637D01A9864FD003CB671 /* CommentStore.m */,
 				AF2CC7D01A5E2DF4000B1D37 /* QuestionStore.h */,
 				AF2CC7D11A5E2DF4000B1D37 /* QuestionStore.m */,
 				AF49193D1A7233BB00EEFFFF /* DetailArticleStore.h */,
@@ -791,6 +802,8 @@
 				AF4919411A7233EB00EEFFFF /* DetailArticleDataSource.m */,
 				AF0A0CA11A8205F3001CC174 /* DetailQuestionDataSource.h */,
 				AF0A0CA21A8205F3001CC174 /* DetailQuestionDataSource.m */,
+				AFB637D21A98684B003CB671 /* CommentDataSource.h */,
+				AFB637D31A98684B003CB671 /* CommentDataSource.m */,
 			);
 			name = Datasource;
 			sourceTree = "<group>";
@@ -842,6 +855,8 @@
 			children = (
 				AFD5116C1A8C61AC00AB5C34 /* RightTableViewController.h */,
 				AFD5116D1A8C61AC00AB5C34 /* RightTableViewController.m */,
+				AFB637CC1A985E0E003CB671 /* CommetnTableViewController.h */,
+				AFB637CD1A985E0E003CB671 /* CommetnTableViewController.m */,
 			);
 			name = Right;
 			path = Sections/Right;
@@ -1147,10 +1162,12 @@
 				AF0A0C971A81FC7E001CC174 /* DetailQuestionStore.m in Sources */,
 				AFFB4C501A83713100923088 /* AnswerModel.m in Sources */,
 				AF0A0CA31A8205F3001CC174 /* DetailQuestionDataSource.m in Sources */,
+				AFB637D41A98684B003CB671 /* CommentDataSource.m in Sources */,
 				AF7684C41A498456009C188D /* QuestionTableViewCell.m in Sources */,
 				AF2CC7CC1A5E2CBD000B1D37 /* MainQuestionTableViewController.m in Sources */,
 				AFD5116E1A8C61AC00AB5C34 /* RightTableViewController.m in Sources */,
 				AFB637CB1A973BEF003CB671 /* MarkdownEditorViewController.m in Sources */,
+				AFB637CE1A985E0E003CB671 /* CommetnTableViewController.m in Sources */,
 				AF2CC7C61A5E2B19000B1D37 /* QuestionModel.m in Sources */,
 				AFDA89901A48101200771476 /* LeftTableViewUserSectionView.m in Sources */,
 				AF59ABA41A1594DF0017DA21 /* LeftViewController.m in Sources */,
@@ -1172,6 +1189,7 @@
 				AFD511831A8C950600AB5C34 /* MessageTableViewCell.m in Sources */,
 				AF4919391A722FFA00EEFFFF /* DetailArticleTableViewCell.m in Sources */,
 				AF7684B41A494DD1009C188D /* MainAticlesTableViewController.m in Sources */,
+				AFB637D11A9864FD003CB671 /* CommentStore.m in Sources */,
 				AF2CC7BE1A5E29B2000B1D37 /* QuestionsDataSource.m in Sources */,
 				AFD511801A8C829A00AB5C34 /* MessageDataSource.m in Sources */,
 				AF9E87A41A5F8B09006D00AF /* EditTagTableViewCell.m in Sources */,

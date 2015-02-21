@@ -22,4 +22,6 @@
 - (void)hateAnswer:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block;
 - (void)likeAnswer:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block;
 - (void)answerwQuestion:(NSString *)answerContent handle:(void(^)(NSDictionary *dic)) block;
+- (void)commentAnswer:(NSString *)commentContent answerId:(NSString *)answerId handle:(void(^)(NSDictionary *dic)) block;
+
 @end

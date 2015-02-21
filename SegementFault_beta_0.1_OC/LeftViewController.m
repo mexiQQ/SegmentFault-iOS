@@ -44,6 +44,8 @@
     [_cellContent addObject:userhelp];
     [_cellContent addObject:sites];
     [_cellContent addObject:others];
+    
+    [self getMessagesNumberAndUpdateBarNumber];
 }
 
 
@@ -209,6 +211,35 @@
     NSLog(@"登录成功");
     [_cellContent[2] replaceObjectAtIndex:1 withObject:@"Login Out"];
     [_mytableview reloadData];
+}
+
+#pragma mark - Messages Number
+
+// 获取最新消息数并更新 UI
+- (void) getMessagesNumberAndUpdateBarNumber{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        NSTimer *myTimer =  [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(getMessageNumber:) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
+        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate distantFuture]];
+    });
+}
+
+- (void)getMessageNumber:(NSNotification *)notification{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]){
+        NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/user/stat?token=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
+        NSError *error = nil;
+        NSLog(@"user token is %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]);
+        STHTTPRequest *r = [STHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+        [r startSynchronousWithError:&error];
+        NSData *data = r.responseData;
+        NSDictionary *message;
+        if(data){
+            message= [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+        }
+        dispatch_async(dispatch_get_main_queue(), ^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshMessagesNumber" object:self userInfo:message];
+        });
+    }
 }
 
 @end

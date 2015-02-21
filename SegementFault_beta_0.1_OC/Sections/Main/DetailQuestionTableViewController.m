@@ -13,9 +13,11 @@
 #import "DetailAnswerTableViewCell.h"
 #import "MarkdownEditorViewController.h"
 #import "UIButton+Bootstrap.h"
-#import <ShareSDK/ShareSDK.h>
+#import "UIViewController+MMDrawerController.h"
+#import "CommetnTableViewController.h"
 #import "MXUtil.h"
 #import "MessageStore.h"
+#import <ShareSDK/ShareSDK.h>
 
 @interface DetailQuestionTableViewController ()
 @property (nonatomic, strong) DetailQuestionDataSource   *myDetailQuestionDataSource;
@@ -142,17 +144,32 @@
             if(self.acceptAnswer == [NSNull null]){
                 DetailAnswerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailAnswerCell"];
                 [cell configureForCell:self.availableAnswers[section - 1] index:(NSInteger *)(section - 1) accepted:NO];
+                // 给 label 增加点击事件
+                UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showQuestionComment:)];
+                cell.commentLabel.userInteractionEnabled=YES;
+                [cell.commentLabel addGestureRecognizer:tap];
+                cell.commentLabel.tag = section - 1;
+                NSLog(@"cell tag id %ld",(long)cell.commentLabel.tag);
                 return cell;
             }
+            
+            DetailAnswerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailAnswerCell"];
             if(section == 1){
-                DetailAnswerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailAnswerCell"];
                 [cell configureForCell:self.acceptAnswer index:(NSInteger *)(section - 1)
                               accepted:YES];
-                return cell;
+                cell.commentLabel.tag = -1;
+            }else{
+                [cell configureForCell:self.availableAnswers[section - 2] index:(NSInteger *)(section - 1) accepted:NO];
+                cell.commentLabel.tag = section - 2;
             }
-            DetailAnswerTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailAnswerCell"];
-            [cell configureForCell:self.availableAnswers[section - 2] index:(NSInteger *)(section - 1) accepted:NO];
+            
+            // 给 label 增加点击事件
+            UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showQuestionComment:)];
+            cell.commentLabel.userInteractionEnabled=YES;
+            [cell.commentLabel addGestureRecognizer:tap];
+            
             return cell;
+
         }else{
             DetailQuestionTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"detailQuestionCell"];
             [cell configureForCell:self.question];
@@ -364,5 +381,25 @@
         }
     }];
     [self presentViewController:markdownNav animated:YES completion:nil];
+}
+
+// 展示评论页
+- (IBAction)showQuestionComment:(id)sender{
+    UITapGestureRecognizer *gesture = (UITapGestureRecognizer *)sender;
+    UILabel *lable = (UILabel *)gesture.view;
+    NSInteger tag = lable.tag;
+    UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *nav = [mainStoryboard instantiateViewControllerWithIdentifier:@"commentPage"];
+    CommetnTableViewController *main = nav.childViewControllers[0];
+    
+    if(tag==-1){
+        main.id_=[self.acceptAnswer objectForKey:@"id"];
+    }else{
+        main.id_=[[self.availableAnswers objectAtIndex:tag] objectForKey:@"id"];
+    }
+    
+    [self.mm_drawerController setRightDrawerViewController:nav];
+    [self.mm_drawerController setMaximumRightDrawerWidth:240.0];
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 @end

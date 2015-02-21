@@ -160,4 +160,17 @@ static DetailQuestionStore *store = nil;
     };
     [r startAsynchronous];
 }
+
+- (void)commentAnswer:(NSString *)commentContent answerId:(NSString *)answerId handle:(void(^)(NSDictionary *dic)) block{
+    STHTTPRequest *r = [STHTTPRequest requestWithURLString:@"http://api.segmentfault.com/comment/post"];
+    [r setPOSTDictionary:@{@"text": commentContent, @"id": answerId, @"token": [[NSUserDefaults standardUserDefaults] objectForKey:@"token"]}];
+    [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
+        block(jsonObj);
+    }];
+    r.errorBlock = ^(NSError *error) {
+        NSLog(@"error is %@",error);
+    };
+    [r startAsynchronous];
+
+}
 @end

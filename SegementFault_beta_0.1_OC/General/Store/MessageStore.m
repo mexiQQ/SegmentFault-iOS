@@ -23,16 +23,18 @@ static MessageStore *store = nil;
 }
 
 - (void)readNewData:(void(^)(NSMutableArray *))block{
-    NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/user/events?token=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
-    STHTTPRequest *r = [STHTTPRequest requestWithURLString:url];
-    [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
-        NSMutableArray *array = [[jsonObj objectForKey:@"data"] objectForKey:@"rows"];
-        block(array);
-    }];
-    r.errorBlock = ^(NSError *error) {
-        NSLog(@"error is %@",error);
-    };
-    [r startAsynchronous];
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]){
+        NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/user/events?token=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
+        STHTTPRequest *r = [STHTTPRequest requestWithURLString:url];
+        [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
+            NSMutableArray *array = [[jsonObj objectForKey:@"data"] objectForKey:@"rows"];
+            block(array);
+        }];
+        r.errorBlock = ^(NSError *error) {
+            NSLog(@"error is %@",error);
+        };
+        [r startAsynchronous];
+    }
 }
 
 @end

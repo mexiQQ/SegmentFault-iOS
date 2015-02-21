@@ -10,4 +10,5 @@
 
 @interface DetailWriteCommentTableViewCell : UITableViewCell
 
+@property (weak, nonatomic) IBOutlet UILabel *wirteComment;
 @end

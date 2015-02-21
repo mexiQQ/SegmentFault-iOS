@@ -38,11 +38,6 @@
     
     [self.likeButton addTarget:self action:@selector(tapLike:) forControlEvents:UIControlEventTouchUpInside];
     [self.hateButton addTarget:self action:@selector(tapHate:) forControlEvents:UIControlEventTouchUpInside];
-    
-    // 给 label 增加点击事件
-    UITapGestureRecognizer *tap=[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showQuestionComment:)];
-    self.commentLabel.userInteractionEnabled=YES;
-    [self.commentLabel addGestureRecognizer:tap];
 }
 
 // 计算 webview 的高度并通知重新加载

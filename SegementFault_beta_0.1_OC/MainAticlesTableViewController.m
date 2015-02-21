@@ -10,6 +10,7 @@
 #import "DetailArticleTableViewController.h"
 #import "BBBadgeBarButtonItem.h"
 #import "DetailArticleStore.h"
+#import "RightTableViewController.h"
 #import "MXUtil.h"
 static BOOL firstInit = true;
 
@@ -202,6 +203,14 @@ static BOOL firstInit = true;
 }
 
 - (IBAction)sliderRight:(id)sender {
+    UINavigationController *nav = (UINavigationController*)self.mm_drawerController.rightDrawerViewController;
+    UIViewController *main = nav.childViewControllers[0];
+    if(![main isKindOfClass:RightTableViewController.class]){
+        UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UIViewController *rightDrawer = [mainStoryboard instantiateViewControllerWithIdentifier:@"messagePage"];
+        [self.mm_drawerController setRightDrawerViewController:rightDrawer];
+    }
+    [self.mm_drawerController setMaximumRightDrawerWidth:200.0];
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 

@@ -10,9 +10,8 @@
 #import "MeunTableViewCell.h"
 #import "LeftTableViewSectionView.h"
 #import "LeftTableViewUserSectionView.h"
-#import "MainQuestionTableViewController.h"
 #import "TagStore.h"
-
+#import "UIViewController+MMDrawerController.h"
 @interface LeftViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *mytableview;
 @property (nonatomic,strong) NSMutableArray *cellContent;

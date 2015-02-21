@@ -24,10 +24,8 @@
 @implementation RightTableViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    
+    [super viewDidLoad];    
     [self setupTableView];
-    [self getMessagesNumberAndUpdateBarNumber];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -38,9 +36,24 @@
 #pragma mark - table datasource
 // 设置tableview
 - (void)setupTableView{
+    _activityIndicator.hidden=NO;
+    [_activityIndicator startAnimating];
     [self setupRefreshControl];
+    [self firstInitData];
 }
 
+//第一次加载数据时自动弹出
+- (void)firstInitData{
+    [UIView animateWithDuration:0.25
+                          delay:0
+                        options:UIViewAnimationOptionBeginFromCurrentState
+                     animations:^(void){
+                         self.tableView.contentOffset = CGPointMake(0, -self.refreshControl.frame.size.height-20);
+                     } completion:^(BOOL finished){
+                         [self.refreshControl beginRefreshing];
+                         [self.refreshControl sendActionsForControlEvents:UIControlEventValueChanged];
+                     }];
+}
 
 // 设置下拉刷新进度条
 - (void) setupRefreshControl{
@@ -72,6 +85,7 @@
             [cell configureForCell:item];
         }];
         self.tableView.dataSource = self.myMessageDataSource;
+        _activityIndicator.hidden=YES;
         [self.refreshControl endRefreshing];
     }];
 }
@@ -122,32 +136,4 @@
     return 85;
 }
 
-#pragma mark - Messages Number
-
-// 获取最新消息数并更新 UI
-- (void) getMessagesNumberAndUpdateBarNumber{
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
-        NSTimer *myTimer =  [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(getMessageNumber:) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
-        [[NSRunLoop currentRunLoop] runUntilDate:[NSDate distantFuture]];
-    });
-}
-
-- (void)getMessageNumber:(NSNotification *)notification{
-    if([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]){
-        NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/user/stat?token=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
-        NSError *error = nil;
-        NSLog(@"user token is %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]);
-        STHTTPRequest *r = [STHTTPRequest requestWithURL:[NSURL URLWithString:url]];
-        [r startSynchronousWithError:&error];
-        NSData *data = r.responseData;
-        NSDictionary *message;
-        if(data){
-            message= [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-        }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshMessagesNumber" object:self userInfo:message];
-        });
-    }
-}
 @end
