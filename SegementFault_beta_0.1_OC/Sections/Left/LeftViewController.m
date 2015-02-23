@@ -8,6 +8,7 @@
 
 #import "LeftViewController.h"
 #import "MXUtil.h"
+#import "MeunTableViewCell.h"
 #import "LKBadgeView.h"
 @interface LeftViewController ()
 @property (nonatomic,strong) LKBadgeView *badge;

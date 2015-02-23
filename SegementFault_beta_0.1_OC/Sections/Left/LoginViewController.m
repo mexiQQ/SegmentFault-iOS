@@ -46,7 +46,7 @@
     
     CALayer *line = [[CALayer alloc] init];
     line.borderWidth=1.0f;
-    [line setFrame:CGRectMake(2,self.emailTextfeild.bounds.origin.y+self.emailTextfeild.bounds.size.height+4,self.userView.bounds.size.width-4,1)];
+    [line setFrame:CGRectMake(2,self.userView.bounds.origin.y+self.userView.bounds.size.height/2 + 1,self.userView.bounds.size.width-4,1)];
     line.borderColor = [[MXUtil sharedUtil] getUIColor:@"D8D8D8"].CGColor;
     [self.userView.layer addSublayer:line];
     
