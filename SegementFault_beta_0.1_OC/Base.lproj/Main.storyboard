@@ -427,12 +427,24 @@
                                             <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="已读" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pGO-oQ-3TL">
+                                            <rect key="frame" x="270" y="35" width="42" height="21"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="42" id="0IO-7U-nVd"/>
+                                                <constraint firstAttribute="height" constant="21" id="eHe-MJ-CSf"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                            <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="pGO-oQ-3TL" firstAttribute="top" secondItem="8zE-eo-1e8" secondAttribute="bottom" constant="6" id="H7B-CP-Qbd"/>
                                         <constraint firstItem="7f2-q8-oOM" firstAttribute="leading" secondItem="xtb-qQ-aa2" secondAttribute="leadingMargin" id="IFb-JB-oKr"/>
                                         <constraint firstItem="7f2-q8-oOM" firstAttribute="trailing" secondItem="xtb-qQ-aa2" secondAttribute="trailingMargin" id="KZi-I5-ygr"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="7f2-q8-oOM" secondAttribute="bottom" constant="-2" id="Vr6-eH-jfX"/>
                                         <constraint firstItem="vSP-Km-W3Q" firstAttribute="leading" secondItem="xtb-qQ-aa2" secondAttribute="leadingMargin" id="W2e-i5-PqA"/>
+                                        <constraint firstItem="8zE-eo-1e8" firstAttribute="trailing" secondItem="pGO-oQ-3TL" secondAttribute="trailing" id="XhP-4c-B8O"/>
                                         <constraint firstItem="5AY-2i-vif" firstAttribute="top" secondItem="vSP-Km-W3Q" secondAttribute="bottom" constant="6" id="awN-aT-6t3"/>
                                         <constraint firstItem="8zE-eo-1e8" firstAttribute="top" secondItem="xtb-qQ-aa2" secondAttribute="topMargin" id="ddr-Xl-gJu"/>
                                         <constraint firstItem="7f2-q8-oOM" firstAttribute="top" secondItem="5AY-2i-vif" secondAttribute="bottom" constant="2" id="kc7-ab-hW0"/>
@@ -442,6 +454,7 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
+                                    <outlet property="maskLabel" destination="pGO-oQ-3TL" id="i6n-Fm-9W9"/>
                                     <outlet property="timeLabel" destination="8zE-eo-1e8" id="C9G-vS-kY2"/>
                                     <outlet property="titleTextFeild" destination="7f2-q8-oOM" id="Ejt-JZ-NDD"/>
                                     <outlet property="userNameTextFeild" destination="vSP-Km-W3Q" id="noU-Io-tmN"/>
@@ -1827,7 +1840,7 @@
         <image name="icon_more.png" width="19" height="5"/>
         <image name="icon_qq.png" width="29" height="29"/>
         <image name="icon_sina.png" width="29" height="29"/>
-        <image name="menu" width="25" height="26"/>
+        <image name="menu" width="21" height="17"/>
         <image name="question" width="34" height="34"/>
         <image name="sf-logo-cmyk_dark.png" width="1139" height="421"/>
         <image name="up_rate_dark.png" width="10" height="6"/>

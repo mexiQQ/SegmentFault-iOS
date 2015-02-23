@@ -12,7 +12,7 @@
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
-
+@property (assign, nonatomic) UIBackgroundTaskIdentifier backgroundUpdateTask;
 
 @end
 

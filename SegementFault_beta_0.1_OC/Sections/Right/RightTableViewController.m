@@ -105,28 +105,27 @@
 
 // 设置点击选择
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    NSDictionary *message = [self.messages objectAtIndex:indexPath.row];
+    
+    // 标记为已读消息
+    [[MessageStore sharedStore] markMessage:[message objectForKey:@"id"]];
+    
     // 抽取必要的参数信息，之后转到 model 层作处理
-    NSDictionary *object = [[self.messages objectAtIndex:indexPath.row] objectForKey:@"object"];
+    NSDictionary *object = [message objectForKey:@"object"];
     NSString *type = [object objectForKey:@"type"];
     NSString *url = [[self.messages objectAtIndex:indexPath.row] objectForKey:@"url"];
     NSArray *id_ = [[MXUtil sharedUtil] rexMake:url rex:@"[0-9]+(?=\\?)"];
     
     if([type isEqualToString:@"question"]){
-        // 发出通知重新设置右边栏宽度
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"readMessage" object:self userInfo:nil];
-        
         // 清空上一个问题的所有高度信息
         [DetailQuestionStore sharedStore].answersHeights=nil;
         [DetailQuestionStore sharedStore].questionHeight=nil;
-
+        
         [QuestionStore sharedStore].currentShowQuestionId = id_[0];
         UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
         UIViewController *deatailQuestionController = [mainStoryboard instantiateViewControllerWithIdentifier:@"detailQuestionPage"];
         [self.navigationController pushViewController:deatailQuestionController animated:YES];
     }else if([type isEqualToString:@"article"]){
-        // 发出通知重新设置右边栏宽度
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"readMessage" object:self userInfo:nil];
-        
         // 清空上一个 article 高度信息
         [DetailArticleStore sharedStore].articleHeight = nil;
         

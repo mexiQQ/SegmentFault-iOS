@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UILabel *wordTextFeild;
 @property (weak, nonatomic) IBOutlet UILabel *titleTextFeild;
 @property (weak, nonatomic) IBOutlet UILabel *timeLabel;
+@property (weak, nonatomic) IBOutlet UILabel *maskLabel;
 - (void)configureForCell:(NSDictionary *)item;
 
 @end

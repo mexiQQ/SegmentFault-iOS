@@ -41,4 +41,17 @@ static MessageStore *store = nil;
     }
 }
 
+- (void)markMessage:(NSString *)id_{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]){
+        NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/user/event/%@/view",id_];
+        STHTTPRequest *r = [STHTTPRequest requestWithURLString:url];
+        NSString *token = [[NSUserDefaults standardUserDefaults] objectForKey:@"token"];
+        [r setPOSTDictionary:@{@"token": token}];
+        r.completionBlock = nil;
+        r.errorBlock = ^(NSError *error) {
+            NSLog(@"error is %@",error);
+        };
+        [r startAsynchronous];
+    }
+}
 @end

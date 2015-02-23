@@ -10,6 +10,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import <TencentOpenAPI/QQApiInterface.h>
 #import <TencentOpenAPI/TencentOAuth.h>
+#import "STHTTPRequest+JSON.h"
 #import "WXApi.h"
 #import "WeiboSDK.h"
 
@@ -95,6 +96,21 @@
                           consumerKey:@"segmentfault"
                        consumerSecret:@"1a5aa3845a630eec"];
      */
+    
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
+    if([[UIApplication sharedApplication] respondsToSelector:@selector(registerUserNotificationSettings:)])
+    {
+        [[UIApplication sharedApplication] registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeBadge) categories:nil]];
+        [[UIApplication sharedApplication] registerForRemoteNotifications];
+    }else
+    {
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+         (UIRemoteNotificationTypeBadge)];
+    }
+#else
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:
+     (UIRemoteNotificationTypeBadge)];
+#endif
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{
@@ -108,4 +124,46 @@
                         annotation:annotation
                         wxDelegate:self];
 }
+
+- (void)applicationDidEnterBackground:(UIApplication *)application{
+    [self beingBackgroundUpdateTask];
+    NSTimer *myTimer =  [NSTimer scheduledTimerWithTimeInterval:10.0 target:self selector:@selector(getMessageNumber:) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:myTimer forMode:NSDefaultRunLoopMode];
+    [[NSRunLoop currentRunLoop] runUntilDate:[NSDate distantFuture]];
+    [self endBackgroundUpdateTask];
+}
+
+- (void)beingBackgroundUpdateTask{
+    self.backgroundUpdateTask = [[UIApplication sharedApplication] beginBackgroundTaskWithExpirationHandler:^{
+        [self endBackgroundUpdateTask];
+    }];
+}
+
+- (void)endBackgroundUpdateTask{
+    [[UIApplication sharedApplication] endBackgroundTask:self.backgroundUpdateTask];
+    self.backgroundUpdateTask = UIBackgroundTaskInvalid;
+}
+
+- (void)getMessageNumber:(NSNotification *)notification{
+    if([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]){
+        NSString *url = [NSString stringWithFormat:@"http://api.segmentfault.com/user/stat?token=%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]];
+        NSError *error = nil;
+        NSLog(@"user token is %@",[[NSUserDefaults standardUserDefaults] objectForKey:@"token"]);
+        STHTTPRequest *r = [STHTTPRequest requestWithURL:[NSURL URLWithString:url]];
+        [r startSynchronousWithError:&error];
+        NSData *data = r.responseData;
+        NSDictionary *message;
+        if(data){
+            message= [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
+        }
+        NSString *status = [message objectForKey:@"status"];
+        NSString *events;
+        if(status.integerValue == 0)
+        {
+            events = [[message objectForKey:@"data"] objectForKey:@"events"];
+            [UIApplication sharedApplication].applicationIconBadgeNumber = events.integerValue;
+        }
+    }
+}
+
 @end

@@ -11,5 +11,5 @@
 @interface MessageStore : Store
 +(MessageStore *)sharedStore;
 @property (nonatomic,strong) NSString *currentShowArticleId;
-
+- (void)markMessage:(NSString *)id_;
 @end
