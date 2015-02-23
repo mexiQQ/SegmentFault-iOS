@@ -15,6 +15,7 @@
 #import "MessageDataSource.h"
 #import "MessageTableViewCell.h"
 #import "STHTTPRequest+JSON.h"
+#import "UIViewController+MMDrawerController.h"
 #import "MXUtil.h"
 @interface RightTableViewController ()
 @property (nonatomic,strong) NSArray *messages;
@@ -24,23 +25,27 @@
 @implementation RightTableViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];    
+    [super viewDidLoad];
+    [self setupBar];
     [self setupTableView];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 #pragma mark - table datasource
 // 设置tableview
 - (void)setupTableView{
-    _activityIndicator.hidden=NO;
-    [_activityIndicator startAnimating];
     [self setupRefreshControl];
     [self firstInitData];
 }
+
+- (void)setupBar{
+    // 设置 barTitle
+    [self.titleButton setBackgroundImage:[UIImage imageNamed:@"NavigationBar_title"] forState:UIControlStateNormal];
+}
+
 
 //第一次加载数据时自动弹出
 - (void)firstInitData{
@@ -81,11 +86,17 @@
     [self setRefreshTitle];
     [[MessageStore sharedStore] readNewData:^(NSArray *dic) {
         self.messages = dic;
-        self.myMessageDataSource = [[MessageDataSource alloc] initWithItems:dic cellIdentifier:@"messageCell" configureCellBlock:^(MessageTableViewCell *cell, NSDictionary *item) {
-            [cell configureForCell:item];
-        }];
-        self.tableView.dataSource = self.myMessageDataSource;
-        _activityIndicator.hidden=YES;
+        if(dic == [NSNull null])
+        {
+            [[MXUtil sharedUtil] showMessageScreen:@"没有消息"];
+        }
+        else
+        {
+            self.myMessageDataSource = [[MessageDataSource alloc] initWithItems:dic cellIdentifier:@"messageCell" configureCellBlock:^(MessageTableViewCell *cell, NSDictionary *item) {
+                [cell configureForCell:item];
+            }];
+            self.tableView.dataSource = self.myMessageDataSource;
+        }
         [self.refreshControl endRefreshing];
     }];
 }
@@ -94,9 +105,6 @@
 
 // 设置点击选择
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
-    // 设定问题文章详细页面为消息模式
-    [MessageStore sharedStore].isMessages = true;
-    
     // 抽取必要的参数信息，之后转到 model 层作处理
     NSDictionary *object = [[self.messages objectAtIndex:indexPath.row] objectForKey:@"object"];
     NSString *type = [object objectForKey:@"type"];
@@ -136,4 +144,11 @@
     return 85;
 }
 
+- (IBAction)sliderTopAction:(id)sender {
+    [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+}
+
+- (IBAction)sliderLeftAction:(id)sender {
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+}
 @end

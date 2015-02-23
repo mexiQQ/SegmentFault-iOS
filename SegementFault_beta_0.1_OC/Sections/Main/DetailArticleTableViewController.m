@@ -268,10 +268,6 @@
 
 
 - (IBAction)backAction:(id)sender {
-    if([MessageStore sharedStore].isMessages){
-        [[NSNotificationCenter defaultCenter] postNotificationName:@"readMessage" object:self userInfo:nil];
-        [MessageStore sharedStore].isMessages = false;
-    }
     [self.navigationController popViewControllerAnimated:YES];
 }
 

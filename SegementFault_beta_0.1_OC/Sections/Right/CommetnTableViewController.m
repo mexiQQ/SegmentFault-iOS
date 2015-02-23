@@ -24,6 +24,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setupBar];
     [self setupTableView];
     _activityIndicator.hidden=NO;
     [_activityIndicator setFrame:CGRectMake(_activityIndicator.frame.origin.x, 20, _activityIndicator.frame.size.width, _activityIndicator.frame.size.height)];
@@ -35,6 +36,11 @@
 - (void)setupTableView{
     [self setupRefreshControl];
     [self firstInitData];
+}
+
+- (void)setupBar{
+    // 设置 barTitle
+    [self.titleButton setBackgroundImage:[UIImage imageNamed:@"comments_title"] forState:UIControlStateNormal];
 }
 
 //第一次加载数据时自动弹出

@@ -26,8 +26,8 @@
     
     UITabBarController *mainViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainPage"];    
     UIViewController *leftDrawer = [mainStoryboard instantiateViewControllerWithIdentifier:@"menuPage"];
-    UIViewController *rightDrawer = [mainStoryboard instantiateViewControllerWithIdentifier:@"messagePage"];
-    //UIViewController *rightDrawer = [[UIViewController alloc] init];
+    //UIViewController *rightDrawer = [mainStoryboard instantiateViewControllerWithIdentifier:@"messagePage"];
+    UIViewController *rightDrawer = [[UIViewController alloc] init];
     //UIViewController *leftDrawer = [[UIViewController alloc] init];
 
     MMDrawerController* drawerController = [[MMDrawerController alloc]

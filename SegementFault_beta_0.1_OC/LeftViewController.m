@@ -27,10 +27,10 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loginSuccess:) name:@"loginSuccess" object:nil];
     
     // 初始化侧边栏菜单
-    NSArray *userhelp = @[@"Ask Questions"];
+    NSArray *userhelp = @[@"Ask Messages"];
     
     NSMutableArray *sites = [[TagStore sharedStore] getCurrentTags];
-    [sites insertObject:@"首页" atIndex:0];
+    [sites insertObject:@"Home" atIndex:0];
     
     NSString *temp = @"Login";
     if([[NSUserDefaults standardUserDefaults] objectForKey:@"user"])
@@ -144,7 +144,9 @@
 // 指定点击每个 Cell 后执行的操作
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     if (indexPath.section == 0){
-        [[MXUtil sharedUtil] showMessageScreen:@"未支持"];
+        UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        UITabBarController *mainViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"messagePage"];
+        [self.mm_drawerController setCenterViewController:mainViewController withCloseAnimation:YES completion:nil];
     }
     else if(indexPath.section==1){
         UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
@@ -202,7 +204,7 @@
 
 - (void)updateTags:(NSNotification *)notification{
     NSMutableArray *temp = [[TagStore sharedStore] getCurrentTags];
-    [temp insertObject:@"首页" atIndex:0];
+    [temp insertObject:@"Home" atIndex:0];
     [_cellContent replaceObjectAtIndex:1 withObject:temp];
     [_mytableview reloadData];
 }

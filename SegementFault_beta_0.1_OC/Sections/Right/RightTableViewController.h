@@ -9,6 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface RightTableViewController : UITableViewController
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property (weak, nonatomic) IBOutlet UIButton *titleButton;
 
 @end

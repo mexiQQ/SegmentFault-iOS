@@ -9,7 +9,6 @@
 #import "Store.h"
 
 @interface MessageStore : Store
-@property (nonatomic) BOOL isMessages;
 +(MessageStore *)sharedStore;
 @property (nonatomic,strong) NSString *currentShowArticleId;
 

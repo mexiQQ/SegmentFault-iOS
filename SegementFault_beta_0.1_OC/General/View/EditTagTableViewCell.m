@@ -12,6 +12,7 @@
 @synthesize tagTitle = _tagTitle;
 @synthesize tagImage = _tagImage;
 @synthesize tagSwitch = _tagSwitch;
+
 - (void)awakeFromNib {
     // Initialization code
 }

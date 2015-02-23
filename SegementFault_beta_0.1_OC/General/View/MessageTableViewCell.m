@@ -12,6 +12,7 @@
 @synthesize userNameTextFeild = _userNameTextFeild;
 @synthesize titleTextFeild = _titleTextFeild;
 @synthesize wordTextFeild = _wordTextFeild;
+@synthesize timeLabel = _timeLabel;
 - (void)awakeFromNib {
 
 }
@@ -23,6 +24,7 @@
     NSDictionary *user = users[0];
     self.userNameTextFeild.text = [user objectForKey:@"name"];
     self.titleTextFeild.text = [item objectForKey:@"title"];
+    self.timeLabel.text = [item objectForKey:@"date"];
     self.wordTextFeild.text = [[target objectForKey:@"word"] substringFromIndex:2];
 }
 
