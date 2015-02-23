@@ -26,9 +26,6 @@ static BOOL firstInit = true;
     [super viewDidLoad];
     firstInit = true;
     
-    // 注册用于刷新 messages 数量的观察者
-    //[[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(refreshMessagesNumber:) name:@"refreshMessagesNumber" object:nil];
-    
     [self setupBar];
     [self setupTableView];
 }
@@ -39,15 +36,6 @@ static BOOL firstInit = true;
 
 // 设置 bar
 - (void)setupBar{
-//    UIButton *customButton = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 32, 26)];
-//    [customButton setImage:[UIImage imageNamed:@"note"] forState:UIControlStateNormal];
-//    [customButton addTarget:self action:@selector(sliderRight:) forControlEvents:UIControlEventTouchUpInside];
-//    BBBadgeBarButtonItem *barButton = [[BBBadgeBarButtonItem alloc] initWithCustomUIButton:customButton];
-//    barButton.badgeValue = @"";
-//    barButton.badgeOriginX = 20;
-//    barButton.badgeOriginY = -9;
-//    self.navigationItem.rightBarButtonItem = barButton;
-    
     // 设置 barTitle
     [self.titleButton setBackgroundImage:[UIImage imageNamed:@"NavigationBar_title"] forState:UIControlStateNormal];
 }
@@ -179,14 +167,6 @@ static BOOL firstInit = true;
     return height;
 }
 
-//// 刷新 Messages 数量的操作
-//- (void)refreshMessagesNumber:(NSNotification *)notification{
-//    NSString *messagesNumber = [[[notification userInfo] objectForKey:@"data"] objectForKey:@"events"];
-//    BBBadgeBarButtonItem *barButton = (BBBadgeBarButtonItem *)self.navigationItem.rightBarButtonItem;
-//    barButton.badgeBGColor = [[MXUtil sharedUtil] getUIColor:@"2a5caa"];
-//    barButton.badgeValue = [NSString stringWithFormat:@"%@",messagesNumber];
-//}
-
 // 点击进入文章的详细页面
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     // 清空 article 的高度信息
@@ -199,18 +179,6 @@ static BOOL firstInit = true;
 
 - (IBAction)sliderLeft:(id)sender {
     [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
-}
-
-- (IBAction)sliderRight:(id)sender {
-//    UINavigationController *nav = (UINavigationController*)self.mm_drawerController.rightDrawerViewController;
-//    UIViewController *main = nav.childViewControllers[0];
-//    if(![main isKindOfClass:RightTableViewController.class]){
-//        UIStoryboard* mainStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-//        UIViewController *rightDrawer = [mainStoryboard instantiateViewControllerWithIdentifier:@"messagePage"];
-//        [self.mm_drawerController setRightDrawerViewController:rightDrawer];
-//    }
-//    [self.mm_drawerController setMaximumRightDrawerWidth:200.0];
-//    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight animated:YES completion:nil];
 }
 
 - (IBAction)titleButtonAction:(id)sender {

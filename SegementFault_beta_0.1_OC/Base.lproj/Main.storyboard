@@ -538,10 +538,14 @@
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lD0-BQ-1RM">
                                             <rect key="frame" x="14" y="7" width="30" height="30"/>
                                         </imageView>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VJB-nq-KAd">
+                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VJB-nq-KAd">
                                             <rect key="frame" x="263" y="6" width="51" height="31"/>
                                         </switch>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="VJB-nq-KAd" firstAttribute="trailing" secondItem="5Tl-bS-ity" secondAttribute="trailingMargin" id="GV2-ch-sVW"/>
+                                        <constraint firstItem="VJB-nq-KAd" firstAttribute="top" secondItem="5Tl-bS-ity" secondAttribute="topMargin" constant="-2" id="eFn-lB-7dD"/>
+                                    </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="tagImage" destination="lD0-BQ-1RM" id="tp5-4x-uwY"/>
