@@ -8,7 +8,9 @@
 
 #import "LeftViewController.h"
 #import "MXUtil.h"
+#import "LKBadgeView.h"
 @interface LeftViewController ()
+@property (nonatomic,strong) LKBadgeView *badge;
 @end
 
 @implementation LeftViewController
@@ -74,6 +76,14 @@
     if (cell == nil){
         cell = [[MeunTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault
                                         reuseIdentifier:MenuCellIdentifier];
+    }
+    
+    if(indexPath.section == 0 && indexPath.row == 0){
+        self.badge = [[LKBadgeView alloc] initWithFrame:CGRectMake(190, 13, 30, 28)];
+        self.badge.text = @"";
+        self.badge.badgeColor = [UIColor redColor];
+        self.badge.textColor = [UIColor whiteColor];
+        [cell addSubview:self.badge];
     }
     
     // 设置 cell 标题和图标
@@ -238,9 +248,29 @@
         if(data){
             message= [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
         }
-        dispatch_async(dispatch_get_main_queue(), ^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"refreshMessagesNumber" object:self userInfo:message];
-        });
+        NSString *status = [message objectForKey:@"status"];
+        NSString *events;
+        if(status.integerValue == 0)
+        {
+            events = [[message objectForKey:@"data"] objectForKey:@"events"];
+            if(events.integerValue == 0)
+            {
+                events = @"";
+            }
+            else
+            {
+                events = [NSString stringWithFormat:@"%@",events];
+            }
+            dispatch_async(dispatch_get_main_queue(), ^{
+                self.badge.text=events;
+            });
+        }
+        else
+        {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [[MXUtil sharedUtil] showMessageScreen:@"token过期，退出重新登录"];
+            });
+        }
     }
 }
 

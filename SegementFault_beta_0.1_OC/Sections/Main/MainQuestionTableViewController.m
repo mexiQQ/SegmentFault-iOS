@@ -9,7 +9,6 @@
 #import "MainQuestionTableViewController.h"
 #import "DetailQuestionStore.h"
 #import "DetailQuestionTableViewController.h"
-#import "BBBadgeBarButtonItem.h"
 #import "RightTableViewController.h"
 #import <CoreText/CoreText.h>
 #import "MXUtil.h"

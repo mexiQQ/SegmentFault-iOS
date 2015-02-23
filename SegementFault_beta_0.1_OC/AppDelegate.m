@@ -26,24 +26,18 @@
     
     UITabBarController *mainViewController = [mainStoryboard instantiateViewControllerWithIdentifier:@"mainPage"];    
     UIViewController *leftDrawer = [mainStoryboard instantiateViewControllerWithIdentifier:@"menuPage"];
-    //UIViewController *rightDrawer = [mainStoryboard instantiateViewControllerWithIdentifier:@"messagePage"];
-    UIViewController *rightDrawer = [[UIViewController alloc] init];
-    //UIViewController *leftDrawer = [[UIViewController alloc] init];
-
+   
     MMDrawerController* drawerController = [[MMDrawerController alloc]
                                             initWithCenterViewController:mainViewController
                                             leftDrawerViewController:leftDrawer
-                                            rightDrawerViewController:rightDrawer];
+                                            rightDrawerViewController:nil];
     
     [drawerController setMaximumRightDrawerWidth:200.0];
-    [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
+    [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
     [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
     
     window.rootViewController = drawerController;
     [window makeKeyAndVisible];
-    
-    // 注册查看消息的页面
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(readMessage:) name:@"readMessage" object:nil];
     
     [self setupSocial];
     return YES;
@@ -101,15 +95,6 @@
                           consumerKey:@"segmentfault"
                        consumerSecret:@"1a5aa3845a630eec"];
      */
-}
-
-- (void)readMessage:(NSNotification *)notification{
-    MMDrawerController *draw = (MMDrawerController *)window.rootViewController;
-    if(draw.maximumRightDrawerWidth == [[UIScreen mainScreen] bounds].size.width){
-        [draw setMaximumRightDrawerWidth:200];
-    }else{
-        [draw setMaximumRightDrawerWidth:[[UIScreen mainScreen] bounds].size.width];
-    }
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url{

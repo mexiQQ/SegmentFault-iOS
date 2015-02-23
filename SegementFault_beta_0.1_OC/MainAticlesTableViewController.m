@@ -8,7 +8,6 @@
 
 #import "MainAticlesTableViewController.h"
 #import "DetailArticleTableViewController.h"
-#import "BBBadgeBarButtonItem.h"
 #import "DetailArticleStore.h"
 #import "RightTableViewController.h"
 #import "MXUtil.h"
