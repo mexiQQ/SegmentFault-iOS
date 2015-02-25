@@ -10,6 +10,6 @@
 #import "STHTTPRequest+JSON.h"
 @interface Store : NSObject
 
-- (void)readNewData:(void(^)(NSMutableArray *))block;
-- (void)readOldData:(void(^)(NSMutableArray *))block page:(int)page;
+- (void)readNewData:(void (^)(NSMutableArray *))block;
+- (void)readOldData:(void (^)(NSMutableArray *))block page:(int)page;
 @end

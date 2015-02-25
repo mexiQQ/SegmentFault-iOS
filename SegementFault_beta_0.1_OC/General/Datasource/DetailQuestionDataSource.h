@@ -8,10 +8,10 @@
 
 #import "ArrayDataSource.h"
 
-@interface DetailQuestionDataSource : ArrayDataSource<UITableViewDelegate>
+@interface DetailQuestionDataSource : ArrayDataSource <UITableViewDelegate>
 
 - (id)initWithItems:(NSInteger *)sectionsNumber
-     cellIdentifier:(NSString *)aCellIdentifier
- configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock;
+        cellIdentifier:(NSString *)aCellIdentifier
+    configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock;
 
 @end

@@ -10,9 +10,9 @@
 
 @interface QuestionTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *questionTitle;
-@property (weak, nonatomic) IBOutlet UILabel *repuLabel;
-@property (weak, nonatomic) IBOutlet UILabel *tagsLabel;
+@property(weak, nonatomic) IBOutlet UILabel *questionTitle;
+@property(weak, nonatomic) IBOutlet UILabel *repuLabel;
+@property(weak, nonatomic) IBOutlet UILabel *tagsLabel;
 - (void)configureForCell:(NSMutableDictionary *)item;
 
 @end

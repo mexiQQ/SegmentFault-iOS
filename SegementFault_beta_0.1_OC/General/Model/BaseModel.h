@@ -5,10 +5,9 @@
 
 #import <Foundation/Foundation.h>
 
-
 @interface BaseModel : NSObject
 
-@property (nonatomic, strong) NSDictionary *jsonObj;
+@property(nonatomic, strong) NSDictionary *jsonObj;
 
 - (instancetype)initWithJsonObj:(NSDictionary *)jsonObj;
 

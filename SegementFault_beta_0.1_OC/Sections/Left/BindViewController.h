@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BindViewController : UIViewController<UIWebViewDelegate>
+@interface BindViewController : UIViewController <UIWebViewDelegate>
 
-@property (weak, nonatomic) IBOutlet UIWebView *bindWebView;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
-@property (nonatomic,strong) NSString *accessToken;
+@property(weak, nonatomic) IBOutlet UIWebView *bindWebView;
+@property(weak, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property(nonatomic, strong) NSString *accessToken;
 @end

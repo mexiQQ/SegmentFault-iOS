@@ -7,13 +7,16 @@
 
 @implementation STHTTPRequest (JSON)
 
-- (void)setCompletionJSONBlock:(void (^) (NSDictionary *header, NSDictionary *jsonObj))completion
-{
-    completionDataBlock_t block = ^(NSDictionary *headers, NSData *data){
-    NSDictionary *response = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:nil];
-        completion(headers, response);
-    };
-    [self setCompletionDataBlock:block];
+- (void)setCompletionJSONBlock:(void (^)(NSDictionary *header,
+                                         NSDictionary *jsonObj))completion {
+  completionDataBlock_t block = ^(NSDictionary *headers, NSData *data) {
+    NSDictionary *response =
+        [NSJSONSerialization JSONObjectWithData:data
+                                        options:NSJSONReadingMutableLeaves
+                                          error:nil];
+    completion(headers, response);
+  };
+  [self setCompletionDataBlock:block];
 }
 
 @end

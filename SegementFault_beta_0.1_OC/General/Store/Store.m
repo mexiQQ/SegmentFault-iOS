@@ -10,8 +10,8 @@
 
 @implementation Store
 
-- (void)readNewData:(void(^)(NSMutableArray *))block{
+- (void)readNewData:(void (^)(NSMutableArray *))block {
 }
-- (void)readOldData:(void(^)(NSMutableArray *))block page:(int)page{
+- (void)readOldData:(void (^)(NSMutableArray *))block page:(int)page {
 }
 @end

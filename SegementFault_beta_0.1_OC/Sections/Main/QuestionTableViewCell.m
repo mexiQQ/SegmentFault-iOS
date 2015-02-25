@@ -17,19 +17,19 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+  [super setSelected:selected animated:animated];
 }
 
-- (void)configureForCell:(NSMutableDictionary *)item
-{
-    self.questionTitle.text = [item objectForKey:@"title"];
-    self.repuLabel.text =[NSString stringWithFormat:@"vote:%@",[item objectForKey:@"votes"]];
-    
-    NSMutableString * tagString=[[NSMutableString alloc]init];
-    NSArray *tags = [item objectForKey:@"tags"];
-    for(NSDictionary *tag in tags){
-        [tagString appendFormat:@" %@",[tag objectForKey:@"name"]];
-    }
-    self.tagsLabel.text = tagString;
+- (void)configureForCell:(NSMutableDictionary *)item {
+  self.questionTitle.text = [item objectForKey:@"title"];
+  self.repuLabel.text =
+      [NSString stringWithFormat:@"vote:%@", [item objectForKey:@"votes"]];
+
+  NSMutableString *tagString = [[NSMutableString alloc] init];
+  NSArray *tags = [item objectForKey:@"tags"];
+  for (NSDictionary *tag in tags) {
+    [tagString appendFormat:@" %@", [tag objectForKey:@"name"]];
+  }
+  self.tagsLabel.text = tagString;
 }
 @end

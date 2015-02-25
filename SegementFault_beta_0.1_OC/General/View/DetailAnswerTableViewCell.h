@@ -8,18 +8,20 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailAnswerTableViewCell : UITableViewCell<UIWebViewDelegate>
-@property (weak, nonatomic) IBOutlet UIView *TopView;
-@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
-@property (weak, nonatomic) IBOutlet UILabel *authorRateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *productTime;
-@property (weak, nonatomic) IBOutlet UIWebView *contentWebView;
-@property (nonatomic,strong) NSString *indexTag;
+@interface DetailAnswerTableViewCell : UITableViewCell <UIWebViewDelegate>
+@property(weak, nonatomic) IBOutlet UIView *TopView;
+@property(weak, nonatomic) IBOutlet UILabel *authorLabel;
+@property(weak, nonatomic) IBOutlet UILabel *authorRateLabel;
+@property(weak, nonatomic) IBOutlet UILabel *productTime;
+@property(weak, nonatomic) IBOutlet UIWebView *contentWebView;
+@property(nonatomic, strong) NSString *indexTag;
 
-- (void)configureForCell:(NSDictionary *)item index:(NSInteger *)indexpath accepted:(BOOL) isAccepted;
+- (void)configureForCell:(NSDictionary *)item
+                   index:(NSInteger *)indexpath
+                accepted:(BOOL)isAccepted;
 
-@property (weak, nonatomic) IBOutlet UILabel *commentLabel;
-@property (weak, nonatomic) IBOutlet UIButton *acceptButton;
-@property (weak, nonatomic) IBOutlet UIButton *likeButton;
-@property (weak, nonatomic) IBOutlet UIButton *hateButton;
+@property(weak, nonatomic) IBOutlet UILabel *commentLabel;
+@property(weak, nonatomic) IBOutlet UIButton *acceptButton;
+@property(weak, nonatomic) IBOutlet UIButton *likeButton;
+@property(weak, nonatomic) IBOutlet UIButton *hateButton;
 @end

@@ -10,35 +10,32 @@
 
 @implementation MessageDataSource
 
-- (id)init
-{
-    return [super init];
+- (id)init {
+  return [super init];
 }
 
 - (id)initWithItems:(NSArray *)anItems
-     cellIdentifier:(NSString *)aCellIdentifier
- configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock
-{
-    return [super initWithItems:anItems cellIdentifier:aCellIdentifier configureCellBlock:aConfigureCellBlock];
+        cellIdentifier:(NSString *)aCellIdentifier
+    configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock {
+  return [super initWithItems:anItems
+               cellIdentifier:aCellIdentifier
+           configureCellBlock:aConfigureCellBlock];
 }
 
-- (id)itemAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [super itemAtIndexPath:indexPath];
+- (id)itemAtIndexPath:(NSIndexPath *)indexPath {
+  return [super itemAtIndexPath:indexPath];
 }
-
 
 #pragma mark UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
-{
-    return [super tableView:tableView numberOfRowsInSection:(NSInteger)section];
+- (NSInteger)tableView:(UITableView *)tableView
+    numberOfRowsInSection:(NSInteger)section {
+  return [super tableView:tableView numberOfRowsInSection:(NSInteger)section];
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    return [super tableView:tableView cellForRowAtIndexPath:indexPath];
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return [super tableView:tableView cellForRowAtIndexPath:indexPath];
 }
-
 
 @end

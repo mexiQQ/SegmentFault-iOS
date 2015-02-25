@@ -10,7 +10,7 @@
 
 @implementation AnswerModel
 
-- (id)transformTable{
-    return @{@"id":@"id_"};
+- (id)transformTable {
+  return @{ @"id" : @"id_" };
 }
 @end

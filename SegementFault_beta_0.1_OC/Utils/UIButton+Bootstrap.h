@@ -10,12 +10,12 @@
 #import "NSString+FontAwesome.h"
 @interface UIButton (Bootstrap)
 - (void)addAwesomeIcon:(FAIcon)icon beforeTitle:(BOOL)before;
--(void)bootstrapStyle;
--(void)defaultStyle;
--(void)primaryStyle;
--(void)successStyle;
--(void)infoStyle;
--(void)warningStyle;
--(void)dangerStyle;
--(void)sfStyle;
+- (void)bootstrapStyle;
+- (void)defaultStyle;
+- (void)primaryStyle;
+- (void)successStyle;
+- (void)infoStyle;
+- (void)warningStyle;
+- (void)dangerStyle;
+- (void)sfStyle;
 @end

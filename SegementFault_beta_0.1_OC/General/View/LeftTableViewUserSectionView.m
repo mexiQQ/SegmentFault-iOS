@@ -14,8 +14,8 @@
 @synthesize userResu = _userResu;
 
 - (void)awakeFromNib {
-    self.userAvator.layer.masksToBounds = YES;
-    self.userAvator.layer.cornerRadius = 5.0;
+  self.userAvator.layer.masksToBounds = YES;
+  self.userAvator.layer.cornerRadius = 5.0;
 }
 
 @end

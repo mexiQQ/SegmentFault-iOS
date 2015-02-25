@@ -9,6 +9,6 @@
 #import "Store.h"
 
 @interface CommentStore : Store
-+(CommentStore *)sharedStore;
-- (void)readNewData:(void(^)(NSMutableArray *))block id_:(NSString *)id_;
++ (CommentStore *)sharedStore;
+- (void)readNewData:(void (^)(NSMutableArray *))block id_:(NSString *)id_;
 @end

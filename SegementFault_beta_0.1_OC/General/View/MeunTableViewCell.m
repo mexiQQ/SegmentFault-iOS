@@ -12,11 +12,11 @@
 @synthesize menuTitle = _menuTitle;
 @synthesize menuImage = _menuImage;
 - (void)awakeFromNib {
-    // Initialization code
+  // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+  [super setSelected:selected animated:animated];
 }
 
 @end

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface EditTagsTableViewController : UITableViewController<UITableViewDataSource>
+@interface EditTagsTableViewController
+    : UITableViewController <UITableViewDataSource>
 
 @end

@@ -11,7 +11,9 @@
 #import "LeftTableViewUserSectionView.h"
 #import "TagStore.h"
 #import "UIViewController+MMDrawerController.h"
-@interface LeftViewController : UITableViewController<UITableViewDataSource,UITableViewDelegate,UIActionSheetDelegate>
-@property (weak, nonatomic) IBOutlet UITableView *mytableview;
-@property (nonatomic,strong) NSMutableArray *cellContent;
+@interface LeftViewController
+    : UITableViewController <UITableViewDataSource, UITableViewDelegate,
+                             UIActionSheetDelegate>
+@property(weak, nonatomic) IBOutlet UITableView *mytableview;
+@property(nonatomic, strong) NSMutableArray *cellContent;
 @end

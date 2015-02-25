@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface CommetnTableViewController : UITableViewController
-@property (nonatomic,strong) NSString *id_;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
-@property (weak, nonatomic) IBOutlet UIButton *titleButton;
+@property(nonatomic, strong) NSString *id_;
+@property(weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property(weak, nonatomic) IBOutlet UIButton *titleButton;
 @end

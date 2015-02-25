@@ -16,40 +16,45 @@
 static TagStore *store = nil;
 
 //单例类
-+(TagStore *)sharedStore
-{
-    static dispatch_once_t once;
-    dispatch_once(&once,^{
-        store = [[self alloc] init];
-    });
-    return store;
++ (TagStore *)sharedStore {
+  static dispatch_once_t once;
+  dispatch_once(&once, ^{
+    store = [[self alloc] init];
+  });
+  return store;
 }
 
-- (NSMutableArray *)getCurrentTags{
-    if([[NSUserDefaults standardUserDefaults] objectForKey:@"tags"]){
-        NSMutableArray *array = [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults] objectForKey:@"tags"]];
-        return array;
-    }else{
-        NSArray *defaultTags = @[@"iOS",@"python",@"ruby"];
-        return [[NSMutableArray alloc] initWithArray:defaultTags];
-    }
+- (NSMutableArray *)getCurrentTags {
+  if ([[NSUserDefaults standardUserDefaults] objectForKey:@"tags"]) {
+    NSMutableArray *array =
+        [NSMutableArray arrayWithArray:[[NSUserDefaults standardUserDefaults]
+                                           objectForKey:@"tags"]];
+    return array;
+  } else {
+    NSArray *defaultTags = @[ @"iOS", @"python", @"ruby" ];
+    return [[NSMutableArray alloc] initWithArray:defaultTags];
+  }
 }
 
-- (void)setCurrentTags:(NSMutableArray *)array{
-    NSUserDefaults *standardUserDefault = [NSUserDefaults standardUserDefaults];
-    [standardUserDefault setObject:array forKey:@"tags"];
-    [standardUserDefault synchronize];
-    [self sendBocast];
+- (void)setCurrentTags:(NSMutableArray *)array {
+  NSUserDefaults *standardUserDefault = [NSUserDefaults standardUserDefaults];
+  [standardUserDefault setObject:array forKey:@"tags"];
+  [standardUserDefault synchronize];
+  [self sendBocast];
 }
 
 //通过广播机制在 Tags 改变时更新 Menu 菜单
-- (void)sendBocast{
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"TagsChanged" object:self userInfo:nil];
+- (void)sendBocast {
+  [[NSNotificationCenter defaultCenter] postNotificationName:@"TagsChanged"
+                                                      object:self
+                                                    userInfo:nil];
 }
 
-- (NSString *)getCurrentShowTagId{
-    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"tags_id" ofType:@"plist"];
-    NSDictionary *dictionary = [[NSDictionary alloc] initWithContentsOfFile:plistPath];
-    return [dictionary objectForKey:self.currentShowTag];
+- (NSString *)getCurrentShowTagId {
+  NSString *plistPath =
+      [[NSBundle mainBundle] pathForResource:@"tags_id" ofType:@"plist"];
+  NSDictionary *dictionary =
+      [[NSDictionary alloc] initWithContentsOfFile:plistPath];
+  return [dictionary objectForKey:self.currentShowTag];
 }
 @end

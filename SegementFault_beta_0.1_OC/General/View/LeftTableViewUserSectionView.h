@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface LeftTableViewUserSectionView : UITableViewCell
-@property (weak, nonatomic) IBOutlet UIImageView *userAvator;
-@property (weak, nonatomic) IBOutlet UILabel *userName;
-@property (weak, nonatomic) IBOutlet UILabel *userResu;
+@property(weak, nonatomic) IBOutlet UIImageView *userAvator;
+@property(weak, nonatomic) IBOutlet UILabel *userName;
+@property(weak, nonatomic) IBOutlet UILabel *userResu;
 
 @end

@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface DetailArticleTableViewCell : UITableViewCell<UIWebViewDelegate>
-@property (weak, nonatomic) IBOutlet UIView *TopView;
-@property (weak, nonatomic) IBOutlet UILabel *authorLabel;
-@property (weak, nonatomic) IBOutlet UILabel *authorRateLabel;
-@property (weak, nonatomic) IBOutlet UILabel *productTime;
-@property (weak, nonatomic) IBOutlet UIWebView *contentWebView;
-@property (weak, nonatomic) IBOutlet UIView *TagView;
-@property (weak, nonatomic) IBOutlet UILabel *articleTitle;
+@interface DetailArticleTableViewCell : UITableViewCell <UIWebViewDelegate>
+@property(weak, nonatomic) IBOutlet UIView *TopView;
+@property(weak, nonatomic) IBOutlet UILabel *authorLabel;
+@property(weak, nonatomic) IBOutlet UILabel *authorRateLabel;
+@property(weak, nonatomic) IBOutlet UILabel *productTime;
+@property(weak, nonatomic) IBOutlet UIWebView *contentWebView;
+@property(weak, nonatomic) IBOutlet UIView *TagView;
+@property(weak, nonatomic) IBOutlet UILabel *articleTitle;
 - (void)configureForCell:(NSDictionary *)item;
 
 @end

@@ -7,49 +7,45 @@
 #import <objc/runtime.h>
 #import "BaseModel.h"
 
-
-@implementation BaseModel
-{
-
+@implementation BaseModel {
 }
 
-- (instancetype)initWithJsonObj:(NSDictionary *)jsonObj
-{
-    self = [super init];
-        if (self){
-            _jsonObj = jsonObj;
-            [_jsonObj each:^(NSString *key, NSString *value){
-                if (![self.filter containsObject:key]){
-                    if ([self.transformTable hasKey:key]){
-                        [self setValue:_jsonObj[key] forKey:self.transformTable[key]];
-                    }else{
-                        if (class_getProperty(self.class,  key.cString)){
-                            [self setValue:_jsonObj[key] forKey:key];
-                         }
-                    }
-                }
-            }];
+- (instancetype)initWithJsonObj:(NSDictionary *)jsonObj {
+  self = [super init];
+  if (self) {
+    _jsonObj = jsonObj;
+    [_jsonObj each:^(NSString *key, NSString *value) {
+      if (![self.filter containsObject:key]) {
+        if ([self.transformTable hasKey:key]) {
+          [self setValue:_jsonObj[key] forKey:self.transformTable[key]];
+        } else {
+          if (class_getProperty(self.class, key.cString)) {
+            [self setValue:_jsonObj[key] forKey:key];
+          }
         }
-    return self;
+      }
+    }];
+  }
+  return self;
 }
 
-+ (instancetype)modelWithJsonObj:(NSDictionary *)jsonObj{
-    return [[self alloc] initWithJsonObj:jsonObj];
++ (instancetype)modelWithJsonObj:(NSDictionary *)jsonObj {
+  return [[self alloc] initWithJsonObj:jsonObj];
 }
 
-- (id)transformTable{
-    return nil;
+- (id)transformTable {
+  return nil;
 }
 
-- (id)filter{
-    return nil;
+- (id)filter {
+  return nil;
 }
 
-- (id)valueForUndefinedKey:(NSString *)key{
-    return nil;
+- (id)valueForUndefinedKey:(NSString *)key {
+  return nil;
 }
 
-- (id)converTypeTable{
-    return nil;
+- (id)converTypeTable {
+  return nil;
 }
 @end

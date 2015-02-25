@@ -9,10 +9,10 @@
 #import <UIKit/UIKit.h>
 
 @interface ArticleTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *articleTitle;
-@property (weak, nonatomic) IBOutlet UILabel *articleExcerpt;
-@property (weak, nonatomic) IBOutlet UILabel *articleVote;
-@property (weak, nonatomic) IBOutlet UILabel *articleTags;
+@property(weak, nonatomic) IBOutlet UILabel *articleTitle;
+@property(weak, nonatomic) IBOutlet UILabel *articleExcerpt;
+@property(weak, nonatomic) IBOutlet UILabel *articleVote;
+@property(weak, nonatomic) IBOutlet UILabel *articleTags;
 - (void)configureForCell:(NSMutableDictionary *)item;
 
 @end

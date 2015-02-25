@@ -10,10 +10,10 @@
 
 @interface DetailCommentTableViewCell : UITableViewCell
 
-@property (weak, nonatomic) IBOutlet UILabel *commentContent;
-@property (weak, nonatomic) IBOutlet UILabel *commentUsername;
-@property (weak, nonatomic) IBOutlet UILabel *commentUserRepu;
-@property (weak, nonatomic) IBOutlet UIButton *commentLike;
+@property(weak, nonatomic) IBOutlet UILabel *commentContent;
+@property(weak, nonatomic) IBOutlet UILabel *commentUsername;
+@property(weak, nonatomic) IBOutlet UILabel *commentUserRepu;
+@property(weak, nonatomic) IBOutlet UIButton *commentLike;
 
 - (void)configureForCell:(NSDictionary *)item;
 

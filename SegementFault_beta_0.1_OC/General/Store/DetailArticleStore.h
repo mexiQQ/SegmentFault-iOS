@@ -11,14 +11,15 @@
 #import <UIKit/UIKit.h>
 @interface DetailArticleStore : Store
 
-@property (nonatomic,strong) NSNumber *articleHeight;
-@property (nonatomic,strong) NSNumber *commentHeight;
+@property(nonatomic, strong) NSNumber *articleHeight;
+@property(nonatomic, strong) NSNumber *commentHeight;
 
-+(DetailArticleStore *)sharedStore;
-- (void)readNewData:(void(^)(NSDictionary *,NSDictionary *))block;
++ (DetailArticleStore *)sharedStore;
+- (void)readNewData:(void (^)(NSDictionary *, NSDictionary *))block;
 
-- (void)likeArticle:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block;
-- (void)unlikeArticle:(NSString *)id_ handle:(void(^)(NSDictionary *dic)) block;
-- (void)commentArticle:(NSString *)commentContent handle:(void(^)(NSDictionary *dic)) block;
+- (void)likeArticle:(NSString *)id_ handle:(void (^)(NSDictionary *dic))block;
+- (void)unlikeArticle:(NSString *)id_ handle:(void (^)(NSDictionary *dic))block;
+- (void)commentArticle:(NSString *)commentContent
+                handle:(void (^)(NSDictionary *dic))block;
 
 @end

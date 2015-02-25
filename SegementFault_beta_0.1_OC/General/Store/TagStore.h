@@ -11,7 +11,7 @@
 @interface TagStore : Store
 + (TagStore *)sharedStore;
 
-@property (nonatomic,strong) NSString *currentShowTag;
+@property(nonatomic, strong) NSString *currentShowTag;
 - (NSMutableArray *)getCurrentTags;
 - (void)setCurrentTags:(NSMutableArray *)array;
 - (NSString *)getCurrentShowTagId;

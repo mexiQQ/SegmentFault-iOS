@@ -10,7 +10,7 @@
 
 @interface AboutViewController : UIViewController
 
-@property (weak, nonatomic) IBOutlet UIWebView *aboutContentView;
+@property(weak, nonatomic) IBOutlet UIWebView *aboutContentView;
 
-@property (weak, nonatomic) IBOutlet UIButton *titleButton;
+@property(weak, nonatomic) IBOutlet UIButton *titleButton;
 @end

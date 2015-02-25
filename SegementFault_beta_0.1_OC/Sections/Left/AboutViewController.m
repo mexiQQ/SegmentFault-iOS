@@ -15,27 +15,33 @@
 @implementation AboutViewController
 @synthesize aboutContentView = _aboutContentView;
 - (void)viewDidLoad {
-    [super viewDidLoad];
-    // 设置 barTitle
-    [self.titleButton setBackgroundImage:[UIImage imageNamed:@"NavigationBar_title"] forState:UIControlStateNormal];
-    
-    NSError  *error;
-    NSString *textFileContents = [NSString stringWithContentsOfFile:[[NSBundle mainBundle]
-                                                                     pathForResource:@"about"
-                                                                     ofType:@"html"]
-                                                           encoding:NSUTF8StringEncoding
-                                                              error: & error];
-    [self.aboutContentView loadHTMLString:textFileContents baseURL:[[NSBundle mainBundle] bundleURL]];
+  [super viewDidLoad];
+  // 设置 barTitle
+  [self.titleButton
+      setBackgroundImage:[UIImage imageNamed:@"NavigationBar_title"]
+                forState:UIControlStateNormal];
+
+  NSError *error;
+  NSString *textFileContents = [NSString
+      stringWithContentsOfFile:[[NSBundle mainBundle] pathForResource:@"about"
+                                                               ofType:@"html"]
+                      encoding:NSUTF8StringEncoding
+                         error:&error];
+  [self.aboutContentView loadHTMLString:textFileContents
+                                baseURL:[[NSBundle mainBundle] bundleURL]];
 }
 
 - (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+  [super didReceiveMemoryWarning];
 }
 - (IBAction)openUrl:(id)sender {
-    [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"http://segmentfault.com/"]];
+  [[UIApplication sharedApplication]
+      openURL:[NSURL URLWithString:@"http://segmentfault.com/"]];
 }
 
 - (IBAction)sliderLeft:(id)sender {
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft animated:YES completion:nil];
+  [self.mm_drawerController toggleDrawerSide:MMDrawerSideLeft
+                                    animated:YES
+                                  completion:nil];
 }
 @end

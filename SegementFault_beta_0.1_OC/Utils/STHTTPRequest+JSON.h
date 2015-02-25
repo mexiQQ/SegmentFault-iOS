@@ -8,6 +8,7 @@
 
 @interface STHTTPRequest (JSON)
 
-- (void)setCompletionJSONBlock:(void (^) (NSDictionary *header, NSDictionary *jsonObj))completion;
+- (void)setCompletionJSONBlock:(void (^)(NSDictionary *header,
+                                         NSDictionary *jsonObj))completion;
 
 @end

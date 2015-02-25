@@ -10,8 +10,8 @@
 
 @interface MessageDataSource : ArrayDataSource
 - (id)initWithItems:(NSArray *)anItems
-     cellIdentifier:(NSString *)aCellIdentifier
- configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock;
+        cellIdentifier:(NSString *)aCellIdentifier
+    configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock;
 
 - (id)itemAtIndexPath:(NSIndexPath *)indexPath;
 @end

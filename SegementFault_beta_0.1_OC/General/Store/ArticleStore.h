@@ -9,9 +9,9 @@
 #import "Store.h"
 #import "TagStore.h"
 @interface ArticleStore : Store
-@property (nonatomic,strong) NSString *currentShowArticleId;
+@property(nonatomic, strong) NSString *currentShowArticleId;
 
-+(ArticleStore *)sharedStore;
-- (void)readNewData:(void(^)(NSMutableArray *))block;
-- (void)readOldData:(void(^)(NSMutableArray *))block page:(int)page;
++ (ArticleStore *)sharedStore;
+- (void)readNewData:(void (^)(NSMutableArray *))block;
+- (void)readOldData:(void (^)(NSMutableArray *))block page:(int)page;
 @end

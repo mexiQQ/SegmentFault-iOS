@@ -9,8 +9,8 @@
 #import <UIKit/UIKit.h>
 
 @interface EditTagTableViewCell : UITableViewCell
-@property (weak, nonatomic) IBOutlet UILabel *tagTitle;
-@property (weak, nonatomic) IBOutlet UIImageView *tagImage;
-@property (weak, nonatomic) IBOutlet UISwitch *tagSwitch;
+@property(weak, nonatomic) IBOutlet UILabel *tagTitle;
+@property(weak, nonatomic) IBOutlet UIImageView *tagImage;
+@property(weak, nonatomic) IBOutlet UISwitch *tagSwitch;
 
 @end

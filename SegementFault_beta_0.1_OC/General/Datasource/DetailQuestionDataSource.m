@@ -9,41 +9,43 @@
 #import "DetailQuestionDataSource.h"
 #import "DetailQuestionStore.h"
 
-@interface DetailQuestionDataSource()
-@property (nonatomic, assign)NSInteger *sectionsNumber;
-@property (nonatomic, copy) NSString *cellIdentifier;
-@property (nonatomic, copy) TableViewCellConfigureBlock configureCellBlock;
+@interface DetailQuestionDataSource ()
+@property(nonatomic, assign) NSInteger *sectionsNumber;
+@property(nonatomic, copy) NSString *cellIdentifier;
+@property(nonatomic, copy) TableViewCellConfigureBlock configureCellBlock;
 
 @end
 
 @implementation DetailQuestionDataSource
-- (id)init{
-    return [super init];
+- (id)init {
+  return [super init];
 }
 
 - (id)initWithItems:(NSInteger *)sectionsNumber
-     cellIdentifier:(NSString *)aCellIdentifier
- configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock{
-    self = [super init];
-    if (self) {
-        self.sectionsNumber = sectionsNumber;
-        self.cellIdentifier = aCellIdentifier;
-        self.configureCellBlock = [aConfigureCellBlock copy];
-    }
-    return self;
+        cellIdentifier:(NSString *)aCellIdentifier
+    configureCellBlock:(TableViewCellConfigureBlock)aConfigureCellBlock {
+  self = [super init];
+  if (self) {
+    self.sectionsNumber = sectionsNumber;
+    self.cellIdentifier = aCellIdentifier;
+    self.configureCellBlock = [aConfigureCellBlock copy];
+  }
+  return self;
 }
 
 #pragma mark UITableViewDataSource
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 0;
+- (NSInteger)tableView:(UITableView *)tableView
+    numberOfRowsInSection:(NSInteger)section {
+  return 0;
 }
 
-- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return  (int)self.sectionsNumber;
+- (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+  return (int)self.sectionsNumber;
 }
 
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath{
-    return [[UITableViewCell alloc] init] ;
+- (UITableViewCell *)tableView:(UITableView *)tableView
+         cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+  return [[UITableViewCell alloc] init];
 }
 @end

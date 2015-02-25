@@ -8,13 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "OAuthSignUtil.h"
-@interface LoginViewController : UIViewController<UITextFieldDelegate,OAuthSignUtilDelegate>
+@interface LoginViewController
+    : UIViewController <UITextFieldDelegate, OAuthSignUtilDelegate>
 
 - (IBAction)cancelAction:(id)sender;
-@property (weak, nonatomic) IBOutlet UIView *userView;
-@property (weak, nonatomic) IBOutlet UIButton *LoginButton;
-@property (weak, nonatomic) IBOutlet UIImageView *LogoImageView;
-@property (weak, nonatomic) IBOutlet UITextField *emailTextfeild;
-@property (weak, nonatomic) IBOutlet UITextField *password;
-@property (weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
+@property(weak, nonatomic) IBOutlet UIView *userView;
+@property(weak, nonatomic) IBOutlet UIButton *LoginButton;
+@property(weak, nonatomic) IBOutlet UIImageView *LogoImageView;
+@property(weak, nonatomic) IBOutlet UITextField *emailTextfeild;
+@property(weak, nonatomic) IBOutlet UITextField *password;
+@property(weak, nonatomic) IBOutlet UIActivityIndicatorView *activityIndicator;
 @end

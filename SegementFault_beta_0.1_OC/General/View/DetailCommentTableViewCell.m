@@ -15,23 +15,27 @@
 @synthesize commentUsername = _commentUsername;
 @synthesize commentUserRepu = _commentUserRepu;
 - (void)awakeFromNib {
-    // Initialization code
+  // Initialization code
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    [super setSelected:selected animated:animated];
+  [super setSelected:selected animated:animated];
 }
 
 // 配置 cell
-- (void)configureForCell:(NSDictionary *)item{
-    self.commentContent.text = [item objectForKey:@"originalText"];
-    self.commentUsername.text = [[item objectForKey:@"user"] objectForKey:@"name"];
-    self.commentUserRepu.text = [item objectForKey:@"createdDate"];
-    [self.commentLike setTitle:[item objectForKey:@"votes" ] forState:UIControlStateNormal];
-    [self.commentLike addTarget:self action:@selector(likeAction:) forControlEvents:UIControlEventTouchUpInside];
+- (void)configureForCell:(NSDictionary *)item {
+  self.commentContent.text = [item objectForKey:@"originalText"];
+  self.commentUsername.text =
+      [[item objectForKey:@"user"] objectForKey:@"name"];
+  self.commentUserRepu.text = [item objectForKey:@"createdDate"];
+  [self.commentLike setTitle:[item objectForKey:@"votes"]
+                    forState:UIControlStateNormal];
+  [self.commentLike addTarget:self
+                       action:@selector(likeAction:)
+             forControlEvents:UIControlEventTouchUpInside];
 }
 
-- (IBAction)likeAction:(id)sender{
-    [[MXUtil sharedUtil] showMessageScreen:@"未完成"];
+- (IBAction)likeAction:(id)sender {
+  [[MXUtil sharedUtil] showMessageScreen:@"未完成"];
 }
 @end
