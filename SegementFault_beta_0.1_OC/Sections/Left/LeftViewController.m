@@ -138,11 +138,15 @@
     NSDictionary *user =
         [[NSUserDefaults standardUserDefaults] objectForKey:@"user"];
     if (user) {
-      // 使用 GCD 异步获取用户头像
+      // 使用 GCD 异步获取用户头像 /404/747/4047472377-546edef177888
+      NSString *avatar = [user objectForKey:@"avatar"];
+      if (avatar == nil) {
+        avatar = @"/404/747/4047472377-546edef177888";
+      }
       __block NSURL *url = [NSURL
           URLWithString:[NSString stringWithFormat:
                                       @"http://sfault-avatar.b0.upaiyun.com%@",
-                                      [user objectForKey:@"avatar"]]];
+                                      avatar]];
       dispatch_async(
           dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
             NSData *data = [NSData dataWithContentsOfURL:url];

@@ -66,7 +66,7 @@
         [[detailAnswer objectForKey:@"data"] objectForKey:@"available"];
     self.acceptAnswer =
         [[detailAnswer objectForKey:@"data"] objectForKey:@"accepted"];
-    if (self.acceptAnswer == [NSNull null]) {
+    if (self.acceptAnswer == (id)[NSNull null]) {
       self.answerNumber = (NSInteger *)(self.availableAnswers.count + 1);
     } else {
       self.answerNumber = (NSInteger *)(self.availableAnswers.count + 2);
@@ -160,7 +160,7 @@
     return cell;
   } else {
     if (section != 0) {
-      if (self.acceptAnswer == [NSNull null]) {
+      if (self.acceptAnswer == (id)[NSNull null]) {
         DetailAnswerTableViewCell *cell =
             [tableView dequeueReusableCellWithIdentifier:@"detailAnswerCell"];
         [cell configureForCell:self.availableAnswers[section - 1]
@@ -453,25 +453,29 @@
 
 // 展示评论页
 - (IBAction)showQuestionComment:(id)sender {
-  UITapGestureRecognizer *gesture = (UITapGestureRecognizer *)sender;
-  UILabel *lable = (UILabel *)gesture.view;
-  NSInteger tag = lable.tag;
-  UIStoryboard *mainStoryboard =
-      [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-  UINavigationController *nav =
-      [mainStoryboard instantiateViewControllerWithIdentifier:@"commentPage"];
-  CommetnTableViewController *main = nav.childViewControllers[0];
+  if ([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]) {
+    UITapGestureRecognizer *gesture = (UITapGestureRecognizer *)sender;
+    UILabel *lable = (UILabel *)gesture.view;
+    NSInteger tag = lable.tag;
+    UIStoryboard *mainStoryboard =
+        [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UINavigationController *nav =
+        [mainStoryboard instantiateViewControllerWithIdentifier:@"commentPage"];
+    CommetnTableViewController *main = nav.childViewControllers[0];
 
-  if (tag == -1) {
-    main.id_ = [self.acceptAnswer objectForKey:@"id"];
+    if (tag == -1) {
+      main.id_ = [self.acceptAnswer objectForKey:@"id"];
+    } else {
+      main.id_ = [[self.availableAnswers objectAtIndex:tag] objectForKey:@"id"];
+    }
+
+    [self.mm_drawerController setRightDrawerViewController:nav];
+    [self.mm_drawerController setMaximumRightDrawerWidth:240.0];
+    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight
+                                      animated:YES
+                                    completion:nil];
   } else {
-    main.id_ = [[self.availableAnswers objectAtIndex:tag] objectForKey:@"id"];
+    [[MXUtil sharedUtil] showMessageScreen:@"未登录"];
   }
-
-  [self.mm_drawerController setRightDrawerViewController:nav];
-  [self.mm_drawerController setMaximumRightDrawerWidth:240.0];
-  [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight
-                                    animated:YES
-                                  completion:nil];
 }
 @end

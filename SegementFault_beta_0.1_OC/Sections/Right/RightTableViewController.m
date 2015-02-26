@@ -95,7 +95,7 @@
   [self setRefreshTitle];
   [[MessageStore sharedStore] readNewData:^(NSArray *dic) {
     self.messages = dic;
-    if (dic == [NSNull null]) {
+    if (dic == (id)[NSNull null]) {
       [[MXUtil sharedUtil] showMessageScreen:@"没有消息"];
     } else {
       self.myMessageDataSource = [[MessageDataSource alloc]
