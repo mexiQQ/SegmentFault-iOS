@@ -24,6 +24,7 @@
 @synthesize questinTitle = _questinTitle;
 - (void)awakeFromNib {
   self.contentWebView.delegate = self;
+  self.contentWebView.opaque = NO;
 }
 
 // 配置 cell
