@@ -1,3 +1,3 @@
 ##SegmentFault-IOS  sf.gg
 
-等待审核通过中
+已审核通过。AppStore 搜索 sf.gg
