@@ -29,6 +29,9 @@ static BOOL firstInit = true;
 
   [self setupBar];
   [self setupTableView];
+
+  self.tableView.rowHeight = UITableViewAutomaticDimension;
+  self.tableView.estimatedRowHeight = 60;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -180,20 +183,7 @@ static BOOL firstInit = true;
 // 设置cell的高度
 - (CGFloat)tableView:(UITableView *)tableView
     heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-  QuestionTableViewCell *cell;
-  if (!cell) {
-    cell = [tableView dequeueReusableCellWithIdentifier:@"cell"];
-  }
-
-  [cell configureForCell:[self.questions objectAtIndex:indexPath.row]];
-  [cell setNeedsLayout];
-  [cell layoutIfNeeded];
-
-  CGFloat height =
-      [cell.contentView
-          systemLayoutSizeFittingSize:UILayoutFittingCompressedSize].height;
-  height += 1;
-  return height;
+  return UITableViewAutomaticDimension;
 }
 
 // 点击进入文章的详细页面
