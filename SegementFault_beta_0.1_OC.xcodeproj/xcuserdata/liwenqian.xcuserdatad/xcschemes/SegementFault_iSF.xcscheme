@@ -34,6 +34,34 @@
                ReferencedContainer = "container:SegementFault_beta_0.1_OC.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AF310D101AB86133003A74F7"
+               BuildableName = "Tests.xctest"
+               BlueprintName = "Tests"
+               ReferencedContainer = "container:SegementFault_beta_0.1_OC.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "NO"
+            buildForArchiving = "NO"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AFF5F8E01AB86EB5009964D4"
+               BuildableName = "SegmentFaultTests.xctest"
+               BlueprintName = "SegmentFaultTests"
+               ReferencedContainer = "container:SegementFault_beta_0.1_OC.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
       </BuildActionEntries>
    </BuildAction>
    <TestAction
@@ -49,6 +77,26 @@
                BlueprintIdentifier = "AFD762F51A14BCF6004826EC"
                BuildableName = "SegementFault_beta_0.1_OCTests.xctest"
                BlueprintName = "SegementFault_beta_0.1_OCTests"
+               ReferencedContainer = "container:SegementFault_beta_0.1_OC.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AF310D101AB86133003A74F7"
+               BuildableName = "Tests.xctest"
+               BlueprintName = "Tests"
+               ReferencedContainer = "container:SegementFault_beta_0.1_OC.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "AFF5F8E01AB86EB5009964D4"
+               BuildableName = "SegmentFaultTests.xctest"
+               BlueprintName = "SegmentFaultTests"
                ReferencedContainer = "container:SegementFault_beta_0.1_OC.xcodeproj">
             </BuildableReference>
          </TestableReference>
@@ -72,7 +120,8 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AFD762DC1A14BCF6004826EC"
@@ -90,7 +139,8 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "AFD762DC1A14BCF6004826EC"
