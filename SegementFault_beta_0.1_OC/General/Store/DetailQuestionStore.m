@@ -69,7 +69,7 @@ static DetailQuestionStore *store = nil;
           [NSJSONSerialization JSONObjectWithData:data
                                           options:NSJSONReadingMutableLeaves
                                             error:nil];
-      detailQuestion = [detailQuestion objectForKey:@"data"];
+      detailAnwsers = [detailAnwsers objectForKey:@"data"];
     }
   });
 
