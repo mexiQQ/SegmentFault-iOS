@@ -71,10 +71,9 @@
 // 设置 datasource 获取数据
 - (void)getLatestLoans {
   [[DetailArticleStore sharedStore]
-      readNewData:^(NSDictionary *detailArticle, NSDictionary *detailComment) {
-        self.articleDic = [detailArticle objectForKey:@"data"];
-        self.commentsArray =
-            [[detailComment objectForKey:@"data"] objectForKey:@"comment"];
+      readNewData:^(NSDictionary *detailArticle, NSArray *detailComments) {
+        self.articleDic = detailArticle;
+        self.commentsArray = detailComments;
         self.myDetailArticleDataSource =
             [[DetailArticleDataSource alloc] initWithItems:self.articleDic
                 andArray:self.commentsArray

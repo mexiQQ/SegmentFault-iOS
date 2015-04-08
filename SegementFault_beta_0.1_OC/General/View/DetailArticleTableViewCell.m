@@ -8,6 +8,7 @@
 
 #import "DetailArticleTableViewCell.h"
 #import "DetailArticleStore.h"
+#import "ArticleModel.h"
 #import "MXUtil.h"
 
 @implementation DetailArticleTableViewCell
@@ -28,15 +29,16 @@
 
 // 配置 cell
 - (void)configureForCell:(NSDictionary *)item {
-  NSDictionary *user = [item objectForKey:@"user"];
+  ArticleModel *articleModel = [ArticleModel modelWithJsonObj:item];
+  NSDictionary *user = articleModel.user;
 
   self.authorLabel.text = [user objectForKey:@"name"];
   self.authorRateLabel.text = [user objectForKey:@"rank"];
-  self.productTime.text = [item objectForKey:@"createdDate"];
-  self.articleTitle.text = [item objectForKey:@"title"];
+  self.productTime.text = articleModel.createdDate;
+  self.articleTitle.text = articleModel.title;
 
   // 载入 webview 的内容
-  NSString *parsedText = [item objectForKey:@"parsedText"];
+  NSString *parsedText = articleModel.parsedText;
   [self.contentWebView
       loadHTMLString:[[MXUtil sharedUtil] formatHTMLFromMarkdown:parsedText]
              baseURL:[[NSBundle mainBundle] bundleURL]];

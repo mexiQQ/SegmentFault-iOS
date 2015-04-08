@@ -59,25 +59,23 @@
 
 // 设置 datasource 获取数据
 - (void)getLatestLoans {
-  [[DetailQuestionStore sharedStore] readNewData:^(NSDictionary *detailQuestion,
-                                                   NSDictionary *detailAnswer) {
-    self.question = [detailQuestion objectForKey:@"data"];
-    self.availableAnswers =
-        [[detailAnswer objectForKey:@"data"] objectForKey:@"available"];
-    self.acceptAnswer =
-        [[detailAnswer objectForKey:@"data"] objectForKey:@"accepted"];
-    if (self.acceptAnswer == (id)[NSNull null]) {
-      self.answerNumber = (NSInteger *)(self.availableAnswers.count + 1);
-    } else {
-      self.answerNumber = (NSInteger *)(self.availableAnswers.count + 2);
-    }
-    self.myDetailQuestionDataSource =
-        [[DetailQuestionDataSource alloc] initWithItems:self.answerNumber
-                                         cellIdentifier:@"detailQuestionCell"
-                                     configureCellBlock:nil];
-    [self.refreshControl endRefreshing];
-    self.tableView.dataSource = self.myDetailQuestionDataSource;
-  }];
+  [[DetailQuestionStore sharedStore]
+      readNewData:^(NSDictionary *detailQuestion, NSDictionary *detailAnswers) {
+        self.question = detailQuestion;
+        self.availableAnswers = [detailAnswers objectForKey:@"available"];
+        self.acceptAnswer = [detailAnswers objectForKey:@"accepted"];
+        if (self.acceptAnswer == (id)[NSNull null]) {
+          self.answerNumber = (NSInteger *)(self.availableAnswers.count + 1);
+        } else {
+          self.answerNumber = (NSInteger *)(self.availableAnswers.count + 2);
+        }
+        self.myDetailQuestionDataSource = [[DetailQuestionDataSource alloc]
+                 initWithItems:self.answerNumber
+                cellIdentifier:@"detailQuestionCell"
+            configureCellBlock:nil];
+        [self.refreshControl endRefreshing];
+        self.tableView.dataSource = self.myDetailQuestionDataSource;
+      }];
 }
 
 // 第一次加载数据
@@ -166,6 +164,7 @@
         [cell configureForCell:self.availableAnswers[section - 1]
                          index:(NSInteger *)(section - 1)
                       accepted:NO];
+          
         // 给 label 增加点击事件
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
             initWithTarget:self
@@ -173,7 +172,6 @@
         cell.commentLabel.userInteractionEnabled = YES;
         [cell.commentLabel addGestureRecognizer:tap];
         cell.commentLabel.tag = section - 1;
-        NSLog(@"cell tag id %ld", (long)cell.commentLabel.tag);
         return cell;
       }
 

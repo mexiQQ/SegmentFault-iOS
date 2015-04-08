@@ -7,7 +7,7 @@
 //
 
 #import "QuestionTableViewCell.h"
-
+#import "QuestionModel.h"
 @implementation QuestionTableViewCell
 @synthesize questionTitle = _questionTitle;
 @synthesize repuLabel = _repuLabel;
@@ -20,13 +20,15 @@
   [super setSelected:selected animated:animated];
 }
 
-- (void)configureForCell:(NSMutableDictionary *)item {
-  self.questionTitle.text = [item objectForKey:@"title"];
+- (void)configureForCell:(NSDictionary *)item {
+  QuestionModel *questionModel = [QuestionModel modelWithJsonObj:item];
+
+  self.questionTitle.text = questionModel.title;
   self.repuLabel.text =
-      [NSString stringWithFormat:@"vote:%@", [item objectForKey:@"votes"]];
+      [NSString stringWithFormat:@"vote:%@", questionModel.votes];
 
   NSMutableString *tagString = [[NSMutableString alloc] init];
-  NSArray *tags = [item objectForKey:@"tags"];
+  NSArray *tags = questionModel.tags;
   for (NSDictionary *tag in tags) {
     [tagString appendFormat:@" %@", [tag objectForKey:@"name"]];
   }

@@ -7,6 +7,7 @@
 //
 
 #import "ArticleTableViewCell.h"
+#import "ArticleModel.h"
 
 @implementation ArticleTableViewCell
 @synthesize articleTitle = _articleTitle;
@@ -21,16 +22,21 @@
   [super setSelected:selected animated:animated];
 }
 
-- (void)configureForCell:(NSMutableDictionary *)item {
-  self.articleTitle.text = [item objectForKey:@"title"];
+- (void)configureForCell:(NSDictionary *)item {
+  ArticleModel *articleModel = [ArticleModel modelWithJsonObj:item];
+
+  self.articleTitle.text = articleModel.title;
   self.articleVote.text =
-      [NSString stringWithFormat:@"vote:%@", [item objectForKey:@"votes"]];
-  self.articleExcerpt.text = [item objectForKey:@"excerpt"];
+      [NSString stringWithFormat:@"vote:%@", articleModel.votes];
+  self.articleExcerpt.text = articleModel.excerpt;
+  NSArray *tags = articleModel.tags;
+
+  // 拼接 tag 字符串
   NSMutableString *tagString = [[NSMutableString alloc] init];
-  NSArray *tags = [item objectForKey:@"tags"];
   for (NSDictionary *tag in tags) {
     [tagString appendFormat:@" %@", [tag objectForKey:@"name"]];
   }
+
   self.articleTags.text = tagString;
 }
 

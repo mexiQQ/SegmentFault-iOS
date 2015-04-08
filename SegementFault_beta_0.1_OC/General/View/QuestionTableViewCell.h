@@ -13,6 +13,6 @@
 @property(weak, nonatomic) IBOutlet UILabel *questionTitle;
 @property(weak, nonatomic) IBOutlet UILabel *repuLabel;
 @property(weak, nonatomic) IBOutlet UILabel *tagsLabel;
-- (void)configureForCell:(NSMutableDictionary *)item;
+- (void)configureForCell:(NSDictionary *)item;
 
 @end

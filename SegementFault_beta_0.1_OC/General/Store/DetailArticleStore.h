@@ -15,7 +15,7 @@
 @property(nonatomic, strong) NSNumber *commentHeight;
 
 + (DetailArticleStore *)sharedStore;
-- (void)readNewData:(void (^)(NSDictionary *, NSDictionary *))block;
+- (void)readNewData:(void (^)(NSDictionary *, NSArray *))block;
 
 - (void)likeArticle:(NSString *)id_ handle:(void (^)(NSDictionary *dic))block;
 - (void)unlikeArticle:(NSString *)id_ handle:(void (^)(NSDictionary *dic))block;

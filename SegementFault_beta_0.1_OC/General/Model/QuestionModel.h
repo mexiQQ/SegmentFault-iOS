@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import "BaseModel.h"
+
 @interface QuestionModel : BaseModel
 @property(nonatomic, strong) NSString *id_;
 @property(nonatomic, strong) NSString *url;

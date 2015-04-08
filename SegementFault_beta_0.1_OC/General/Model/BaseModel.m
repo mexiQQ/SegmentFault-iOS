@@ -19,7 +19,8 @@
         if ([self.transformTable hasKey:key]) {
           [self setValue:_jsonObj[key] forKey:self.transformTable[key]];
         } else {
-          if (class_getProperty(self.class, key.cString)) {
+          // 检查是否有这个属性，如果有给它赋予属性
+          if (class_getProperty(self.class, [key UTF8String])) {
             [self setValue:_jsonObj[key] forKey:key];
           }
         }

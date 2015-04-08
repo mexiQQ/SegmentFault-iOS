@@ -37,9 +37,6 @@ static QuestionStore *store = nil;
         [[jsonObj objectForKey:@"data"] objectForKey:@"rows"];
     block(array);
   }];
-  r.errorBlock = ^(NSError *error) {
-    NSLog(@"error is %@", error);
-  };
   [r startAsynchronous];
 }
 
@@ -61,9 +58,6 @@ static QuestionStore *store = nil;
         [[jsonObj objectForKey:@"data"] objectForKey:@"rows"];
     block(array);
   }];
-  r.errorBlock = ^(NSError *error) {
-    NSLog(@"error is %@", error);
-  };
   [r startAsynchronous];
 }
 

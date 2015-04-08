@@ -13,6 +13,6 @@
 @property(weak, nonatomic) IBOutlet UILabel *articleExcerpt;
 @property(weak, nonatomic) IBOutlet UILabel *articleVote;
 @property(weak, nonatomic) IBOutlet UILabel *articleTags;
-- (void)configureForCell:(NSMutableDictionary *)item;
+- (void)configureForCell:(NSDictionary *)item;
 
 @end

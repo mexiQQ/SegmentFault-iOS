@@ -84,7 +84,6 @@
 		AF2CC7CC1A5E2CBD000B1D37 /* MainQuestionTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2CC7CB1A5E2CBD000B1D37 /* MainQuestionTableViewController.m */; };
 		AF2CC7CF1A5E2DDE000B1D37 /* Store.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2CC7CE1A5E2DDE000B1D37 /* Store.m */; };
 		AF2CC7D21A5E2DF4000B1D37 /* QuestionStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2CC7D11A5E2DF4000B1D37 /* QuestionStore.m */; };
-		AF2CC7D81A5E8CB1000B1D37 /* ArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2CC7D71A5E8CB1000B1D37 /* ArticleModel.m */; };
 		AF2CC7DB1A5E8CD3000B1D37 /* ArticleStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF2CC7DA1A5E8CD3000B1D37 /* ArticleStore.m */; };
 		AF37B0211A7F6BA900C3D07D /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AF37B0201A7F6BA900C3D07D /* libsqlite3.dylib */; };
 		AF37B0231A7F6C1300C3D07D /* libstdc++.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = AF37B0221A7F6C1300C3D07D /* libstdc++.dylib */; };
@@ -159,6 +158,7 @@
 		AFB637CB1A973BEF003CB671 /* MarkdownEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB637CA1A973BEF003CB671 /* MarkdownEditorViewController.m */; };
 		AFB637CE1A985E0E003CB671 /* CommetnTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB637CD1A985E0E003CB671 /* CommetnTableViewController.m */; };
 		AFB637D11A9864FD003CB671 /* CommentStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB637D01A9864FD003CB671 /* CommentStore.m */; };
+		AFC1D4B71ABB173200BF976A /* ArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC1D4B61ABB173200BF976A /* ArticleModel.m */; };
 		AFCA0ACE1A9DD47C000E8E98 /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCA0ACD1A9DD47C000E8E98 /* QuestionTableViewCell.m */; };
 		AFD5116E1A8C61AC00AB5C34 /* RightTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD5116D1A8C61AC00AB5C34 /* RightTableViewController.m */; };
 		AFD5117A1A8C825100AB5C34 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD511791A8C825100AB5C34 /* MessageModel.m */; };
@@ -273,8 +273,6 @@
 		AF2CC7CE1A5E2DDE000B1D37 /* Store.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = Store.m; path = General/Store/Store.m; sourceTree = "<group>"; };
 		AF2CC7D01A5E2DF4000B1D37 /* QuestionStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = QuestionStore.h; path = General/Store/QuestionStore.h; sourceTree = "<group>"; };
 		AF2CC7D11A5E2DF4000B1D37 /* QuestionStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = QuestionStore.m; path = General/Store/QuestionStore.m; sourceTree = "<group>"; };
-		AF2CC7D61A5E8CB1000B1D37 /* ArticleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArticleModel.h; path = General/Model/ArticleModel.h; sourceTree = "<group>"; };
-		AF2CC7D71A5E8CB1000B1D37 /* ArticleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArticleModel.m; path = General/Model/ArticleModel.m; sourceTree = "<group>"; };
 		AF2CC7D91A5E8CD3000B1D37 /* ArticleStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArticleStore.h; path = General/Store/ArticleStore.h; sourceTree = "<group>"; };
 		AF2CC7DA1A5E8CD3000B1D37 /* ArticleStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArticleStore.m; path = General/Store/ArticleStore.m; sourceTree = "<group>"; };
 		AF37B0201A7F6BA900C3D07D /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
@@ -387,6 +385,8 @@
 		AFB637CD1A985E0E003CB671 /* CommetnTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommetnTableViewController.m; sourceTree = "<group>"; };
 		AFB637CF1A9864FD003CB671 /* CommentStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentStore.h; path = General/Store/CommentStore.h; sourceTree = "<group>"; };
 		AFB637D01A9864FD003CB671 /* CommentStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentStore.m; path = General/Store/CommentStore.m; sourceTree = "<group>"; };
+		AFC1D4B51ABB173200BF976A /* ArticleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArticleModel.h; path = General/Model/ArticleModel.h; sourceTree = "<group>"; };
+		AFC1D4B61ABB173200BF976A /* ArticleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArticleModel.m; path = General/Model/ArticleModel.m; sourceTree = "<group>"; };
 		AFCA0ACC1A9DD47C000E8E98 /* QuestionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTableViewCell.h; sourceTree = "<group>"; };
 		AFCA0ACD1A9DD47C000E8E98 /* QuestionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTableViewCell.m; sourceTree = "<group>"; };
 		AFD5116C1A8C61AC00AB5C34 /* RightTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightTableViewController.h; sourceTree = "<group>"; };
@@ -619,10 +619,10 @@
 				AFFB4C4C1A836CA400923088 /* BaseModel.m */,
 				AF2CC7C41A5E2B19000B1D37 /* QuestionModel.h */,
 				AF2CC7C51A5E2B19000B1D37 /* QuestionModel.m */,
-				AF2CC7D61A5E8CB1000B1D37 /* ArticleModel.h */,
-				AF2CC7D71A5E8CB1000B1D37 /* ArticleModel.m */,
 				AFD511781A8C825100AB5C34 /* MessageModel.h */,
 				AFD511791A8C825100AB5C34 /* MessageModel.m */,
+				AFC1D4B51ABB173200BF976A /* ArticleModel.h */,
+				AFC1D4B61ABB173200BF976A /* ArticleModel.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -1226,7 +1226,6 @@
 				AF83F9E81A9B9FCB00BA4A3D /* DetailQuestionDataSource.m in Sources */,
 				AF9E87A11A5F8833006D00AF /* EditTagsTableViewController.m in Sources */,
 				AF83F9B41A9B9F6D00BA4A3D /* LeftViewController.m in Sources */,
-				AF2CC7D81A5E8CB1000B1D37 /* ArticleModel.m in Sources */,
 				AF2CC7D21A5E2DF4000B1D37 /* QuestionStore.m in Sources */,
 				AF83F9F81A9BA0A400BA4A3D /* MeunTableViewCell.m in Sources */,
 				AF98B6F11A8ADD1000951113 /* LoginViewController.m in Sources */,
@@ -1234,6 +1233,7 @@
 				AFB637D11A9864FD003CB671 /* CommentStore.m in Sources */,
 				AF2CC7DB1A5E8CD3000B1D37 /* ArticleStore.m in Sources */,
 				AFD762E61A14BCF6004826EC /* AppDelegate.m in Sources */,
+				AFC1D4B71ABB173200BF976A /* ArticleModel.m in Sources */,
 				AF2CC7CF1A5E2DDE000B1D37 /* Store.m in Sources */,
 				AFD762E31A14BCF6004826EC /* main.m in Sources */,
 				AF83F9F41A9B9FCB00BA4A3D /* LeftTableViewUserSectionView.m in Sources */,
@@ -1321,7 +1321,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -1356,7 +1356,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

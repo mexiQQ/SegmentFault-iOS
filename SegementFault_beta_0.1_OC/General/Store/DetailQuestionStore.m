@@ -27,7 +27,7 @@ static DetailQuestionStore *store = nil;
 // 采用 GCD 技术，发起多次异步请求
 - (void)readNewData:(void (^)(NSDictionary *, NSDictionary *))block {
   __block NSDictionary *detailQuestion = nil;
-  __block NSDictionary *detailAnwser = nil;
+  __block NSDictionary *detailAnwsers = nil;
   dispatch_group_t group = dispatch_group_create();
   dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^{
     NSError *error = nil;
@@ -48,6 +48,7 @@ static DetailQuestionStore *store = nil;
           [NSJSONSerialization JSONObjectWithData:data
                                           options:NSJSONReadingMutableLeaves
                                             error:nil];
+      detailQuestion = [detailQuestion objectForKey:@"data"];
     }
   });
 
@@ -64,17 +65,18 @@ static DetailQuestionStore *store = nil;
     [r startSynchronousWithError:&error];
     NSData *data = r.responseData;
     if (data) {
-      detailAnwser =
+      detailAnwsers =
           [NSJSONSerialization JSONObjectWithData:data
                                           options:NSJSONReadingMutableLeaves
                                             error:nil];
+      detailQuestion = [detailQuestion objectForKey:@"data"];
     }
   });
 
   dispatch_group_notify(group, dispatch_get_global_queue(0, 0), ^{
     dispatch_async(dispatch_get_main_queue(), ^{
       // 更新界面
-      block(detailQuestion, detailAnwser);
+      block(detailQuestion, detailAnwsers);
     });
   });
 

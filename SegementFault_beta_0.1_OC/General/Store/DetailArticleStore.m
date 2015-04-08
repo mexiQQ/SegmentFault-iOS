@@ -22,9 +22,9 @@ static DetailArticleStore *store = nil;
   return store;
 }
 
-- (void)readNewData:(void (^)(NSDictionary *, NSDictionary *))block {
+- (void)readNewData:(void (^)(NSDictionary *, NSArray *))block {
   __block NSDictionary *detailArticle = nil;
-  __block NSDictionary *detailComment = nil;
+  __block NSArray *detailComments = nil;
   dispatch_group_t group = dispatch_group_create();
   dispatch_group_async(group, dispatch_get_global_queue(0, 0), ^{
     NSError *error = nil;
@@ -45,6 +45,7 @@ static DetailArticleStore *store = nil;
           [NSJSONSerialization JSONObjectWithData:data
                                           options:NSJSONReadingMutableLeaves
                                             error:nil];
+      detailArticle = [detailArticle objectForKey:@"data"];
     }
   });
 
@@ -61,17 +62,18 @@ static DetailArticleStore *store = nil;
     [r startSynchronousWithError:&error];
     NSData *data = r.responseData;
     if (data) {
-      detailComment =
+      NSDictionary *temp =
           [NSJSONSerialization JSONObjectWithData:data
                                           options:NSJSONReadingMutableLeaves
                                             error:nil];
+      detailComments = [[temp objectForKey:@"data"] objectForKey:@"comment"];
     }
   });
 
   dispatch_group_notify(group, dispatch_get_global_queue(0, 0), ^{
     dispatch_async(dispatch_get_main_queue(), ^{
       // 更新界面
-      block(detailArticle, detailComment);
+      block(detailArticle, detailComments);
     });
   });
 
