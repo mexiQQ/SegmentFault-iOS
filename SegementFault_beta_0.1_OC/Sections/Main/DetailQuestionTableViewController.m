@@ -65,7 +65,10 @@
         self.availableAnswers = [detailAnswers objectForKey:@"available"];
         self.acceptAnswer = [detailAnswers objectForKey:@"accepted"];
         if (self.acceptAnswer == (id)[NSNull null]) {
-          self.answerNumber = (NSInteger *)(self.availableAnswers.count + 1);
+          self.answerNumber =
+              self.availableAnswers.count == 0
+                  ? ((NSInteger *)(self.availableAnswers.count + 2))
+                  : ((NSInteger *)(self.availableAnswers.count + 1));
         } else {
           self.answerNumber = (NSInteger *)(self.availableAnswers.count + 2);
         }
@@ -143,6 +146,10 @@
     if (section == 0) {
       return 50;
     } else if (section == ((int)self.answerNumber - 1)) {
+      // 如果没有回答，设置 footerView 的高度为0
+      if (self.availableAnswers.count == 0) {
+        return 0;
+      }
       return 80;
     } else {
       return 0;
@@ -158,7 +165,27 @@
     return cell;
   } else {
     if (section != 0) {
+      // 没有答案被采纳的情况
       if (self.acceptAnswer == (id)[NSNull null]) {
+        // 判断是否五人回答此问题，若是，则在 headerView 中添加撰写答案 button
+        if (self.availableAnswers.count == 0) {
+          UITableViewCell *cell = [[UITableViewCell alloc]
+              initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 80)];
+          cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
+
+          UIButton *c = [[UIButton alloc]
+              initWithFrame:CGRectMake(10, 10, self.view.bounds.size.width - 20,
+                                       50)];
+          [c setTitle:@"撰写答案" forState:UIControlStateNormal];
+          [c successStyle];
+          [c addTarget:self
+                        action:@selector(editAnswer:)
+              forControlEvents:UIControlEventTouchUpInside];
+
+          [cell addSubview:c];
+          return cell;
+        }
+
         DetailAnswerTableViewCell *cell =
             [tableView dequeueReusableCellWithIdentifier:@"detailAnswerCell"];
         [cell configureForCell:self.availableAnswers[section - 1]
@@ -175,6 +202,7 @@
         return cell;
       }
 
+      // 有答案被采纳的情况
       DetailAnswerTableViewCell *cell =
           [tableView dequeueReusableCellWithIdentifier:@"detailAnswerCell"];
       if (section == 1) {
@@ -197,7 +225,6 @@
       [cell.commentLabel addGestureRecognizer:tap];
 
       return cell;
-
     } else {
       DetailQuestionTableViewCell *cell =
           [tableView dequeueReusableCellWithIdentifier:@"detailQuestionCell"];
@@ -254,21 +281,26 @@
       [cell addSubview:label];
       return cell;
     } else if (section == ((int)self.answerNumber - 1)) {
-      UITableViewCell *cell = [[UITableViewCell alloc]
-          initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 80)];
-      cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
+      // 判断是否无人回答，若是，则不在 footerView 添加撰写答案的 button
+      if (self.availableAnswers.count != 0) {
+        UITableViewCell *cell = [[UITableViewCell alloc]
+            initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width, 80)];
+        cell.backgroundColor = [UIColor groupTableViewBackgroundColor];
 
-      UIButton *c = [[UIButton alloc]
-          initWithFrame:CGRectMake(10, 10, self.view.bounds.size.width - 20,
-                                   50)];
-      [c setTitle:@"撰写答案" forState:UIControlStateNormal];
-      [c successStyle];
-      [c addTarget:self
-                    action:@selector(editAnswer:)
-          forControlEvents:UIControlEventTouchUpInside];
+        UIButton *c = [[UIButton alloc]
+            initWithFrame:CGRectMake(10, 10, self.view.bounds.size.width - 20,
+                                     50)];
+        [c setTitle:@"撰写答案" forState:UIControlStateNormal];
+        [c successStyle];
+        [c addTarget:self
+                      action:@selector(editAnswer:)
+            forControlEvents:UIControlEventTouchUpInside];
 
-      [cell addSubview:c];
-      return cell;
+        [cell addSubview:c];
+        return cell;
+      } else {
+        return nil;
+      }
     } else {
       return nil;
     }
@@ -455,25 +487,6 @@
     UITapGestureRecognizer *gesture = (UITapGestureRecognizer *)sender;
     UILabel *lable = (UILabel *)gesture.view;
     NSInteger tag = lable.tag;
-    //    UIStoryboard *mainStoryboard =
-    //        [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    //    UINavigationController *nav =
-    //        [mainStoryboard
-    //        instantiateViewControllerWithIdentifier:@"commentPage"];
-    //    CommetnTableViewController *main = nav.childViewControllers[0];
-    //
-    //    if (tag == -1) {
-    //      main.id_ = [self.acceptAnswer objectForKey:@"id"];
-    //    } else {
-    //      main.id_ = [[self.availableAnswers objectAtIndex:tag]
-    //      objectForKey:@"id"];
-    //    }
-
-    //    [self.mm_drawerController setRightDrawerViewController:nav];
-    //      [self.mm_drawerController setMaximumRightDrawerWidth:240.0];
-    //      [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight
-    //                                        animated:YES
-    //                                      completion:nil];
 
     UIStoryboard *mainStoryboard =
         [UIStoryboard storyboardWithName:@"Main" bundle:nil];
