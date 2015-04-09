@@ -15,6 +15,7 @@
 #import "MarkdownEditorViewController.h"
 #import "UIButton+Bootstrap.h"
 #import <ShareSDK/ShareSDK.h>
+#import "MobClick.h"
 #import "MXUtil.h"
 
 @interface DetailArticleTableViewController ()
@@ -38,6 +39,16 @@
 
   // 设置 tableview
   [self setupTableView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [MobClick beginLogPageView:@"PageOne"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
+  [MobClick endLogPageView:@"PageOne"];
 }
 
 #pragma mark - table datasource

@@ -16,6 +16,7 @@
 #import "UIViewController+MMDrawerController.h"
 #import "CommentViewController.h"
 #import "MXUtil.h"
+#import "MobClick.h"
 #import "MessageStore.h"
 #import <ShareSDK/ShareSDK.h>
 
@@ -43,6 +44,16 @@
 
   // 设置 tableview
   [self setupTableView];
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+  [super viewWillAppear:animated];
+  [MobClick beginLogPageView:@"PageOne"];
+}
+
+- (void)viewWillDisappear:(BOOL)animated {
+  [super viewWillDisappear:animated];
+  [MobClick endLogPageView:@"PageOne"];
 }
 
 #pragma mark - table datasource

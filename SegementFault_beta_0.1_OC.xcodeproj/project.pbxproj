@@ -169,6 +169,7 @@
 		AFD762EE1A14BCF6004826EC /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AFD762ED1A14BCF6004826EC /* Images.xcassets */; };
 		AFD762F11A14BCF6004826EC /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFD762EF1A14BCF6004826EC /* LaunchScreen.xib */; };
 		AFDA89921A48108E00771476 /* MenuTableViewUserSection.xib in Resources */ = {isa = PBXBuildFile; fileRef = AFDA89911A48108E00771476 /* MenuTableViewUserSection.xib */; };
+		AFE6C93E1AD68F6E003573EE /* libMobClickLibrary.a in Frameworks */ = {isa = PBXBuildFile; fileRef = AFE6C93B1AD68F6E003573EE /* libMobClickLibrary.a */; };
 		AFF5F8E61AB86EB5009964D4 /* SegmentFaultTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AFF5F8E51AB86EB5009964D4 /* SegmentFaultTests.m */; };
 		AFF7AC7E1A7F521E00148561 /* icon_more.png in Resources */ = {isa = PBXBuildFile; fileRef = AFF7AC7C1A7F521E00148561 /* icon_more.png */; };
 		AFF7AC7F1A7F521E00148561 /* icon_more@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AFF7AC7D1A7F521E00148561 /* icon_more@2x.png */; };
@@ -406,6 +407,9 @@
 		AFD762ED1A14BCF6004826EC /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		AFD762F01A14BCF6004826EC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		AFDA89911A48108E00771476 /* MenuTableViewUserSection.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MenuTableViewUserSection.xib; sourceTree = "<group>"; };
+		AFE6C93B1AD68F6E003573EE /* libMobClickLibrary.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libMobClickLibrary.a; sourceTree = "<group>"; };
+		AFE6C93C1AD68F6E003573EE /* MobClick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClick.h; sourceTree = "<group>"; };
+		AFE6C93D1AD68F6E003573EE /* MobClickSocialAnalytics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MobClickSocialAnalytics.h; sourceTree = "<group>"; };
 		AFF5F8E11AB86EB5009964D4 /* SegmentFaultTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SegmentFaultTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		AFF5F8E41AB86EB5009964D4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AFF5F8E51AB86EB5009964D4 /* SegmentFaultTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SegmentFaultTests.m; sourceTree = "<group>"; };
@@ -422,6 +426,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AFE6C93E1AD68F6E003573EE /* libMobClickLibrary.a in Frameworks */,
 				AF57F14F1A9DD666002294FA /* ShareSDKiPhoneDefaultShareViewUI.framework in Frameworks */,
 				AF57F13C1A9DD666002294FA /* EverNoteConnection.framework in Frameworks */,
 				AF57F1451A9DD666002294FA /* ShareSDKCoreService.framework in Frameworks */,
@@ -633,6 +638,7 @@
 		AF37AFDD1A7F696F00C3D07D /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				AFE6C93A1AD68F6E003573EE /* UMAnalytics_Sdk_3.4.6 */,
 				AFD43F5C1AD6218900B41B4C /* MessageComposerView */,
 				AF57F1181A9DD666002294FA /* ShareSDK */,
 			);
@@ -930,6 +936,16 @@
 				AFD762E21A14BCF6004826EC /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		AFE6C93A1AD68F6E003573EE /* UMAnalytics_Sdk_3.4.6 */ = {
+			isa = PBXGroup;
+			children = (
+				AFE6C93B1AD68F6E003573EE /* libMobClickLibrary.a */,
+				AFE6C93C1AD68F6E003573EE /* MobClick.h */,
+				AFE6C93D1AD68F6E003573EE /* MobClickSocialAnalytics.h */,
+			);
+			path = UMAnalytics_Sdk_3.4.6;
 			sourceTree = "<group>";
 		};
 		AFF5F8E21AB86EB5009964D4 /* SegmentFaultTests */ = {
@@ -1399,6 +1415,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SegementFault_beta_0.1_OC/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/SegementFault_beta_0.1_OC/ShareSDK/Extend/WeChatSDK",
+					"$(PROJECT_DIR)/SegementFault_beta_0.1_OC/UMAnalytics_Sdk_3.4.6",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -1427,6 +1444,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SegementFault_beta_0.1_OC/ShareSDK/Extend/SinaWeiboSDK",
 					"$(PROJECT_DIR)/SegementFault_beta_0.1_OC/ShareSDK/Extend/WeChatSDK",
+					"$(PROJECT_DIR)/SegementFault_beta_0.1_OC/UMAnalytics_Sdk_3.4.6",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";

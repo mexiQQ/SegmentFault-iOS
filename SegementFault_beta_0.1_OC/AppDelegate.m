@@ -12,6 +12,7 @@
 #import <TencentOpenAPI/TencentOAuth.h>
 #import "STHTTPRequest+JSON.h"
 #import "WXApi.h"
+#import "MobClick.h"
 #import "WeiboSDK.h"
 
 @interface AppDelegate ()
@@ -63,77 +64,82 @@
  *  第三方账号注册
  */
 - (void)setupSocial {
-  [ShareSDK registerApp:@"56ba5f6fd108"]; //字符串api20为您的ShareSDK的AppKey
+  // 异步对应用设置
+  dispatch_async(
+      dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
+        dispatch_async(dispatch_get_main_queue(), ^{
+          [MobClick startWithAppkey:@"55264f65fd98c56cfc000e14"
+                       reportPolicy:BATCH
+                          channelId:@""];
 
-  //注册微博
-  [ShareSDK
-      connectSinaWeiboWithAppKey:@"1742025894"
-                       appSecret:@"c18d2bbaf9a6cb9344e994292ebab29f"
-                     redirectUri:@"http://segmentfault.com/user/oauth/weibo"];
+          [ShareSDK
+              registerApp:@"56ba5f6fd108"]; //字符串api20为您的ShareSDK的AppKey
 
-  //当使用新浪微博客户端分享的时候需要按照下面的方法来初始化新浪的平台
-  [ShareSDK
-      connectSinaWeiboWithAppKey:@"1742025894"
-                       appSecret:@"c18d2bbaf9a6cb9344e994292ebab29f"
-                     redirectUri:@"http://segmentfault.com/user/oauth/weibo"
-                     weiboSDKCls:[WeiboSDK class]];
+          //注册微博
+          [ShareSDK
+              connectSinaWeiboWithAppKey:@"1742025894"
+                               appSecret:@"c18d2bbaf9a6cb9344e994292ebab29f"
+                             redirectUri:
+                                 @"http://segmentfault.com/user/oauth/weibo"];
 
-  //添加QQ应用  注册网址  http://open.qq.com/x
-  [ShareSDK connectQQWithQZoneAppKey:@"100522525"
-                   qqApiInterfaceCls:[QQApiInterface class]
-                     tencentOAuthCls:[TencentOAuth class]];
+          //当使用新浪微博客户端分享的时候需要按照下面的方法来初始化新浪的平台
+          [ShareSDK
+              connectSinaWeiboWithAppKey:@"1742025894"
+                               appSecret:@"c18d2bbaf9a6cb9344e994292ebab29f"
+                             redirectUri:
+                                 @"http://segmentfault.com/user/oauth/weibo"
+                             weiboSDKCls:[WeiboSDK class]];
 
-  [ShareSDK connectQQWithAppId:@"100522525" qqApiCls:[QQApiInterface class]];
+          //添加QQ应用  注册网址  http://open.qq.com/x
+          [ShareSDK connectQQWithQZoneAppKey:@"100522525"
+                           qqApiInterfaceCls:[QQApiInterface class]
+                             tencentOAuthCls:[TencentOAuth class]];
 
-  [ShareSDK connectQZoneWithAppKey:@"100522525"
-                         appSecret:@"847a2742c2fe5d6c13e5fbb68967f128"
-                 qqApiInterfaceCls:[QQApiInterface class]
-                   tencentOAuthCls:[TencentOAuth class]];
+          [ShareSDK connectQQWithAppId:@"100522525"
+                              qqApiCls:[QQApiInterface class]];
 
-  //导入QQ互联和QQ好友分享需要的外部库类型，如果不需要QQ空间SSO和QQ好友分享可以不调用此方法
-  [ShareSDK importQQClass:[QQApiInterface class]
-          tencentOAuthCls:[TencentOAuth class]];
+          [ShareSDK connectQZoneWithAppKey:@"100522525"
+                                 appSecret:@"847a2742c2fe5d6c13e5fbb68967f128"
+                         qqApiInterfaceCls:[QQApiInterface class]
+                           tencentOAuthCls:[TencentOAuth class]];
 
-  //添加微信应用 注册网址 http://open.weixin.qq.com
-  [ShareSDK connectWeChatWithAppId:@"wx3e23410dafa9a06b"
-                         appSecret:@"c9323c787d46fe7b2eac56551e1facf0"
-                         wechatCls:[WXApi class]];
+          //导入QQ互联和QQ好友分享需要的外部库类型，如果不需要QQ空间SSO和QQ好友分享可以不调用此方法
+          [ShareSDK importQQClass:[QQApiInterface class]
+                  tencentOAuthCls:[TencentOAuth class]];
 
-  // Pocket
-  [ShareSDK connectPocketWithConsumerKey:@"37105-d32d86350db6a9e907003736"
-                             redirectUri:@"pocketapp1234"];
+          //添加微信应用 注册网址 http://open.weixin.qq.com
+          [ShareSDK connectWeChatWithAppId:@"wx3e23410dafa9a06b"
+                                 appSecret:@"c9323c787d46fe7b2eac56551e1facf0"
+                                 wechatCls:[WXApi class]];
 
-  // EvernoteWithType
-  [ShareSDK connectEvernoteWithType:SSEverNoteTypeSandbox
+          // Pocket
+          [ShareSDK
+              connectPocketWithConsumerKey:@"37105-d32d86350db6a9e907003736"
+                               redirectUri:@"pocketapp1234"];
+
+          // EvernoteWithType
+          [ShareSDK connectEvernoteWithType:SSEverNoteTypeSandbox
+                                consumerKey:@"segmentfault"
+                             consumerSecret:@"1a5aa3845a630eec"];
+        });
+      });
+
+  /*
+  [ShareSDK connectEvernoteWithType:SSEverNoteTypeUS
                         consumerKey:@"segmentfault"
                      consumerSecret:@"1a5aa3845a630eec"];
-/*
-[ShareSDK connectEvernoteWithType:SSEverNoteTypeUS
-                      consumerKey:@"segmentfault"
-                   consumerSecret:@"1a5aa3845a630eec"];
 
-[ShareSDK connectEvernoteWithType:SSEverNoteTypeCN
-                      consumerKey:@"segmentfault"
-                   consumerSecret:@"1a5aa3845a630eec"];
- */
+  [ShareSDK connectEvernoteWithType:SSEverNoteTypeCN
+                        consumerKey:@"segmentfault"
+                     consumerSecret:@"1a5aa3845a630eec"];
+   */
 
-#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 80000
-  if ([[UIApplication sharedApplication]
-          respondsToSelector:@selector(registerUserNotificationSettings:)]) {
-    [[UIApplication sharedApplication]
-        registerUserNotificationSettings:
-            [UIUserNotificationSettings
-                settingsForTypes:(UIUserNotificationTypeBadge)
-                      categories:nil]];
-    [[UIApplication sharedApplication] registerForRemoteNotifications];
-  } else {
-    [[UIApplication sharedApplication]
-        registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge)];
-  }
-#else
   [[UIApplication sharedApplication]
-      registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge)];
-#endif
+      registerUserNotificationSettings:
+          [UIUserNotificationSettings
+              settingsForTypes:(UIUserNotificationTypeBadge)
+                    categories:nil]];
+  [[UIApplication sharedApplication] registerForRemoteNotifications];
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
