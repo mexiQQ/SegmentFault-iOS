@@ -14,7 +14,7 @@
 #import "MarkdownEditorViewController.h"
 #import "UIButton+Bootstrap.h"
 #import "UIViewController+MMDrawerController.h"
-//#import "CommetnTableViewController.h"
+#import "CommetnTableViewController.h"
 #import "CommentViewController.h"
 #import "MXUtil.h"
 #import "MessageStore.h"

@@ -21,8 +21,10 @@ static CommentStore *store = nil;
 }
 
 - (void)readNewData:(void (^)(NSMutableArray *))block id_:(NSString *)id_ {
+  //  NSString *url = [NSString
+  //      stringWithFormat:@"http://api.segmentfault.com/comment/show/%@", id_];
   NSString *url = [NSString
-      stringWithFormat:@"http://api.segmentfault.com/comment/show/%@", id_];
+      stringWithFormat:@"http://api.lvye.sfdev.com/answer/%@/comments", id_];
   STHTTPRequest *r = [STHTTPRequest requestWithURLString:url];
   [r setCompletionJSONBlock:^(NSDictionary *header, NSDictionary *jsonObj) {
     NSMutableArray *array =

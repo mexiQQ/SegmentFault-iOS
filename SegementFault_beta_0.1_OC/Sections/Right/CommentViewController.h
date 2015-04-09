@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface CommentViewController : UIViewController
-
+#import "MessageComposerView.h"
+@interface CommentViewController
+    : UIViewController <MessageComposerViewDelegate, UITableViewDelegate,
+                        UITextViewDelegate>
+@property(nonatomic, strong) MessageComposerView *messageComposerView;
+@property(weak, nonatomic) IBOutlet UITableView *mytableView;
+@property(strong, nonatomic) IBOutlet UIView *myview;
+@property(nonatomic, strong) NSString *id_;
 @end

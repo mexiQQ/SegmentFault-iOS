@@ -7,10 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
-
-@interface CommetnTableViewController : UITableViewController
+#import "MessageComposerView.h"
+@interface CommetnTableViewController
+    : UITableViewController <MessageComposerViewDelegate>
 @property(nonatomic, strong) NSString *id_;
-//@property(weak, nonatomic) IBOutlet UIActivityIndicatorView
-//*activityIndicator;
 @property(weak, nonatomic) IBOutlet UIButton *titleButton;
+@property(nonatomic, strong) MessageComposerView *messageComposerView;
 @end

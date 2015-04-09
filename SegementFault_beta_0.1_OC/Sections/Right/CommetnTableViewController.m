@@ -26,16 +26,6 @@
   [super viewDidLoad];
   [self setupBar];
   [self setupTableView];
-  //  _activityIndicator.hidden = NO;
-  //  [_activityIndicator
-  //      setFrame:CGRectMake(_activityIndicator.frame.origin.x, 100,
-  //                          _activityIndicator.frame.size.width,
-  //                          _activityIndicator.frame.size.height)];
-  //  [_activityIndicator startAnimating];
-
-  UIToolbar *toolbar =
-      [[UIToolbar alloc] initWithFrame:CGRectMake(0, 528, 320, 40)];
-  [self.view addSubview:toolbar];
 }
 
 #pragma mark - table datasource
@@ -49,6 +39,12 @@
   // 设置 barTitle
   [self.titleButton setBackgroundImage:[UIImage imageNamed:@"comments_title"]
                               forState:UIControlStateNormal];
+
+  self.messageComposerView = [[MessageComposerView alloc] init];
+  self.messageComposerView.delegate = self;
+  [self.tableView addSubview:self.messageComposerView];
+
+  self.messageComposerView.messagePlaceholder = @"Type a comment...";
 }
 
 //第一次加载数据时自动弹出
@@ -88,7 +84,6 @@
                              NSMutableDictionary *item) {
           [cell configureForCell:item];
         }];
-    //    _activityIndicator.hidden = YES;
     self.tableView.dataSource = self.myCommentDataSource;
     [self.refreshControl endRefreshing];
   } id_:self.id_];
@@ -114,24 +109,34 @@
   return height;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView
-    heightForFooterInSection:(NSInteger)section {
-  return 40;
+#pragma mark - MessageComposerViewDelegate
+- (void)messageComposerSendMessageClickedWithMessage:(NSString *)message {
+  NSLog(@"send click");
 }
 
-- (UIView *)tableView:(UITableView *)tableView
-    viewForFooterInSection:(NSInteger)section {
-  DetailWriteCommentTableViewCell *cell =
-      [tableView dequeueReusableCellWithIdentifier:@"detailWriteCommentCell"];
-
-  // 给 label 增加点击事件
-  UITapGestureRecognizer *tap =
-      [[UITapGestureRecognizer alloc] initWithTarget:self
-                                              action:@selector(wirteComment:)];
-  cell.wirteComment.userInteractionEnabled = YES;
-  [cell.wirteComment addGestureRecognizer:tap];
-  return cell;
+- (void)messageComposerUserTyping {
+  NSLog(@"text changed");
 }
+
+- (void)messageComposerFrameDidChange:(CGRect)frame
+                withAnimationDuration:(CGFloat)duration
+                             andCurve:(NSInteger)curve {
+  NSLog(@"frame changed");
+}
+
+//- (UIView *)tableView:(UITableView *)tableView
+//    viewForFooterInSection:(NSInteger)section {
+//  DetailWriteCommentTableViewCell *cell =
+//      [tableView dequeueReusableCellWithIdentifier:@"detailWriteCommentCell"];
+//
+//  // 给 label 增加点击事件
+//  UITapGestureRecognizer *tap =
+//      [[UITapGestureRecognizer alloc] initWithTarget:self
+//                                              action:@selector(wirteComment:)];
+//  cell.wirteComment.userInteractionEnabled = YES;
+//  [cell.wirteComment addGestureRecognizer:tap];
+//  return cell;
+//}
 
 - (IBAction)wirteComment:(id)sender {
   UINavigationController *markdownNav =
