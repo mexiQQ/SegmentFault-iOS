@@ -14,7 +14,8 @@
 #import "MarkdownEditorViewController.h"
 #import "UIButton+Bootstrap.h"
 #import "UIViewController+MMDrawerController.h"
-#import "CommetnTableViewController.h"
+//#import "CommetnTableViewController.h"
+#import "CommentViewController.h"
 #import "MXUtil.h"
 #import "MessageStore.h"
 #import <ShareSDK/ShareSDK.h>
@@ -164,7 +165,7 @@
         [cell configureForCell:self.availableAnswers[section - 1]
                          index:(NSInteger *)(section - 1)
                       accepted:NO];
-          
+
         // 给 label 增加点击事件
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]
             initWithTarget:self
@@ -452,26 +453,35 @@
 // 展示评论页
 - (IBAction)showQuestionComment:(id)sender {
   if ([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]) {
-    UITapGestureRecognizer *gesture = (UITapGestureRecognizer *)sender;
-    UILabel *lable = (UILabel *)gesture.view;
-    NSInteger tag = lable.tag;
+    //    UITapGestureRecognizer *gesture = (UITapGestureRecognizer *)sender;
+    //    UILabel *lable = (UILabel *)gesture.view;
+    //    NSInteger tag = lable.tag;
+    //    UIStoryboard *mainStoryboard =
+    //        [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    //    UINavigationController *nav =
+    //        [mainStoryboard
+    //        instantiateViewControllerWithIdentifier:@"commentPage"];
+    //    CommetnTableViewController *main = nav.childViewControllers[0];
+    //
+    //    if (tag == -1) {
+    //      main.id_ = [self.acceptAnswer objectForKey:@"id"];
+    //    } else {
+    //      main.id_ = [[self.availableAnswers objectAtIndex:tag]
+    //      objectForKey:@"id"];
+    //    }
+
+    //    [self.mm_drawerController setRightDrawerViewController:nav];
+    //      [self.mm_drawerController setMaximumRightDrawerWidth:240.0];
+    //      [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight
+    //                                        animated:YES
+    //                                      completion:nil];
+
     UIStoryboard *mainStoryboard =
         [UIStoryboard storyboardWithName:@"Main" bundle:nil];
-    UINavigationController *nav =
+    CommentViewController *commentPage =
         [mainStoryboard instantiateViewControllerWithIdentifier:@"commentPage"];
-    CommetnTableViewController *main = nav.childViewControllers[0];
 
-    if (tag == -1) {
-      main.id_ = [self.acceptAnswer objectForKey:@"id"];
-    } else {
-      main.id_ = [[self.availableAnswers objectAtIndex:tag] objectForKey:@"id"];
-    }
-
-    [self.mm_drawerController setRightDrawerViewController:nav];
-    [self.mm_drawerController setMaximumRightDrawerWidth:240.0];
-    [self.mm_drawerController toggleDrawerSide:MMDrawerSideRight
-                                      animated:YES
-                                    completion:nil];
+    [self.navigationController pushViewController:commentPage animated:YES];
   } else {
     [[MXUtil sharedUtil] showMessageScreen:@"未登录"];
   }

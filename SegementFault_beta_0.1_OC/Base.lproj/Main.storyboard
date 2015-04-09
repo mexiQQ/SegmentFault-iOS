@@ -1566,7 +1566,32 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xfV-kP-GPA" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="603" y="-902"/>
+            <point key="canvasLocation" x="603" y="-910"/>
+        </scene>
+        <!--Comment View Controller-->
+        <scene sceneID="3F1-Q6-i6K">
+            <objects>
+                <viewController storyboardIdentifier="commentPage" id="aDf-Yy-0VN" customClass="CommentViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SJj-KT-D8m"/>
+                        <viewControllerLayoutGuide type="bottom" id="l71-6l-erT"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="QeO-pf-hwb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="XTY-zj-0tQ">
+                                <rect key="frame" x="0.0" y="-8" width="320" height="576"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="WEV-fa-R4K"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sFQ-IK-81x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="603" y="-2803"/>
         </scene>
         <!--Commetn Table View Controller-->
         <scene sceneID="Eon-W0-fkv">
@@ -1576,10 +1601,6 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.92156862745098034" green="0.92156862745098034" blue="0.94509803921568625" alpha="1" colorSpace="calibratedRGB"/>
-                        <activityIndicatorView key="tableFooterView" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" id="dzr-gB-fQ1">
-                            <rect key="frame" x="0.0" y="318" width="320" height="20"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        </activityIndicatorView>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="0.0" shouldIndentWhileEditing="NO" reuseIdentifier="detailCommentCell" rowHeight="192" id="vK7-hz-rpq" customClass="DetailCommentTableViewCell">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1749,7 +1770,6 @@
                         </button>
                     </navigationItem>
                     <connections>
-                        <outlet property="activityIndicator" destination="dzr-gB-fQ1" id="2Rf-1q-hyH"/>
                         <outlet property="titleButton" destination="FlT-3t-uF0" id="Vyd-5h-0r3"/>
                     </connections>
                 </tableViewController>
@@ -1817,7 +1837,7 @@
         <!--Navigation Controller-->
         <scene sceneID="4n5-aw-iEq">
             <objects>
-                <navigationController storyboardIdentifier="commentPage" automaticallyAdjustsScrollViewInsets="NO" id="Kfj-jd-XDx" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Kfj-jd-XDx" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Zxc-1S-Igy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

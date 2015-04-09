@@ -160,6 +160,8 @@
 		AFB637D11A9864FD003CB671 /* CommentStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB637D01A9864FD003CB671 /* CommentStore.m */; };
 		AFC1D4B71ABB173200BF976A /* ArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC1D4B61ABB173200BF976A /* ArticleModel.m */; };
 		AFCA0ACE1A9DD47C000E8E98 /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCA0ACD1A9DD47C000E8E98 /* QuestionTableViewCell.m */; };
+		AFD43F5F1AD6218900B41B4C /* MessageComposerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD43F5E1AD6218900B41B4C /* MessageComposerView.m */; };
+		AFD43F621AD621EC00B41B4C /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD43F611AD621EC00B41B4C /* CommentViewController.m */; };
 		AFD5116E1A8C61AC00AB5C34 /* RightTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD5116D1A8C61AC00AB5C34 /* RightTableViewController.m */; };
 		AFD5117A1A8C825100AB5C34 /* MessageModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD511791A8C825100AB5C34 /* MessageModel.m */; };
 		AFD5117D1A8C826D00AB5C34 /* MessageStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD5117C1A8C826D00AB5C34 /* MessageStore.m */; };
@@ -389,6 +391,10 @@
 		AFC1D4B61ABB173200BF976A /* ArticleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArticleModel.m; path = General/Model/ArticleModel.m; sourceTree = "<group>"; };
 		AFCA0ACC1A9DD47C000E8E98 /* QuestionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTableViewCell.h; sourceTree = "<group>"; };
 		AFCA0ACD1A9DD47C000E8E98 /* QuestionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTableViewCell.m; sourceTree = "<group>"; };
+		AFD43F5D1AD6218900B41B4C /* MessageComposerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageComposerView.h; sourceTree = "<group>"; };
+		AFD43F5E1AD6218900B41B4C /* MessageComposerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageComposerView.m; sourceTree = "<group>"; };
+		AFD43F601AD621EC00B41B4C /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		AFD43F611AD621EC00B41B4C /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
 		AFD5116C1A8C61AC00AB5C34 /* RightTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RightTableViewController.h; sourceTree = "<group>"; };
 		AFD5116D1A8C61AC00AB5C34 /* RightTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RightTableViewController.m; sourceTree = "<group>"; };
 		AFD511781A8C825100AB5C34 /* MessageModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MessageModel.h; path = General/Model/MessageModel.h; sourceTree = "<group>"; };
@@ -630,6 +636,7 @@
 		AF37AFDD1A7F696F00C3D07D /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				AFD43F5C1AD6218900B41B4C /* MessageComposerView */,
 				AF57F1181A9DD666002294FA /* ShareSDK */,
 			);
 			name = vendor;
@@ -857,6 +864,15 @@
 			name = General;
 			sourceTree = "<group>";
 		};
+		AFD43F5C1AD6218900B41B4C /* MessageComposerView */ = {
+			isa = PBXGroup;
+			children = (
+				AFD43F5D1AD6218900B41B4C /* MessageComposerView.h */,
+				AFD43F5E1AD6218900B41B4C /* MessageComposerView.m */,
+			);
+			path = MessageComposerView;
+			sourceTree = "<group>";
+		};
 		AFD5116B1A8C61AC00AB5C34 /* Right */ = {
 			isa = PBXGroup;
 			children = (
@@ -864,6 +880,8 @@
 				AFD5116D1A8C61AC00AB5C34 /* RightTableViewController.m */,
 				AFB637CC1A985E0E003CB671 /* CommetnTableViewController.h */,
 				AFB637CD1A985E0E003CB671 /* CommetnTableViewController.m */,
+				AFD43F601AD621EC00B41B4C /* CommentViewController.h */,
+				AFD43F611AD621EC00B41B4C /* CommentViewController.m */,
 			);
 			name = Right;
 			path = Sections/Right;
@@ -1196,6 +1214,7 @@
 				AF83F9F51A9B9FCB00BA4A3D /* MessageTableViewCell.m in Sources */,
 				AF83F9E51A9B9FCB00BA4A3D /* ArticlesDataSource.m in Sources */,
 				AF98B7021A8B464500951113 /* BindViewController.m in Sources */,
+				AFD43F621AD621EC00B41B4C /* CommentViewController.m in Sources */,
 				AF49193F1A7233BB00EEFFFF /* DetailArticleStore.m in Sources */,
 				AF0A0C911A81F21F001CC174 /* MXUtil.m in Sources */,
 				AF83F9EC1A9B9FCB00BA4A3D /* ArticleTableViewCell.m in Sources */,
@@ -1222,6 +1241,7 @@
 				AF1A8F341A8A099600A17E17 /* NSString+FontAwesome.m in Sources */,
 				AF4919301A72180200EEFFFF /* DetailArticleTableViewController.m in Sources */,
 				AF83F9ED1A9B9FCB00BA4A3D /* DetailAnswerTableViewCell.m in Sources */,
+				AFD43F5F1AD6218900B41B4C /* MessageComposerView.m in Sources */,
 				AF83F9F01A9B9FCB00BA4A3D /* DetailQuestionTableViewCell.m in Sources */,
 				AF83F9E81A9B9FCB00BA4A3D /* DetailQuestionDataSource.m in Sources */,
 				AF9E87A11A5F8833006D00AF /* EditTagsTableViewController.m in Sources */,

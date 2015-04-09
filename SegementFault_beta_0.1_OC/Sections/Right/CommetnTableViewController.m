@@ -26,12 +26,16 @@
   [super viewDidLoad];
   [self setupBar];
   [self setupTableView];
-  _activityIndicator.hidden = NO;
-  [_activityIndicator
-      setFrame:CGRectMake(_activityIndicator.frame.origin.x, 20,
-                          _activityIndicator.frame.size.width,
-                          _activityIndicator.frame.size.height)];
-  [_activityIndicator startAnimating];
+  //  _activityIndicator.hidden = NO;
+  //  [_activityIndicator
+  //      setFrame:CGRectMake(_activityIndicator.frame.origin.x, 100,
+  //                          _activityIndicator.frame.size.width,
+  //                          _activityIndicator.frame.size.height)];
+  //  [_activityIndicator startAnimating];
+
+  UIToolbar *toolbar =
+      [[UIToolbar alloc] initWithFrame:CGRectMake(0, 528, 320, 40)];
+  [self.view addSubview:toolbar];
 }
 
 #pragma mark - table datasource
@@ -84,7 +88,7 @@
                              NSMutableDictionary *item) {
           [cell configureForCell:item];
         }];
-    _activityIndicator.hidden = YES;
+    //    _activityIndicator.hidden = YES;
     self.tableView.dataSource = self.myCommentDataSource;
     [self.refreshControl endRefreshing];
   } id_:self.id_];

@@ -7,7 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+/**
+ *  消息 VC
+ */
 @interface RightTableViewController : UITableViewController
 @property(weak, nonatomic) IBOutlet UIButton *titleButton;
 
