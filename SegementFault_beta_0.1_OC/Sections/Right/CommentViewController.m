@@ -95,7 +95,7 @@
         }];
     self.mytableView.dataSource = self.myCommentDataSource;
     [self.refreshControl endRefreshing];
-  } id_:@"1020000002660016"];
+  } id_:self.id_];
 }
 
 #pragma mark - table delegate

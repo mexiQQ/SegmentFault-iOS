@@ -14,7 +14,6 @@
 #import "MarkdownEditorViewController.h"
 #import "UIButton+Bootstrap.h"
 #import "UIViewController+MMDrawerController.h"
-#import "CommetnTableViewController.h"
 #import "CommentViewController.h"
 #import "MXUtil.h"
 #import "MessageStore.h"
@@ -453,9 +452,9 @@
 // 展示评论页
 - (IBAction)showQuestionComment:(id)sender {
   if ([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]) {
-    //    UITapGestureRecognizer *gesture = (UITapGestureRecognizer *)sender;
-    //    UILabel *lable = (UILabel *)gesture.view;
-    //    NSInteger tag = lable.tag;
+    UITapGestureRecognizer *gesture = (UITapGestureRecognizer *)sender;
+    UILabel *lable = (UILabel *)gesture.view;
+    NSInteger tag = lable.tag;
     //    UIStoryboard *mainStoryboard =
     //        [UIStoryboard storyboardWithName:@"Main" bundle:nil];
     //    UINavigationController *nav =
@@ -481,6 +480,12 @@
     CommentViewController *commentPage =
         [mainStoryboard instantiateViewControllerWithIdentifier:@"commentPage"];
 
+    if (tag == -1) {
+      commentPage.id_ = [self.acceptAnswer objectForKey:@"id"];
+    } else {
+      commentPage.id_ =
+          [[self.availableAnswers objectAtIndex:tag] objectForKey:@"id"];
+    }
     [self.navigationController pushViewController:commentPage animated:YES];
   } else {
     [[MXUtil sharedUtil] showMessageScreen:@"未登录"];

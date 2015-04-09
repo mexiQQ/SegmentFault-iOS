@@ -46,11 +46,14 @@
          rightDrawerViewController:nil];
 
   [drawerController setMaximumRightDrawerWidth:200.0];
-  [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeNone];
+  [drawerController setOpenDrawerGestureModeMask:MMOpenDrawerGestureModeAll];
   [drawerController setCloseDrawerGestureModeMask:MMCloseDrawerGestureModeAll];
 
   window.rootViewController = drawerController;
   [window makeKeyAndVisible];
+
+  [[UIApplication sharedApplication]
+      setStatusBarStyle:UIStatusBarStyleLightContent];
 
   [self setupSocial];
   return YES;

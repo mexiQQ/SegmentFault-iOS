@@ -156,7 +156,6 @@
 		AF9E879B1A5F84A3006D00AF /* TagStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9E879A1A5F84A3006D00AF /* TagStore.m */; };
 		AF9E87A11A5F8833006D00AF /* EditTagsTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AF9E87A01A5F8833006D00AF /* EditTagsTableViewController.m */; };
 		AFB637CB1A973BEF003CB671 /* MarkdownEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB637CA1A973BEF003CB671 /* MarkdownEditorViewController.m */; };
-		AFB637CE1A985E0E003CB671 /* CommetnTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB637CD1A985E0E003CB671 /* CommetnTableViewController.m */; };
 		AFB637D11A9864FD003CB671 /* CommentStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB637D01A9864FD003CB671 /* CommentStore.m */; };
 		AFC1D4B71ABB173200BF976A /* ArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC1D4B61ABB173200BF976A /* ArticleModel.m */; };
 		AFCA0ACE1A9DD47C000E8E98 /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCA0ACD1A9DD47C000E8E98 /* QuestionTableViewCell.m */; };
@@ -383,8 +382,6 @@
 		AF9E87A01A5F8833006D00AF /* EditTagsTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EditTagsTableViewController.m; path = Sections/Modal/EditTagsTableViewController.m; sourceTree = "<group>"; };
 		AFB637C91A973BEF003CB671 /* MarkdownEditorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = MarkdownEditorViewController.h; path = Sections/Modal/MarkdownEditorViewController.h; sourceTree = "<group>"; };
 		AFB637CA1A973BEF003CB671 /* MarkdownEditorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = MarkdownEditorViewController.m; path = Sections/Modal/MarkdownEditorViewController.m; sourceTree = "<group>"; };
-		AFB637CC1A985E0E003CB671 /* CommetnTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommetnTableViewController.h; sourceTree = "<group>"; };
-		AFB637CD1A985E0E003CB671 /* CommetnTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommetnTableViewController.m; sourceTree = "<group>"; };
 		AFB637CF1A9864FD003CB671 /* CommentStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CommentStore.h; path = General/Store/CommentStore.h; sourceTree = "<group>"; };
 		AFB637D01A9864FD003CB671 /* CommentStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentStore.m; path = General/Store/CommentStore.m; sourceTree = "<group>"; };
 		AFC1D4B51ABB173200BF976A /* ArticleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArticleModel.h; path = General/Model/ArticleModel.h; sourceTree = "<group>"; };
@@ -878,8 +875,6 @@
 			children = (
 				AFD5116C1A8C61AC00AB5C34 /* RightTableViewController.h */,
 				AFD5116D1A8C61AC00AB5C34 /* RightTableViewController.m */,
-				AFB637CC1A985E0E003CB671 /* CommetnTableViewController.h */,
-				AFB637CD1A985E0E003CB671 /* CommetnTableViewController.m */,
 				AFD43F601AD621EC00B41B4C /* CommentViewController.h */,
 				AFD43F611AD621EC00B41B4C /* CommentViewController.m */,
 			);
@@ -1227,7 +1222,6 @@
 				AF2CC7CC1A5E2CBD000B1D37 /* MainQuestionTableViewController.m in Sources */,
 				AFD5116E1A8C61AC00AB5C34 /* RightTableViewController.m in Sources */,
 				AFB637CB1A973BEF003CB671 /* MarkdownEditorViewController.m in Sources */,
-				AFB637CE1A985E0E003CB671 /* CommetnTableViewController.m in Sources */,
 				AF83F9EF1A9B9FCB00BA4A3D /* DetailCommentTableViewCell.m in Sources */,
 				AF2CC7C61A5E2B19000B1D37 /* QuestionModel.m in Sources */,
 				AFFB4C4D1A836CA400923088 /* BaseModel.m in Sources */,
