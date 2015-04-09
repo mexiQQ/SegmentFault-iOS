@@ -108,17 +108,26 @@
 
 #pragma mark - MessageComposerViewDelegate
 - (void)messageComposerSendMessageClickedWithMessage:(NSString *)message {
-  NSLog(@"send click");
-}
-
-- (void)messageComposerUserTyping {
-  NSLog(@"text changed");
-}
-
-- (void)messageComposerFrameDidChange:(CGRect)frame
-                withAnimationDuration:(CGFloat)duration
-                             andCurve:(NSInteger)curve {
-  NSLog(@"frame changed");
+  __weak typeof(self) weakself = self;
+  if ([[NSUserDefaults standardUserDefaults] objectForKey:@"token"]) {
+    [[DetailQuestionStore sharedStore]
+        commentAnswer:message
+             answerId:self.id_
+               handle:^(NSDictionary *dic) {
+                 NSString *status = [dic objectForKey:@"status"];
+                 if (status.integerValue == 1) {
+                   NSArray *a = [dic objectForKey:@"data"];
+                   [[MXUtil sharedUtil]
+                       showMessageScreen:[a[1] objectForKey:@"text"]];
+                 } else {
+                   [weakself.view endEditing:YES];
+                   [[MXUtil sharedUtil] showMessageScreen:@"提交成功"];
+                   [self firstInitData];
+                 }
+               }];
+  } else {
+    [[MXUtil sharedUtil] showMessageScreen:@"未登录"];
+  }
 }
 
 - (void)tapToHideKeyboard:(UITapGestureRecognizer *)tap {
