@@ -16,6 +16,6 @@
 - (void)successStyle;
 - (void)infoStyle;
 - (void)warningStyle;
-- (void)dangerStyle;
+- (void)dangerStyle __attribute__((deprecated));
 - (void)sfStyle;
 @end

@@ -10,6 +10,7 @@
 #import "DetailQuestionStore.h"
 #import "DetailQuestionTableViewController.h"
 #import "RightTableViewController.h"
+#import "SVProgressHUD.h"
 #import <CoreText/CoreText.h>
 #import "MXUtil.h"
 static BOOL firstInit = true;
@@ -29,6 +30,7 @@ static BOOL firstInit = true;
 
   [self setupBar];
   [self setupTableView];
+  [self showWithStatus];
 
   self.tableView.rowHeight = UITableViewAutomaticDimension;
   self.tableView.estimatedRowHeight = 60;
@@ -36,6 +38,39 @@ static BOOL firstInit = true;
 
 - (void)didReceiveMemoryWarning {
   [super didReceiveMemoryWarning];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:
+        (UIInterfaceOrientation)toInterfaceOrientation {
+  return YES;
+}
+
+#pragma mark -
+#pragma mark Show Methods
+
+- (void)show {
+  [SVProgressHUD show];
+  [self getLatestLoans];
+}
+
+- (void)showWithStatus {
+  [SVProgressHUD showWithStatus:@"加载中"];
+  [self getLatestLoans];
+}
+
+#pragma mark -
+#pragma mark Dismiss Methods Sample
+
+- (void)dismiss {
+  [SVProgressHUD dismiss];
+}
+
+- (void)dismissSuccess {
+  [SVProgressHUD showSuccessWithStatus:@"Great Success!"];
+}
+
+- (void)dismissError {
+  [SVProgressHUD showErrorWithStatus:@"Failed with Error"];
 }
 
 // 设置 bar
@@ -50,23 +85,7 @@ static BOOL firstInit = true;
 //设置tableview
 - (void)setupTableView {
   [self setupRefreshControl];
-  [self firstInitData];
-}
-
-//第一次加载数据时自动弹出
-- (void)firstInitData {
-  [UIView animateWithDuration:0.25
-      delay:0
-      options:UIViewAnimationOptionBeginFromCurrentState
-      animations:^(void) {
-        self.tableView.contentOffset =
-            CGPointMake(0, -self.refreshControl.frame.size.height - 20);
-      }
-      completion:^(BOOL finished) {
-        [self.refreshControl beginRefreshing];
-        [self.refreshControl
-            sendActionsForControlEvents:UIControlEventValueChanged];
-      }];
+  [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
 }
 
 // 设置下拉刷新进度条
@@ -94,6 +113,8 @@ static BOOL firstInit = true;
             [cell configureForCell:item];
           }];
       self.tableView.dataSource = self.myQuestionDataSource;
+      [self.tableView
+          setSeparatorStyle:UITableViewCellSeparatorStyleSingleLine];
       firstInit = false;
     } else {
       self.myQuestionDataSource.items = dic;
@@ -101,6 +122,7 @@ static BOOL firstInit = true;
     }
     self.page = 1;
     [self.refreshControl endRefreshing];
+    [self dismiss];
     [self createTableFooter];
   }];
 }

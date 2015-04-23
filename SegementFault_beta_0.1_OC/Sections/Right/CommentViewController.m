@@ -52,7 +52,7 @@
       initWithFrame:CGRectMake(0, 0, self.view.bounds.size.width,
                                self.view.bounds.size.height)];
 
-  messageLabel.text = @"Loading ...";
+  messageLabel.text = @"加载中...";
   messageLabel.textColor = [UIColor grayColor];
   messageLabel.numberOfLines = 0;
   messageLabel.textAlignment = NSTextAlignmentCenter;
@@ -70,7 +70,7 @@
   self.messageComposerView.delegate = self;
   [self.myview addSubview:self.messageComposerView];
 
-  self.messageComposerView.messagePlaceholder = @"Type a comment...";
+  self.messageComposerView.messagePlaceholder = @"写评论";
 }
 
 //第一次加载数据时自动弹出

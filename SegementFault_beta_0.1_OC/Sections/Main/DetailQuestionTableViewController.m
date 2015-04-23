@@ -19,6 +19,7 @@
 #import "MobClick.h"
 #import "MessageStore.h"
 #import <ShareSDK/ShareSDK.h>
+#import "SVProgressHUD.h"
 
 @interface DetailQuestionTableViewController ()
 @property(nonatomic, strong)
@@ -44,6 +45,12 @@
 
   // 设置 tableview
   [self setupTableView];
+  [self showWithStatus];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:
+        (UIInterfaceOrientation)toInterfaceOrientation {
+  return YES;
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -54,6 +61,34 @@
 - (void)viewWillDisappear:(BOOL)animated {
   [super viewWillDisappear:animated];
   [MobClick endLogPageView:@"PageOne"];
+}
+
+#pragma mark -
+#pragma mark Show Methods
+
+- (void)show {
+  [SVProgressHUD show];
+  [self getLatestLoans];
+}
+
+- (void)showWithStatus {
+  [SVProgressHUD showWithStatus:@"加载中"];
+  [self getLatestLoans];
+}
+
+#pragma mark -
+#pragma mark Dismiss Methods Sample
+
+- (void)dismiss {
+  [SVProgressHUD dismiss];
+}
+
+- (void)dismissSuccess {
+  [SVProgressHUD showSuccessWithStatus:@"Great Success!"];
+}
+
+- (void)dismissError {
+  [SVProgressHUD showErrorWithStatus:@"Failed with Error"];
 }
 
 #pragma mark - table datasource
@@ -89,28 +124,12 @@
             configureCellBlock:nil];
         [self.refreshControl endRefreshing];
         self.tableView.dataSource = self.myDetailQuestionDataSource;
-      }];
-}
-
-// 第一次加载数据
-- (void)firstInitData {
-  [UIView animateWithDuration:0.25
-      delay:0
-      options:UIViewAnimationOptionBeginFromCurrentState
-      animations:^(void) {
-        self.tableView.contentOffset =
-            CGPointMake(0, -self.refreshControl.frame.size.height);
-      }
-      completion:^(BOOL finished) {
-        [self.refreshControl beginRefreshing];
-        [self.refreshControl
-            sendActionsForControlEvents:UIControlEventValueChanged];
+        [self dismiss];
       }];
 }
 
 - (void)setupTableView {
   [self setupRefreshControl];
-  [self firstInitData];
 }
 
 #pragma mark - table delegate
@@ -482,7 +501,7 @@
                      } else {
                        [self dismissViewControllerAnimated:YES completion:nil];
                        [[MXUtil sharedUtil] showMessageScreen:@"提交成功"];
-                       [self firstInitData];
+                       [self getLatestLoans];
                      }
                    }];
     } else {

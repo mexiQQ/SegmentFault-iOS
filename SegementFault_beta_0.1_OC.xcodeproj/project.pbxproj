@@ -158,6 +158,8 @@
 		AFB637CB1A973BEF003CB671 /* MarkdownEditorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB637CA1A973BEF003CB671 /* MarkdownEditorViewController.m */; };
 		AFB637D11A9864FD003CB671 /* CommentStore.m in Sources */ = {isa = PBXBuildFile; fileRef = AFB637D01A9864FD003CB671 /* CommentStore.m */; };
 		AFC1D4B71ABB173200BF976A /* ArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC1D4B61ABB173200BF976A /* ArticleModel.m */; };
+		AFC6DA5C1AE8ED1B005E70BD /* SVProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = AFC6DA591AE8ED1B005E70BD /* SVProgressHUD.bundle */; };
+		AFC6DA5D1AE8ED1B005E70BD /* SVProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = AFC6DA5B1AE8ED1B005E70BD /* SVProgressHUD.m */; };
 		AFCA0ACE1A9DD47C000E8E98 /* QuestionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AFCA0ACD1A9DD47C000E8E98 /* QuestionTableViewCell.m */; };
 		AFD43F5F1AD6218900B41B4C /* MessageComposerView.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD43F5E1AD6218900B41B4C /* MessageComposerView.m */; };
 		AFD43F621AD621EC00B41B4C /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AFD43F611AD621EC00B41B4C /* CommentViewController.m */; };
@@ -387,6 +389,10 @@
 		AFB637D01A9864FD003CB671 /* CommentStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CommentStore.m; path = General/Store/CommentStore.m; sourceTree = "<group>"; };
 		AFC1D4B51ABB173200BF976A /* ArticleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ArticleModel.h; path = General/Model/ArticleModel.h; sourceTree = "<group>"; };
 		AFC1D4B61ABB173200BF976A /* ArticleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ArticleModel.m; path = General/Model/ArticleModel.m; sourceTree = "<group>"; };
+		AFC6DA581AE8ED1B005E70BD /* SVProgressHUD-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SVProgressHUD-Prefix.pch"; sourceTree = "<group>"; };
+		AFC6DA591AE8ED1B005E70BD /* SVProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = SVProgressHUD.bundle; sourceTree = "<group>"; };
+		AFC6DA5A1AE8ED1B005E70BD /* SVProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVProgressHUD.h; sourceTree = "<group>"; };
+		AFC6DA5B1AE8ED1B005E70BD /* SVProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SVProgressHUD.m; sourceTree = "<group>"; };
 		AFCA0ACC1A9DD47C000E8E98 /* QuestionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionTableViewCell.h; sourceTree = "<group>"; };
 		AFCA0ACD1A9DD47C000E8E98 /* QuestionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionTableViewCell.m; sourceTree = "<group>"; };
 		AFD43F5D1AD6218900B41B4C /* MessageComposerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageComposerView.h; sourceTree = "<group>"; };
@@ -638,6 +644,7 @@
 		AF37AFDD1A7F696F00C3D07D /* vendor */ = {
 			isa = PBXGroup;
 			children = (
+				AFC6DA571AE8ED1B005E70BD /* SVProgressHUD */,
 				AFE6C93A1AD68F6E003573EE /* UMAnalytics_Sdk_3.4.6 */,
 				AFD43F5C1AD6218900B41B4C /* MessageComposerView */,
 				AF57F1181A9DD666002294FA /* ShareSDK */,
@@ -865,6 +872,17 @@
 				AF83F9CF1A9B9FCB00BA4A3D /* View */,
 			);
 			name = General;
+			sourceTree = "<group>";
+		};
+		AFC6DA571AE8ED1B005E70BD /* SVProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				AFC6DA581AE8ED1B005E70BD /* SVProgressHUD-Prefix.pch */,
+				AFC6DA591AE8ED1B005E70BD /* SVProgressHUD.bundle */,
+				AFC6DA5A1AE8ED1B005E70BD /* SVProgressHUD.h */,
+				AFC6DA5B1AE8ED1B005E70BD /* SVProgressHUD.m */,
+			);
+			path = SVProgressHUD;
 			sourceTree = "<group>";
 		};
 		AFD43F5C1AD6218900B41B4C /* MessageComposerView */ = {
@@ -1121,6 +1139,7 @@
 				AF21DDDC1A7B38BE003612E2 /* iOS.png in Resources */,
 				AF897E2E1A91C3BB00AC5555 /* assets in Resources */,
 				AF21DDE21A7B38BE003612E2 /* mysql.png in Resources */,
+				AFC6DA5C1AE8ED1B005E70BD /* SVProgressHUD.bundle in Resources */,
 				AF21DDDE1A7B38BE003612E2 /* jquery.png in Resources */,
 				AF21DDE11A7B38BE003612E2 /* mongodb.png in Resources */,
 				AF0F71531A6FB58F00A23341 /* tags_id.plist in Resources */,
@@ -1229,6 +1248,7 @@
 				AF49193F1A7233BB00EEFFFF /* DetailArticleStore.m in Sources */,
 				AF0A0C911A81F21F001CC174 /* MXUtil.m in Sources */,
 				AF83F9EC1A9B9FCB00BA4A3D /* ArticleTableViewCell.m in Sources */,
+				AFC6DA5D1AE8ED1B005E70BD /* SVProgressHUD.m in Sources */,
 				AF83F9F21A9B9FCB00BA4A3D /* EditTagTableViewCell.m in Sources */,
 				AFD5117D1A8C826D00AB5C34 /* MessageStore.m in Sources */,
 				AF0A0C971A81FC7E001CC174 /* DetailQuestionStore.m in Sources */,

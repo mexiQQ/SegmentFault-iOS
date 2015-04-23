@@ -17,6 +17,7 @@
 #import <ShareSDK/ShareSDK.h>
 #import "MobClick.h"
 #import "MXUtil.h"
+#import "SVProgressHUD.h"
 
 @interface DetailArticleTableViewController ()
 @property(nonatomic, strong) DetailArticleDataSource *myDetailArticleDataSource;
@@ -39,6 +40,7 @@
 
   // 设置 tableview
   [self setupTableView];
+  [self showWithStatus];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -51,23 +53,35 @@
   [MobClick endLogPageView:@"PageOne"];
 }
 
-#pragma mark - table datasource
+#pragma mark -
+#pragma mark Show Methods
 
-//第一次加载数据
-- (void)firstInitData {
-  [UIView animateWithDuration:0.25
-      delay:0
-      options:UIViewAnimationOptionBeginFromCurrentState
-      animations:^(void) {
-        self.tableView.contentOffset =
-            CGPointMake(0, -self.refreshControl.frame.size.height);
-      }
-      completion:^(BOOL finished) {
-        [self.refreshControl beginRefreshing];
-        [self.refreshControl
-            sendActionsForControlEvents:UIControlEventValueChanged];
-      }];
+- (void)show {
+  [SVProgressHUD show];
+  [self getLatestLoans];
 }
+
+- (void)showWithStatus {
+  [SVProgressHUD showWithStatus:@"加载中"];
+  [self getLatestLoans];
+}
+
+#pragma mark -
+#pragma mark Dismiss Methods Sample
+
+- (void)dismiss {
+  [SVProgressHUD dismiss];
+}
+
+- (void)dismissSuccess {
+  [SVProgressHUD showSuccessWithStatus:@"Great Success!"];
+}
+
+- (void)dismissError {
+  [SVProgressHUD showErrorWithStatus:@"Failed with Error"];
+}
+
+#pragma mark - table datasource
 
 //设置下拉刷新进度条
 - (void)setupRefreshControl {
@@ -97,12 +111,12 @@
                 }];
         [self.refreshControl endRefreshing];
         self.tableView.dataSource = self.myDetailArticleDataSource;
+        [self dismiss];
       }];
 }
 
 - (void)setupTableView {
   [self setupRefreshControl];
-  [self firstInitData];
 }
 
 #pragma mark - table delegate
@@ -313,7 +327,7 @@
                       } else {
                         [self dismissViewControllerAnimated:YES completion:nil];
                         [[MXUtil sharedUtil] showMessageScreen:@"提交成功"];
-                        [self firstInitData];
+                        [self getLatestLoans];
                       }
                     }];
       } else {

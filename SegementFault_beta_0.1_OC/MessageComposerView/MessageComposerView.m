@@ -144,8 +144,11 @@ const NSInteger defaultMaxHeight = 100;
                         forState:UIControlStateDisabled];
   [self.sendButton setTitleColor:[UIColor whiteColor]
                         forState:UIControlStateSelected];
-  [self.sendButton setBackgroundColor:[UIColor orangeColor]];
-  [self.sendButton setTitle:@"Send" forState:UIControlStateNormal];
+  [self.sendButton setBackgroundColor:[UIColor colorWithRed:92 / 255.0
+                                                      green:184 / 255.0
+                                                       blue:92 / 255.0
+                                                      alpha:1]];
+  [self.sendButton setTitle:@"发送" forState:UIControlStateNormal];
   [self.sendButton.titleLabel setFont:[UIFont boldSystemFontOfSize:14]];
 
   [self.accessoryView
