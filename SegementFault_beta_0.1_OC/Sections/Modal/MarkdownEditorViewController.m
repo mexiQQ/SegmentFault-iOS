@@ -27,6 +27,12 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  [self.navigationController.navigationBar
+      setBarTintColor:[UIColor colorWithRed:34 / 255.0
+                                      green:72 / 255.0
+                                       blue:57 / 255.0
+                                      alpha:1.0]];
+
   self.textView = [[UITextView alloc]
       initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 100)];
   self.textView.inputAccessoryView =

@@ -65,6 +65,11 @@
 
 - (void)setupBar {
   [self.navigationController.navigationBar setTintColor:[UIColor whiteColor]];
+  [self.navigationController.navigationBar
+      setBarTintColor:[UIColor colorWithRed:34 / 255.0
+                                      green:72 / 255.0
+                                       blue:57 / 255.0
+                                      alpha:1.0]];
 
   self.messageComposerView = [[MessageComposerView alloc] init];
   self.messageComposerView.delegate = self;

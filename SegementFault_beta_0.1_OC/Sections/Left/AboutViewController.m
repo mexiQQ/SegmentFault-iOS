@@ -16,6 +16,12 @@
 @synthesize aboutContentView = _aboutContentView;
 - (void)viewDidLoad {
   [super viewDidLoad];
+  [self.navigationController.navigationBar
+      setBarTintColor:[UIColor colorWithRed:34 / 255.0
+                                      green:72 / 255.0
+                                       blue:57 / 255.0
+                                      alpha:1.0]];
+
   // 设置 barTitle
   [self.titleButton
       setBackgroundImage:[UIImage imageNamed:@"NavigationBar_title"]

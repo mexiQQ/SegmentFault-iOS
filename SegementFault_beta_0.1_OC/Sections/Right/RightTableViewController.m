@@ -46,6 +46,11 @@
   [self.titleButton
       setBackgroundImage:[UIImage imageNamed:@"NavigationBar_title"]
                 forState:UIControlStateNormal];
+  [self.navigationController.navigationBar
+      setBarTintColor:[UIColor colorWithRed:34 / 255.0
+                                      green:72 / 255.0
+                                       blue:57 / 255.0
+                                      alpha:1.0]];
 }
 
 //第一次加载数据时自动弹出
