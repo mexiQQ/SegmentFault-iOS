@@ -16,6 +16,7 @@
 @property(weak, nonatomic) IBOutlet UIWebView *contentWebView;
 @property(nonatomic, strong) NSString *indexTag;
 
+@property(weak, nonatomic) IBOutlet UILabel *contentLabel;
 - (void)configureForCell:(NSDictionary *)item
                    index:(NSInteger *)indexpath
                 accepted:(BOOL)isAccepted;

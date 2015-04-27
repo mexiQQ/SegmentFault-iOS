@@ -149,14 +149,17 @@
 - (CGFloat)tableView:(UITableView *)tableView
     heightForHeaderInSection:(NSInteger)section {
   if (0 != section) {
-    NSNumber *a = (NSNumber *)[[DetailQuestionStore sharedStore].answersHeights
-        objectForKey:[NSString
-                         stringWithFormat:@"answer%ld", ((long)section - 1)]];
-    if (a == nil) {
-      return 80.01;
-    } else {
-      return a.floatValue;
-    }
+    //    NSNumber *a = (NSNumber *)[[DetailQuestionStore
+    //    sharedStore].answersHeights
+    //        objectForKey:[NSString
+    //                         stringWithFormat:@"answer%ld", ((long)section -
+    //                         1)]];
+    //    if (a == nil) {
+    //      return 80.01;
+    //    } else {
+    //      return a.floatValue;
+    //    }
+    return 80;
   } else {
     NSNumber *b = [DetailQuestionStore sharedStore].questionHeight;
     if (nil == b || 0 == b) {

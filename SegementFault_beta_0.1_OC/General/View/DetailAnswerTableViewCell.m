@@ -34,28 +34,29 @@
   self.authorLabel.text = [self.answerModel.user objectForKey:@"name"];
   self.authorRateLabel.text = [self.answerModel.user objectForKey:@"rank"];
   self.productTime.text = self.answerModel.createdDate;
-  [self.likeButton setTitle:self.answerModel.votes
-                   forState:UIControlStateNormal];
-  self.commentLabel.text =
-      [NSString stringWithFormat:@"%@评论", self.answerModel.comments];
-  if (!isAccepted) {
-    self.acceptButton.hidden = YES;
-  }
+  //  [self.likeButton setTitle:self.answerModel.votes
+  //                   forState:UIControlStateNormal];
+  //  self.commentLabel.text =
+  //      [NSString stringWithFormat:@"%@评论", self.answerModel.comments];
+  //  if (!isAccepted) {
+  //    self.acceptButton.hidden = YES;
+  //  }
 
-  [self.likeButton addTarget:self
-                      action:@selector(liketap:)
-            forControlEvents:UIControlEventTouchUpInside];
-  [self.hateButton addTarget:self
-                      action:@selector(hatetap:)
-            forControlEvents:UIControlEventTouchUpInside];
+  //  [self.likeButton addTarget:self
+  //                      action:@selector(liketap:)
+  //            forControlEvents:UIControlEventTouchUpInside];
+  //  [self.hateButton addTarget:self
+  //                      action:@selector(hatetap:)
+  //            forControlEvents:UIControlEventTouchUpInside];
 
   // 使用此 tag 表示第几个回答，存储每个答案的高度
   self.indexTag = [NSString stringWithFormat:@"answer%d", (int)indexpath];
 
-  [self.contentWebView
-      loadHTMLString:[[MXUtil sharedUtil]
-                         formatHTMLFromMarkdown:self.answerModel.parsedText]
-             baseURL:[[NSBundle mainBundle] bundleURL]];
+  //  [self.contentWebView
+  //      loadHTMLString:[[MXUtil sharedUtil]
+  //                         formatHTMLFromMarkdown:self.answerModel.parsedText]
+  //             baseURL:[[NSBundle mainBundle] bundleURL]];
+  self.contentLabel.text = self.answerModel.originalText;
 }
 
 // 计算 webview 的高度并通知重新加载
